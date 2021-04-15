@@ -3,7 +3,7 @@ project(VehicleMenagmentSystem)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(VehicleMenagmentSystem main.cpp)
+add_executable(VehicleMenagmentSystem main.cpp Controller/MainController.cpp Controller/MainController.h View/GraphicView.cpp View/GraphicView.h View/Pages/PageName.h View/Elements/Button.cpp View/Elements/Button.h View/Elements/Input.cpp View/Elements/Input.h View/Elements/ListItem.cpp View/Elements/ListItem.h View/Pages/HomePage.cpp View/Pages/HomePage.h View/Pages/ClosePage.cpp View/Pages/ClosePage.h Model/Vehicle.cpp Model/Vehicle.h)
 
 include_directories(/usr/include c:/SFML/include)
 
