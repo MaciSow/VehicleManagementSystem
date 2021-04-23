@@ -3,17 +3,24 @@
 
 #include "PeopleTransport.h"
 
-class Bus : public virtual PeopleTransport{
-public:
-    Bus(const string &plate1, const string &status1, const string &brand1, const string &model1,
-        const string &plate, const string &status, const string &brand, const string &model, int seatsAmount,
-        bool isCoach, bool hasWc);
-
-    virtual ~Bus();
-
+class Bus : public virtual PeopleTransport {
 private:
     bool isCoach;
     bool hasWC;
+public:
+    Bus(const string &plate,
+        Status *status,
+        const string &brand,
+        const string &model,
+        int seatsAmount,
+        bool isCoach,
+        bool hasWC,
+        vector<Repair *> repairs,
+        vector<Road *> roadRegister);
+
+    virtual ~Bus();
+
+    void log();
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_BUS_H

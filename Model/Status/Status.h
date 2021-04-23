@@ -2,11 +2,12 @@
 #define VEHICLEMENAGMENTSYSTEM_STATUS_H
 
 #include <string>
+#include <iostream>
 
 using namespace std;
 
 enum StatusType {
-    available, road, broke, repair
+    AVAILABLE, ROAD, BROKE, REPAIR, STATUSERROR
 };
 
 class Status {
@@ -16,6 +17,8 @@ public:
     Status(StatusType statusType);
 
     virtual ~Status() = default;
+
+    void log();
 };
 
 

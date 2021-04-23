@@ -8,8 +8,10 @@ protected:
     int seatsAmount;
 
 public:
-    PeopleTransport(const string &plate, const string &status, const string &brand, const string &model,
+    PeopleTransport(const string &plate, Status *status, const string &brand, const string &model,
                     int seatsAmount);
+
+    PeopleTransport();
 
     virtual ~PeopleTransport();
 };

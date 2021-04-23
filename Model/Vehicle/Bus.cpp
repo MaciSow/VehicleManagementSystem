@@ -1,11 +1,43 @@
 #include "Bus.h"
 
-Bus::Bus(const string &plate1, const string &status1, const string &brand1, const string &model1,
-         const string &plate, const string &status, const string &brand, const string &model, int seatsAmount,
-         bool isCoach, bool hasWc) : Vehicle(plate1, status1, brand1, model1),
-                                     PeopleTransport(plate, status, brand, model, seatsAmount), isCoach(isCoach),
-                                     hasWC(hasWc) {}
-
 Bus::~Bus() {
 
+}
+
+Bus::Bus(const string &plate,
+         Status *status,
+         const string &brand,
+         const string &model,
+         int seatsAmount,
+         bool isCoach,
+         bool hasWC,
+         vector<Repair*>repairs,
+         vector<Road* > roadRegister) {
+    this->plate = plate;
+    this->status = status;
+    this->brand = brand;
+    this->model = model;
+    this->seatsAmount = seatsAmount;
+    this->isCoach = isCoach;
+    this->hasWC = hasWC;
+    this->repairs = repairs;
+    this->roadRegister = roadRegister;
+}
+
+void Bus::log() {
+    cout << "bus" << endl;
+    cout << plate << endl;
+    cout << brand << endl;
+    cout << model << endl;
+    cout << seatsAmount << endl;
+    cout << isCoach << endl;
+    cout << hasWC << endl;
+    status->log();
+    for (Repair *repair: repairs) {
+        repair->log();
+    }
+
+    for (Road *road: roadRegister) {
+        road->log();
+    }
 }

@@ -9,12 +9,19 @@ private:
     int axisAmount;
     bool hasTrailer;
 public:
-    Truck(const string &plate1, const string &status1, const string &brand1, const string &model1,
-          const string &plate, const string &status, const string &brand, const string &model, int capacity,
-          int axisAmount, bool hasTrailer);
+    Truck(const string &plate,
+          Status *status,
+          const string &brand,
+          const string &model,
+          int capacity,
+          int axisAmount,
+          bool hasTrailer,
+          vector<Repair *> repairs,
+          vector<Road *> roadRegister);
 
     virtual ~Truck();
 
+    void log();
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_TRUCK_H

@@ -3,17 +3,19 @@
 
 #include <typeinfo>
 #include <iostream>
+
+#include "../Model/Others/File.h"
+#include "../Model/Fleet.h"
 //#include "../View/ConsoleView.h"
-//#include "../Model/Others/File.h"
 
 using namespace std;
 
 class MainController {
 private:
-
-//	File* f1;
-    string path = "resources/";
-    string filename = "Carrier.txt";
+    Fleet* fleet;
+	File* f1;
+    string path = "assets/";
+    string filename = "Vehicles.yaml";
 
 public:
     bool isCreating = false;

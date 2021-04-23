@@ -7,15 +7,17 @@
 
 class Road : public Status{
 public:
-    Road(StatusType statusType, const string &id, const Driver &driver, const Date &startDate, const Date &endDate);
+    Road(StatusType statusType, int distance, Driver *driver, Date *startDate, Date *endDate);
 
     virtual ~Road();
 
+    void log();
+
 private:
-    string id;
-    Driver driver;
-    Date startDate;
-    Date endDate;
+    int distance;
+    Driver * driver;
+    Date *startDate;
+    Date * endDate;
 };
 
 

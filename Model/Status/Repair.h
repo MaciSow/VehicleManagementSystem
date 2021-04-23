@@ -4,16 +4,18 @@
 #include "Status.h"
 #include "../Others/Date.h"
 
-class Repair : public Status{
+class Repair : public Status {
 public:
-    Repair(StatusType statusType, const string &name, const string &desrciption, const Date &fixDate);
+    Repair(StatusType statusType, const string &name, const string &description, Date *fixDate);
 
     virtual ~Repair();
 
+    void log();
+
 private:
     string name;
-    string desrciption;
-    Date fixDate;
+    string description;
+    Date *fixDate;
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_REPAIR_H

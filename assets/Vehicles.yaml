@@ -1,0 +1,139 @@
+- class: Car
+  plate: WE#LS123
+  brand: Skoda
+  model: Fabia
+  sets: 4
+  doors: 5
+  body: Sedan
+  status:
+    type: Road
+    id: willkowal1321
+    name: Will
+    surname: Kowalsky
+    distance: 8200
+    start: 02-06-2020
+    end: 05-06-2020
+  repairs:
+    - name: Clutch
+      description: The gearbox doesn’t stick the gears
+      fixDate: 05-06-2020
+    - name: Window
+      description:
+      fixDate: 26-09-2020
+  register:
+    - name: John
+      surname: Kowalsky
+      distance: 8200
+      start: 02-06-2020
+      end: 05-06-2020
+    - name: Niko
+      surname: Kania
+      distance: 1200
+      start: 01-06-2020
+      end: 02-06-2020
+- class: Car
+  plate: WE#LS123
+  brand: Skoda
+  model: Fabia
+  sets: 4
+  doors: 5
+  body: Sedan
+  status:
+    type: Road
+    id: willkowal1321
+    name: Will
+    surname: Kowalsky
+    distance: 8200
+    start: 02-06-2020
+    end: 05-06-2020
+  repairs:
+    - name: Clutch
+      description: The gearbox doesn’t stick the gears
+      fixDate: 05-06-2020
+    - name: Window
+      description:
+      fixDate: 26-09-2020
+  register:
+    - name: John
+      surname: Kowalsky
+      distance: 8200
+      start: 02-06-2020
+      end: 05-06-2020
+    - name: Niko
+      surname: Kania
+      distance: 1200
+      start: 01-06-2020
+      end: 02-06-2020
+- class: Bus
+  plate: WWE#LS143
+  brand: Neoplan
+  model: Long
+  sets: 44
+  coach: 1
+  wc: 1
+  status:
+      type: Road
+      id: willkowal1321
+      name: Will
+      surname: Kowalsky
+      distance: 8200
+      start: 02-06-2020
+      end: 05-06-2020
+  repairs:
+    - name: Door
+      description: Don't close
+      fixDate: 11-09-2020
+  register:
+    - name: Will
+      surname: Kowalsky
+      distance: 8200
+      start: 02-06-2020
+      end: 05-06-2020
+    - name: Roman
+      surname: Kania
+      distance: 1200
+      start: 01-06-2020
+      end: 02-06-2020
+- class: Van
+  plate: SE#L2454
+  brand: Fiat
+  model: Ducato
+  capacity: 2000
+  doubleWheel: 1
+  slideDoors: 1
+  status:
+      type: Broke
+      name: Door
+      description: Don't close
+  repairs:
+    - name: Wheel
+      description:
+      fixDate: 11-09-2020
+  register:
+    - name: Roby
+      surname: Rambo
+      distance: 330
+      start: 04-06-2020
+      end: 05-06-2020
+- class: Truck
+  plate: SB#0001
+  brand: Scania
+  model: R500
+  capacity: 23000
+  axis: 3
+  trailer: 0
+  status:
+      type: Repair
+      name: Window
+      description: Is broke
+      fixDate: 21-03-2020
+  repairs:
+    - name: Break
+      description: Break is blocked
+      fixDate: 14-03-2020
+  register:
+    - name: Gummy
+      surname: Solver
+      distance: 13330
+      start: 04-06-2020
+      end: 24-06-2020

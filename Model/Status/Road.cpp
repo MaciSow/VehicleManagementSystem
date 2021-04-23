@@ -1,7 +1,20 @@
 #include "Road.h"
 
-Road::Road(StatusType statusType, const string &id, const Driver &driver, const Date &startDate, const Date &endDate)
-        : Status(statusType), id(id), driver(driver), startDate(startDate), endDate(endDate) {}
 
 Road::~Road() {
 }
+
+Road::Road(StatusType statusType, int distance, Driver *driver, Date *startDate, Date *endDate)
+        : Status(statusType),
+          distance(distance),
+          driver(driver),
+          startDate(startDate),
+          endDate(endDate) {}
+
+void Road::log() {
+    cout << distance << endl;
+    driver->log();
+    startDate->log();
+    endDate->log();
+}
+

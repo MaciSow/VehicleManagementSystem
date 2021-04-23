@@ -1,9 +1,18 @@
 #include <iostream>
 #include "MainController.h"
 
+
 MainController::MainController() {
-//    f1 = new File();
-//	this->list = f1->readData(path + filename);
+
+    fleet = new Fleet();
+    f1 = new File();
+    f1->readVehiclesData(path + filename, fleet);
+
+    f1 = new File();
+    filename = "Drivers.yaml";
+    f1->readDriversData(path + filename, fleet);
+
+    fleet->log();
 }
 
 void MainController::save(string filename) {
@@ -13,6 +22,6 @@ void MainController::save(string filename) {
 //	f1->saveData(list, path + filename);
 }
 
-void MainController::clean(){
+void MainController::clean() {
 
 }
