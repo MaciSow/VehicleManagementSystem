@@ -29,11 +29,11 @@ PageName HomePage::mouseClick() {
     }
 
     if (btnShowVehicles->isClick(window)) {
-        return PageName::close; //TODO name page to in
+        return PageName::showVehicles;
     }
 
     if (btnShowDriver->isClick(window)) {
-        return PageName::close; //TODO
+        return PageName::close; //TODO name page to in
     }
 
     if (btnExit->isClick(window)) {
@@ -54,13 +54,13 @@ void HomePage::draw() {
 // private methods
 
 void HomePage::createElements() {
-    float posx = (float) (window->getSize().x / 2 - 125);
+    float posX = (float) (window->getSize().x / 2 - 125);
     float posY = 150;
     int offset = 80;
 
-    btnFleetState = new Button({posx, posY}, "Fleet state", font);
-    btnShowVehicles = new Button({posx, posY += offset}, "Show vehicles", font);
-    btnShowDriver = new Button({posx, posY += offset}, "Show drivers", font);
-    btnExit = new Button({posx, posY += offset}, "Exit", font);
+    btnFleetState = new Button({posX, posY}, "Fleet state", font);
+    btnShowVehicles = new Button({posX, posY += offset}, "Show vehicles", font);
+    btnShowDriver = new Button({posX, posY += offset}, "Show drivers", font);
+    btnExit = new Button({posX, posY += offset}, "Exit", font);
     btnExit->setColor({0, 0, 0, 205}, {196, 55, 55, 205});
 }

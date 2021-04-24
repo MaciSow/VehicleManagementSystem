@@ -7,6 +7,7 @@ GraphicView::GraphicView(MainController *&ctr) {
     pageName = PageName::home;
     homePage = new HomePage(controller, window, font);
     fleetStatePage = new FleetStatePage(controller, window, font);
+    showVehiclesPage = new ShowVehiclesPage(controller, window, font);
     closePage = new ClosePage(controller, window, font);
 }
 
@@ -82,6 +83,12 @@ void GraphicView::mouseMovedHandle() {
             }
             break;
 
+        case PageName::showVehicles:
+            if (showVehiclesPage->isMouseOver()) {
+                isCursorChange = true;
+            }
+            break;
+
         case PageName::close:
             if (closePage->isMouseOver()) {
                 isCursorChange = true;
@@ -111,6 +118,10 @@ void GraphicView::mouseButtonPressedHandle(Event &event) {
                 pageName = fleetStatePage->mouseClick();
                 break;
 
+            case PageName::showVehicles:
+                pageName = showVehiclesPage->mouseClick();
+                break;
+
             case PageName::close:
                 pageName = closePage->mouseClick();
                 break;
@@ -127,20 +138,36 @@ void GraphicView::mouseButtonReleasedHandle() {
 }
 
 void GraphicView::mouseWheelMovedHandle(Event &event) {
+    switch (pageName) {
+        case PageName::showVehicles:
+            showVehiclesPage->scroll(event.mouseWheel.delta);
+            break;
 
+        default:
+            break;
+    };
 }
 
 void GraphicView::drawPage() {
+    int frameHeight = 380;
+    int framePosY = 90;
+
     switch (pageName) {
         case PageName::home:
             createTitle("Vehicle Management System");
             homePage->draw();
             break;
 
-            case PageName::fleetState:
+        case PageName::fleetState:
             createTitle("Fleet state");
-            createFrame(width - 200, 300, height / 2 - 150);
+            createFrame(width - 200, frameHeight, framePosY);
             fleetStatePage->draw();
+            break;
+
+        case PageName::showVehicles:
+            createTitle("Show vehicles");
+            createFrame(width - 200, frameHeight, framePosY);
+            showVehiclesPage->draw();
             break;
 
         case PageName::close:
@@ -171,7 +198,7 @@ void GraphicView::createTitle(string title) {
 
     RectangleShape line({(float) width - 100, 2});
     line.setFillColor({0, 0, 0, 200});
-    line.move(50, 80);
+    line.move(50, 64);
 
     window->draw(text);
     window->draw(line);

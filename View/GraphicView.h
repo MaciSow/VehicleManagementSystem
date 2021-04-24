@@ -12,6 +12,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "iostream"
+#include "Pages/ShowVehiclesPage.h"
 
 using namespace std;
 using namespace sf;
@@ -29,6 +30,7 @@ private:
     PageName pageName;
     HomePage* homePage;
     FleetStatePage* fleetStatePage;
+    ShowVehiclesPage* showVehiclesPage;
     ClosePage* closePage;
 
     void textEnteredHandle(Event& event);

@@ -34,8 +34,8 @@ void FleetStatePage::createElements() {
     float width = (float) (window->getSize().x);
     float height = (float) (window->getSize().y);
     float btnWidth = 150;
-    float btnPosX = width - btnWidth - 70;
-    float btnPosY = height - 50 - 54;
+    float btnPosX = width - btnWidth - 32;
+    float btnPosY = height - 50 - 32;
 
     btnBack = new Button({btnPosX, btnPosY}, "Back", font, btnWidth);
     btnBack->setColor({0, 0, 0, 205}, {196, 55, 55, 205});
@@ -48,8 +48,8 @@ void FleetStatePage::clear() {
 void FleetStatePage::fillState() {
     float width = (float) (window->getSize().x);
     float posX;
-    float posY = 110;
-    float offset = 54;
+    float posY = 60;
+    float offset = 64;
     vector<String> labels = {
             "Vehicles amount", "Car amount", "Bus amount", "Van amount", "Truck amount",
             "Available vehicles", "On the road vehicles", "In repair vehicles", "Drivers amount", "Available drivers"
@@ -74,7 +74,7 @@ void FleetStatePage::fillState() {
         }
 
         if (i == labelsLength / 2) {
-            posY = 110;
+            posY = 60;
         }
 
         item.setFillColor(Color::Black);

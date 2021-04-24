@@ -20,9 +20,11 @@ private:
 
     void createElements();
 
-    void clear();
+    void fillState();
 
+    void clear();
 public:
+
     FleetStatePage(MainController *controller, RenderWindow *window, const Font &font);
 
     ~FleetStatePage();
@@ -32,8 +34,6 @@ public:
     PageName mouseClick();
 
     void draw();
-
-    void fillState();
 };
 
 
