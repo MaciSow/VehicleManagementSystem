@@ -30,3 +30,7 @@ void Driver::log() {
 
     cout << "=========" << endl;
 }
+
+bool Driver::isAvailableStatus() const {
+    return isAvailable;
+}

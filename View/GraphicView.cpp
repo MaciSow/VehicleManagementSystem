@@ -6,10 +6,11 @@ GraphicView::GraphicView(MainController *&ctr) {
     createWindow();
     pageName = PageName::home;
     homePage = new HomePage(controller, window, font);
+    fleetStatePage = new FleetStatePage(controller, window, font);
     closePage = new ClosePage(controller, window, font);
 }
 
-GraphicView::~GraphicView() {}
+GraphicView::~GraphicView() = default;
 
 void GraphicView::start() {
     while (window->isOpen()) {
@@ -75,6 +76,12 @@ void GraphicView::mouseMovedHandle() {
             }
             break;
 
+        case PageName::fleetState:
+            if (fleetStatePage->isMouseOver()) {
+                isCursorChange = true;
+            }
+            break;
+
         case PageName::close:
             if (closePage->isMouseOver()) {
                 isCursorChange = true;
@@ -100,6 +107,10 @@ void GraphicView::mouseButtonPressedHandle(Event &event) {
                 pageName = homePage->mouseClick();
                 break;
 
+            case PageName::fleetState:
+                pageName = fleetStatePage->mouseClick();
+                break;
+
             case PageName::close:
                 pageName = closePage->mouseClick();
                 break;
@@ -111,6 +122,10 @@ void GraphicView::mouseButtonPressedHandle(Event &event) {
     }
 }
 
+void GraphicView::mouseButtonReleasedHandle() {
+
+}
+
 void GraphicView::mouseWheelMovedHandle(Event &event) {
 
 }
@@ -120,6 +135,12 @@ void GraphicView::drawPage() {
         case PageName::home:
             createTitle("Vehicle Management System");
             homePage->draw();
+            break;
+
+            case PageName::fleetState:
+            createTitle("Fleet state");
+            createFrame(width - 200, 300, height / 2 - 150);
+            fleetStatePage->draw();
             break;
 
         case PageName::close:
@@ -144,11 +165,12 @@ void GraphicView::createWindow() {
 }
 
 void GraphicView::createTitle(string title) {
-    Text text(title, font, 48);
+    Text text(title, font, 36);
     text.setPosition(50, 16);
+    text.setFillColor({0, 0, 0, 200});
 
     RectangleShape line({(float) width - 100, 2});
-    line.setFillColor({255, 255, 255, 100});
+    line.setFillColor({0, 0, 0, 200});
     line.move(50, 80);
 
     window->draw(text);
@@ -174,7 +196,7 @@ void GraphicView::createBackground() {
     }
 
     background.setTexture(texture);
-    background.setScale(0.5, 0.5);
+//    background.setScale(0.5, 0.5);
 
     window->draw(background);
 }

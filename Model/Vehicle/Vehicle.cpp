@@ -25,3 +25,9 @@ void Vehicle::addRoad(Road *&road) {
     roadRegister.push_back(road);
 }
 
+StatusType Vehicle::getStatusType() {
+    return status->getStatusType();
+}
+
+
+

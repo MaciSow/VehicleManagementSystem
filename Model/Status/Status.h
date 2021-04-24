@@ -3,16 +3,16 @@
 
 #include <string>
 #include <iostream>
+#include "../Others/StatusType.h"
 
 using namespace std;
-
-enum StatusType {
-    AVAILABLE, ROAD, BROKE, REPAIR, STATUSERROR
-};
 
 class Status {
 protected:
     StatusType statusType;
+public:
+    StatusType getStatusType() const;
+
 public:
     Status(StatusType statusType);
 

@@ -13,6 +13,10 @@ class Vehicle {
 protected:
     string plate;
     Status *status;
+public:
+    StatusType getStatusType();
+
+protected:
     string brand;
     string model;
     vector<Repair *> repairs;

@@ -23,6 +23,8 @@ private:
     string name;
     string surname;
     bool isAvailable;
+public:
+    bool isAvailableStatus() const;
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_DRIVER_H

@@ -22,3 +22,7 @@ void Status::log() {
 
     cout << "error" << endl;
 }
+
+StatusType Status::getStatusType() const {
+    return statusType;
+}

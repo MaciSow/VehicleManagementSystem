@@ -25,6 +25,8 @@ public:
     void save(string filename);
 
     void clean();
+
+    vector<int> getStateData();
 };
 
 

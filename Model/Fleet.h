@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Vehicle/Vehicle.h"
 #include "Driver.h"
+#include "Others/VehicleType.h"
 
 using namespace std;
 
@@ -19,6 +20,12 @@ public:
     void addDriver(Driver *&driver);
 
     void log();
+
+    int getVehiclesAmount(VehicleType vehicleType = ANY);
+
+    int getVehicleState(StatusType statusType = AVAILABLE);
+
+    int getDriversAmount(bool onlyAvailable = false);
 };
 
 

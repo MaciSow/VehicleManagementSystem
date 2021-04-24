@@ -6,13 +6,7 @@
   doors: 5
   body: Sedan
   status:
-    type: Road
-    id: willkowal1321
-    name: Will
-    surname: Kowalsky
-    distance: 8200
-    start: 02-06-2020
-    end: 05-06-2020
+    type: Available
   repairs:
     - name: Clutch
       description: The gearbox doesn’t stick the gears

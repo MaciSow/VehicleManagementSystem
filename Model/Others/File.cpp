@@ -75,7 +75,7 @@ string File::getValue() {
     return txt;
 }
 
-Type File::getClassNumber(string className) {
+VehicleType File::getClassNumber(string className) {
 
     if (className == "Car") {
         return CAR;
@@ -89,7 +89,7 @@ Type File::getClassNumber(string className) {
     if (className == "Truck") {
         return TRUCK;
     }
-    return ERROR;
+    return ANY;
 }
 
 StatusType File::getStatusNumber(string statusName) {

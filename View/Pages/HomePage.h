@@ -16,9 +16,9 @@ private:
     RenderWindow* window;
     Font font;
 
-    Button* btnList;
-    Button* btnCreate;
-    Button* btnSave;
+    Button* btnFleetState;
+    Button* btnShowVehicles;
+    Button* btnShowDriver;
     Button* btnExit;
 
     void createElements();

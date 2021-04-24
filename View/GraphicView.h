@@ -6,6 +6,7 @@
 #include "Elements/Input.h"
 #include "Pages/PageName.h"
 #include "Pages/HomePage.h"
+#include "Pages/FleetStatePage.h"
 #include "Pages/ClosePage.h"
 
 #include <SFML/Graphics.hpp>
@@ -27,6 +28,7 @@ private:
     int height = 576;
     PageName pageName;
     HomePage* homePage;
+    FleetStatePage* fleetStatePage;
     ClosePage* closePage;
 
     void textEnteredHandle(Event& event);

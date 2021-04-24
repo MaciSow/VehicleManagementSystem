@@ -5,6 +5,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include "VehicleType.h"
 #include "../Fleet.h"
 #include "../Vehicle/Car.h"
 #include "../Status/Available.h"
@@ -14,14 +15,6 @@
 #include "../Vehicle/Van.h"
 
 using namespace std;
-
-enum Type {
-    CAR,
-    BUS,
-    VAN,
-    TRUCK,
-    ERROR
-};
 
 class File {
 private:
@@ -34,7 +27,7 @@ public:
 
     static string cropValue(string line);
 
-    static Type getClassNumber(string className);
+    static VehicleType getClassNumber(string className);
 
     static StatusType getStatusNumber(string statusName);
 

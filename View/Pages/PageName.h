@@ -3,6 +3,7 @@
 
 enum class PageName {
     home,
+    fleetState,
     close
 };
 

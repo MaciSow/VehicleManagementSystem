@@ -23,6 +23,9 @@ public:
     virtual ~Car();
 
     void log();
+
+
+
 };
 
 
