@@ -90,4 +90,17 @@ int Fleet::getDriversAmount(bool onlyAvailable) {
     return sum;
 }
 
+const vector<Vehicle *> &Fleet::getVehicles() const {
+    return vehicles;
+}
+
+Vehicle *Fleet::getVehicleByPlate(string plate) {
+    for (Vehicle *vehicle :vehicles) {
+        if (plate == vehicle->getPlate()){
+            return vehicle;
+        }
+    }
+    return nullptr;
+}
+
 

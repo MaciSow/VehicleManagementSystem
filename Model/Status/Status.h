@@ -19,6 +19,8 @@ public:
     virtual ~Status() = default;
 
     void log();
+
+    string getStatusName();
 };
 
 

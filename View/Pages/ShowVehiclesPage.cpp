@@ -14,6 +14,13 @@ bool ShowVehiclesPage::isMouseOver() {
     if (btnBack->isMouseOver(window)) {
         isCursorOver = true;
     }
+
+    for (ListItem *item : items) {
+        if (item->isMouseOver(window)) {
+            isCursorOver = true;
+        }
+    }
+
     return isCursorOver;
 }
 
@@ -21,6 +28,14 @@ PageName ShowVehiclesPage::mouseClick() {
     if (btnBack->isClick(window)) {
         clear();
         return PageName::home;
+    }
+
+    for (ListItem *item : items) {
+        if (item->isClick(window)) {
+            controller->setSelectedVehicle(item->getId());
+            isOpen = false;
+            return PageName::vehicleData;
+        }
     }
     return PageName::showVehicles;
 }
@@ -89,7 +104,6 @@ void ShowVehiclesPage::drawList() {
 
     for (int i = offset; i < offset + limit; i++) {
 
-
         items[i]->setPosition(Vector2f(104, positionY));
         items[i]->drawTo(window);
 
@@ -121,12 +135,9 @@ void ShowVehiclesPage::scroll(int offset) {
 }
 
 void ShowVehiclesPage::fillList(float listWidth, float itemHeight) {
-    items.push_back(new ListItem({listWidth, itemHeight}, "1", "sub", font, 0));
-    items.push_back(new ListItem({listWidth, itemHeight}, "2", "sub", font, 1));
-    items.push_back(new ListItem({listWidth, itemHeight}, "3", "sub", font, 2));
-    items.push_back(new ListItem({listWidth, itemHeight}, "4", "sub", font, 3));
-    items.push_back(new ListItem({listWidth, itemHeight}, "5", "sub", font, 4));
-    items.push_back(new ListItem({listWidth, itemHeight}, "6", "sub", font, 5));
+    for (auto row:controller->getVehicleList()) {
+        items.push_back(new ListItem({listWidth, itemHeight}, row[1], row[2], font, row[0]));
+    }
 
 }
 

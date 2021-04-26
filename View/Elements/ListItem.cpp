@@ -1,17 +1,17 @@
 #include "ListItem.h"
 
-ListItem::ListItem(Vector2f size, string title, string subtitle, Font& font, int id) {
+ListItem::ListItem(Vector2f size, string title, string subtitle, Font& font, string id) {
 	this->id = id;
 	width = size.x;
 	height = size.y;
 	create(title, subtitle, font);
 }
 
-int ListItem::getId() {
+string ListItem::getId() {
 	return id;
 }
 
-void ListItem::setId(int id) {
+void ListItem::setId(string id) {
 	this->id = id;
 }
 

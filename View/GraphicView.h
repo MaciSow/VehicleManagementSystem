@@ -7,6 +7,8 @@
 #include "Pages/PageName.h"
 #include "Pages/HomePage.h"
 #include "Pages/FleetStatePage.h"
+#include "Pages/VehicleDataPage.h"
+#include "Pages/BasePage.h"
 #include "Pages/ClosePage.h"
 
 #include <SFML/Graphics.hpp>
@@ -31,6 +33,8 @@ private:
     HomePage* homePage;
     FleetStatePage* fleetStatePage;
     ShowVehiclesPage* showVehiclesPage;
+    VehicleDataPage* vehicleDataPage;
+    BasePage* basePage;
     ClosePage* closePage;
 
     void textEnteredHandle(Event& event);

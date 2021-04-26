@@ -42,3 +42,27 @@ vector<int> MainController::getStateData() {
 
     return stateData;
 }
+
+vector<vector<string>> MainController::getVehicleList() {
+    vector<vector<string>> vehicleList;
+
+    for (Vehicle *vehicle: fleet->getVehicles()) {
+        vector<string> row;
+        row.push_back(vehicle->getPlate());
+        row.push_back(vehicle->getFullName());
+        row.push_back(vehicle->getVehicleTypeName());
+        row.push_back(vehicle->getStatus()->getStatusName());
+
+        vehicleList.push_back(row);
+    }
+
+    return vehicleList;
+}
+
+void MainController::setSelectedVehicle(string plate) {
+    selectedVehicle = fleet->getVehicleByPlate(plate);
+}
+
+Vehicle *MainController::getSelectedVehicle() const {
+    return selectedVehicle;
+}

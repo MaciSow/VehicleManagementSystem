@@ -16,7 +16,7 @@ class ListItem {
     float height = 50;
     int titleSize = 16;
     int subtitleSize = 12;
-    int id = 0;
+    string id = "";
     enum State { active,
                  hover,
                  pressed };
@@ -25,11 +25,11 @@ class ListItem {
     void setListItemState(State state);
 
    public:
-    ListItem(Vector2f size, string title, string subtitle, Font &font, int id = 0);
+    ListItem(Vector2f size, string title, string subtitle, Font &font, string id = 0);
     ~ListItem();
 
-    int getId();
-    void setId(int id);
+    string getId();
+    void setId(string id);
     int getHeight();
     void setPosition(Vector2f position);
 

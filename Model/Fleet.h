@@ -26,6 +26,10 @@ public:
     int getVehicleState(StatusType statusType = AVAILABLE);
 
     int getDriversAmount(bool onlyAvailable = false);
+
+    const vector<Vehicle *> &getVehicles() const;
+
+    Vehicle* getVehicleByPlate(string plate);
 };
 
 

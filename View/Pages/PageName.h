@@ -5,6 +5,8 @@ enum class PageName {
     home,
     fleetState,
     showVehicles,
+    vehicleData,
+    base,
     close
 };
 

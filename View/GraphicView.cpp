@@ -8,6 +8,8 @@ GraphicView::GraphicView(MainController *&ctr) {
     homePage = new HomePage(controller, window, font);
     fleetStatePage = new FleetStatePage(controller, window, font);
     showVehiclesPage = new ShowVehiclesPage(controller, window, font);
+    vehicleDataPage = new VehicleDataPage(controller, window, font);
+    basePage = new BasePage(controller, window, font);
     closePage = new ClosePage(controller, window, font);
 }
 
@@ -89,6 +91,18 @@ void GraphicView::mouseMovedHandle() {
             }
             break;
 
+        case PageName::vehicleData:
+            if (vehicleDataPage->isMouseOver()) {
+                isCursorChange = true;
+            }
+            break;
+
+        case PageName::base:
+            if (basePage->isMouseOver()) {
+                isCursorChange = true;
+            }
+            break;
+
         case PageName::close:
             if (closePage->isMouseOver()) {
                 isCursorChange = true;
@@ -122,6 +136,14 @@ void GraphicView::mouseButtonPressedHandle(Event &event) {
                 pageName = showVehiclesPage->mouseClick();
                 break;
 
+            case PageName::vehicleData:
+                pageName = vehicleDataPage->mouseClick();
+                break;
+
+            case PageName::base:
+                pageName = basePage->mouseClick();
+                break;
+
             case PageName::close:
                 pageName = closePage->mouseClick();
                 break;
@@ -151,6 +173,7 @@ void GraphicView::mouseWheelMovedHandle(Event &event) {
 void GraphicView::drawPage() {
     int frameHeight = 380;
     int framePosY = 90;
+    string vehicleType = "";
 
     switch (pageName) {
         case PageName::home:
@@ -168,6 +191,19 @@ void GraphicView::drawPage() {
             createTitle("Show vehicles");
             createFrame(width - 200, frameHeight, framePosY);
             showVehiclesPage->draw();
+            break;
+
+        case PageName::vehicleData:
+            vehicleType = controller->getSelectedVehicle()->getVehicleTypeName();
+            createTitle(vehicleType + " data");
+            createFrame(width - 200, frameHeight, framePosY);
+            vehicleDataPage->draw();
+            break;
+
+        case PageName::base:
+            createTitle("Base Page");
+            createFrame(width - 200, frameHeight, framePosY);
+            basePage->draw();
             break;
 
         case PageName::close:

@@ -12,12 +12,17 @@ using namespace std;
 
 class MainController {
 private:
-    Fleet* fleet;
-	File* f1;
+    Fleet *fleet;
+    File *f1;
     string path = "assets/";
     string filename = "Vehicles.yaml";
+    Vehicle* selectedVehicle;
+public:
+    Vehicle *getSelectedVehicle() const;
 
 public:
+    void setSelectedVehicle(string plate);
+
     bool isCreating = false;
 
     MainController();
@@ -27,6 +32,8 @@ public:
     void clean();
 
     vector<int> getStateData();
+
+    vector<vector<string>> getVehicleList();
 };
 
 

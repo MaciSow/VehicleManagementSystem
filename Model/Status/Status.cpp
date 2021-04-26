@@ -26,3 +26,24 @@ void Status::log() {
 StatusType Status::getStatusType() const {
     return statusType;
 }
+
+string Status::getStatusName() {
+    switch (statusType) {
+        case AVAILABLE:
+            return "Available";
+
+        case ROAD:
+            return "On the road";
+
+        case BROKE:
+            return "Broke down";
+
+        case REPAIR:
+            return "In repair";
+
+        default:
+            return "Unknown";
+    }
+}
+
+

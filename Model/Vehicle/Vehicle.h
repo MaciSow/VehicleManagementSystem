@@ -14,6 +14,9 @@ protected:
     string plate;
     Status *status;
 public:
+    Status *getStatus() const;
+
+public:
     StatusType getStatusType();
 
 protected:
@@ -35,6 +38,12 @@ public:
     void addRepair(Repair *& repair);
 
     void addRoad(Road *& road);
+
+    string getFullName();
+
+    const string &getPlate() const;
+
+    string getVehicleTypeName();
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_VEHICLE_H
