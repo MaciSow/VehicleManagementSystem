@@ -55,10 +55,7 @@ void FleetStatePage::fillState() {
             "Available vehicles", "On the road vehicles", "In repair vehicles", "Drivers amount", "Available drivers"
     };
 
-//    vector<int> values = {86, 12, 21, 40, 13, 36, 40, 10, 60, 20};
     vector<int> values = controller->getStateData();
-
-//    vector<Text> elements;
 
     int labelsLength = labels.size();
 
@@ -85,9 +82,5 @@ void FleetStatePage::fillState() {
 
         window->draw(item);
         window->draw(value);
-
-//        elements.push_back(item);
-//        elements.push_back(value);
     }
-
 }

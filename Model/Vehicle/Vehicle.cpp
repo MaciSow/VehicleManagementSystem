@@ -66,5 +66,10 @@ string Vehicle::getVehicleTypeName() {
     return vehicleType;
 }
 
+vector<string> Vehicle::getVehicleAllData() {
+    vector<string> vehicleData = {model, brand, "", "", "", plate, status->getStatusName()};
+    return vehicleData;
+}
+
 
 

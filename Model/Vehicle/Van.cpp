@@ -41,3 +41,17 @@ void Van::log() {
         road->log();
     }
 }
+
+VehicleType Van::getVehicleType() {
+    return VAN;
+}
+
+vector<string> Van::getVehicleAllData() {
+    vector<string> vehicleData = {model, brand, "", "", "", plate};
+    vehicleData[2] = to_string(capacity) + " kg";
+    vehicleData[3] = isDoubleWheel ? "Yes" : "No";
+    vehicleData[4] = isSlideDoors ? "Yes" : "No";
+    vehicleData.push_back(status->getStatusName());
+
+    return vehicleData;
+}

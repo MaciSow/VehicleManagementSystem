@@ -21,6 +21,10 @@ public:
     virtual ~Bus();
 
     void log();
+
+    VehicleType getVehicleType();
+
+    vector<string> getVehicleAllData();
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_BUS_H

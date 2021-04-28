@@ -17,14 +17,16 @@ public:
         int seatsAmount,
         int doorsAmount,
         const string &bodyStyle,
-        vector<Repair*>repairs,
-        vector<Road* > roadRegister);
+        vector<Repair *> repairs,
+        vector<Road *> roadRegister);
 
     virtual ~Car();
 
     void log();
 
+    VehicleType getVehicleType();
 
+    vector<string> getVehicleAllData();
 
 };
 

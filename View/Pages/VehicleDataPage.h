@@ -16,11 +16,19 @@ private:
     MainController *controller;
     RenderWindow *window;
     Font font;
-    Vehicle* vehicle;
+    Vehicle *vehicle;
 
+    Button *btnEdit;
+    Button *btnDelete;
     Button *btnBack;
 
+    Button *btnChangeStatus;
+    Button *btnShowRegister;
+    Button *btnShowRepairs;
+
     void createElements();
+
+    void fillData();
 
     void clear();
 

@@ -29,7 +29,7 @@
   plate: WE#LS123
   brand: Skoda
   model: Fabia
-  sets: 4
+  seats: 4
   doors: 5
   body: Sedan
   status:
@@ -62,7 +62,7 @@
   plate: WWE#LS143
   brand: Neoplan
   model: Long
-  sets: 44
+  seats: 44
   coach: 1
   wc: 1
   status:

@@ -6,6 +6,7 @@
 #include <vector>
 #include "../Status/Repair.h"
 #include "../Status/Road.h"
+#include "../Others/VehicleType.h"
 
 using namespace std;
 
@@ -35,15 +36,19 @@ public:
 
     virtual void log() = 0;
 
-    void addRepair(Repair *& repair);
+    void addRepair(Repair *&repair);
 
-    void addRoad(Road *& road);
+    void addRoad(Road *&road);
 
     string getFullName();
 
     const string &getPlate() const;
 
     string getVehicleTypeName();
+
+    virtual VehicleType getVehicleType() = 0;
+
+    virtual vector<string> getVehicleAllData() = 0;
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_VEHICLE_H

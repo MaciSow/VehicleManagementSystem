@@ -51,3 +51,16 @@ void Car::log() {
         road->log();
     }
 }
+
+VehicleType Car::getVehicleType() {
+    return CAR;
+}
+
+vector<string> Car::getVehicleAllData() {
+    vector<string> vehicleData = {model, brand, "", "", bodyStyle, plate};
+    vehicleData[2] = to_string(seatsAmount);
+    vehicleData[3] = to_string(doorsAmount);
+    vehicleData.push_back(status->getStatusName());
+
+    return vehicleData;
+}

@@ -23,6 +23,10 @@ public:
     virtual ~Van();
 
     void log();
+
+    VehicleType getVehicleType();
+
+    vector<string> getVehicleAllData();
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_VAN_H

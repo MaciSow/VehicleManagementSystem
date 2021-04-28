@@ -22,6 +22,10 @@ public:
     virtual ~Truck();
 
     void log();
+
+    VehicleType getVehicleType();
+
+    vector<string> getVehicleAllData();
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_TRUCK_H

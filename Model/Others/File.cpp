@@ -161,8 +161,8 @@ Truck *File::readTruck() {
 
     vector<Road *> roadRegister = readRegister();
 
-    Truck *truck = new Truck(vehicleData[0], status, vehicleData[1], vehicleData[2], 3,
-                             3, vehicleData[5] == "1", repairs, roadRegister);
+    Truck *truck = new Truck(vehicleData[0], status, vehicleData[1], vehicleData[2], stoi(vehicleData[3]),
+                             stoi(vehicleData[4]), vehicleData[5] == "1", repairs, roadRegister);
 
     return truck;
 }

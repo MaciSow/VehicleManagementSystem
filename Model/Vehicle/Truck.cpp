@@ -41,3 +41,17 @@ void Truck::log() {
         road->log();
     }
 }
+
+VehicleType Truck::getVehicleType() {
+    return TRUCK;
+}
+
+vector<string> Truck::getVehicleAllData() {
+    vector<string> vehicleData = {model, brand, "", "", "", plate};
+    vehicleData[2] = to_string(capacity) + " kg";
+    vehicleData[3] = to_string(axisAmount);
+    vehicleData[4] = hasTrailer ? "Yes" : "No";
+    vehicleData.push_back(status->getStatusName());
+
+    return vehicleData;
+}

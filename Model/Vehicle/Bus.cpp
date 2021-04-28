@@ -11,8 +11,8 @@ Bus::Bus(const string &plate,
          int seatsAmount,
          bool isCoach,
          bool hasWC,
-         vector<Repair*>repairs,
-         vector<Road* > roadRegister) {
+         vector<Repair *> repairs,
+         vector<Road *> roadRegister) {
     this->plate = plate;
     this->status = status;
     this->brand = brand;
@@ -40,4 +40,18 @@ void Bus::log() {
     for (Road *road: roadRegister) {
         road->log();
     }
+}
+
+VehicleType Bus::getVehicleType() {
+    return BUS;
+}
+
+vector<string> Bus::getVehicleAllData() {
+    vector<string> vehicleData = {model, brand, "", "", "", plate};
+    vehicleData[2] = to_string(seatsAmount);
+    vehicleData[3] = isCoach ? "Yes" : "No";
+    vehicleData[4] = hasWC ? "Yes" : "No";
+    vehicleData.push_back(status->getStatusName());
+
+    return vehicleData;
 }
