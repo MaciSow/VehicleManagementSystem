@@ -48,10 +48,10 @@ vector<vector<string>> MainController::getVehicleList() {
 
     for (Vehicle *vehicle: fleet->getVehicles()) {
         vector<string> row;
-        row.push_back(vehicle->getPlate());
         row.push_back(vehicle->getFullName());
         row.push_back(vehicle->getVehicleTypeName());
         row.push_back(vehicle->getStatus()->getStatusName());
+        row.push_back(vehicle->getPlate());
 
         vehicleList.push_back(row);
     }

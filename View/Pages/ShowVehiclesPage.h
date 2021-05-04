@@ -18,6 +18,7 @@ private:
     Font font;
 
     vector<ListItem *> items;
+    Button *btnAdd;
     Button *btnBack;
 
     int offset = 0;
@@ -33,8 +34,6 @@ private:
     void drawList();
 
     void fillList(float listWidth, float itemHeight);
-
-    void setSelectedElement(int index);
 
     void refresh();
 
@@ -52,8 +51,6 @@ public:
     void scroll(int offset);
 
     void draw();
-
-
 };
 
 

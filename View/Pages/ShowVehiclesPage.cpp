@@ -11,6 +11,10 @@ ShowVehiclesPage::~ShowVehiclesPage() {
 
 bool ShowVehiclesPage::isMouseOver() {
     bool isCursorOver = false;
+    if (btnAdd->isMouseOver(window)) {
+        isCursorOver = true;
+    }
+
     if (btnBack->isMouseOver(window)) {
         isCursorOver = true;
     }
@@ -25,6 +29,11 @@ bool ShowVehiclesPage::isMouseOver() {
 }
 
 PageName ShowVehiclesPage::mouseClick() {
+    if (btnAdd->isClick(window)) {
+        clear();
+        return PageName::home;
+    }
+
     if (btnBack->isClick(window)) {
         clear();
         return PageName::home;
@@ -47,6 +56,7 @@ void ShowVehiclesPage::draw() {
 
     createHeader();
     drawList();
+    btnAdd->drawTo(window);
     btnBack->drawTo(window);
 }
 
@@ -62,6 +72,7 @@ void ShowVehiclesPage::createElements() {
 
     fillList(listWidth, itemHeight);
 
+    btnAdd = new Button({32, btnPosY}, "Add", font, btnWidth);
     btnBack = new Button({btnPosX, btnPosY}, "Back", font, btnWidth);
     btnBack->setColor({0, 0, 0, 205}, {196, 55, 55, 205});
 }
@@ -136,9 +147,8 @@ void ShowVehiclesPage::scroll(int offset) {
 
 void ShowVehiclesPage::fillList(float listWidth, float itemHeight) {
     for (auto row:controller->getVehicleList()) {
-        items.push_back(new ListItem({listWidth, itemHeight}, row[1], row[2], font, row[0]));
+        items.push_back(new ListItem({listWidth, itemHeight}, row, font, VEHICLES, row[3]));
     }
-
 }
 
 void ShowVehiclesPage::refresh() {
