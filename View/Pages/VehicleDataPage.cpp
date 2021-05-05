@@ -45,12 +45,12 @@ PageName VehicleDataPage::mouseClick() {
 
     if (btnShowRegister->isClick(window)) {
         clear();
-        return PageName::showVehicles;
+        return PageName::showRegister;
     }
 
     if (btnShowRepairs->isClick(window)) {
         clear();
-        return PageName::showVehicles;
+        return PageName::showRepairs;
     }
 
     return PageName::vehicleData;
@@ -98,7 +98,7 @@ void VehicleDataPage::fillData() {
     float posY = 60;
     float offset = 64;
     VehicleType vehicleType = controller->getSelectedVehicle()->getVehicleType();
-    vector<String> labels = {"Brand", "Model", "Seats", "Doors", "Body", "Plate", "Status"};
+    vector<string> labels = {"Brand", "Model", "Seats", "Doors", "Body", "Plate", "Status"};
     vector<string> values = controller->getSelectedVehicle()->getVehicleAllData();
 
     switch (vehicleType) {

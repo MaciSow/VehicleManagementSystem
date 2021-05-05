@@ -6,6 +6,9 @@ enum class PageName {
     fleetState,
     showVehicles,
     vehicleData,
+    showRegister,
+    showRepairs,
+    addEditVehicle,
     base,
     close
 };

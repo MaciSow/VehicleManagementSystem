@@ -11,7 +11,10 @@ MainController::MainController() {
     filename = "Drivers.yaml";
     f1->readDriversData(path + filename, fleet);
 
-    fleet->log();
+//    fleet->log();
+
+    cout << fleet->getVehicles()[1]->getRegisterData().size();
+
 }
 
 void MainController::save(string filename) {

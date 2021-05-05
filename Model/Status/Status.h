@@ -2,6 +2,7 @@
 #define VEHICLEMENAGMENTSYSTEM_STATUS_H
 
 #include <string>
+#include <vector>
 #include <iostream>
 #include "../Others/StatusType.h"
 

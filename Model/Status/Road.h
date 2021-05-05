@@ -1,6 +1,8 @@
 #ifndef VEHICLEMENAGMENTSYSTEM_ROAD_H
 #define VEHICLEMENAGMENTSYSTEM_ROAD_H
 
+#include <vector>
+
 #include "Status.h"
 #include "../Driver.h"
 #include "../Others/Date.h"
@@ -12,6 +14,8 @@ public:
     virtual ~Road();
 
     void log();
+
+    vector<string> getRoadData();
 
 private:
     int distance;

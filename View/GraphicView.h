@@ -15,6 +15,9 @@
 #include <SFML/Window.hpp>
 #include "iostream"
 #include "Pages/ShowVehiclesPage.h"
+#include "Pages/ShowRegisterPage.h"
+#include "Pages/ShowRepairsPage.h"
+#include "Pages/AddEditVehiclePage.h"
 
 using namespace std;
 using namespace sf;
@@ -34,6 +37,9 @@ private:
     FleetStatePage* fleetStatePage;
     ShowVehiclesPage* showVehiclesPage;
     VehicleDataPage* vehicleDataPage;
+    ShowRegisterPage* showRegisterPage;
+    ShowRepairsPage* showRepairsPage;
+    AddEditVehiclePage* addEditVehiclePage;
     BasePage* basePage;
     ClosePage* closePage;
 

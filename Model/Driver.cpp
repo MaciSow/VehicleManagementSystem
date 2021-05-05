@@ -34,3 +34,7 @@ void Driver::log() {
 bool Driver::isAvailableStatus() const {
     return isAvailable;
 }
+
+string Driver::getFullName() {
+    return name + " " + surname;
+}

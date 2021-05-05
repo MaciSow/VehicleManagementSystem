@@ -3,7 +3,7 @@
 
 #include <string>
 #include <iostream>
- 
+
 using namespace std;
 
 class Driver {
@@ -18,13 +18,15 @@ public:
 
     virtual ~Driver();
 
+    bool isAvailableStatus() const;
+
+    string getFullName();
+
 private:
     string id;
     string name;
     string surname;
     bool isAvailable;
-public:
-    bool isAvailableStatus() const;
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_DRIVER_H

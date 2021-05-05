@@ -152,7 +152,7 @@ void ListItem::create(vector<string> data, Font &font) {
             column3.setString(data[2]);
             column3.setCharacterSize(h2);
 
-            column4.setString(data[2]);
+            column4.setString(data[3]);
             column4.setCharacterSize(h2);
             break;
         case REPAIRS:

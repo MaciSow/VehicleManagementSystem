@@ -18,3 +18,12 @@ void Road::log() {
     endDate->log();
 }
 
+vector<string> Road::getRoadData() {
+    vector<string> roadData;
+    roadData.push_back(driver->getFullName());
+    roadData.push_back(to_string(distance));
+    roadData.push_back(startDate->getStringDate());
+    roadData.push_back(endDate->getStringDate());
+    return roadData;
+}
+

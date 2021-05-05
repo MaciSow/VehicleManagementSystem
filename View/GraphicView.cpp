@@ -9,6 +9,9 @@ GraphicView::GraphicView(MainController *&ctr) {
     fleetStatePage = new FleetStatePage(controller, window, font);
     showVehiclesPage = new ShowVehiclesPage(controller, window, font);
     vehicleDataPage = new VehicleDataPage(controller, window, font);
+    showRegisterPage = new ShowRegisterPage(controller, window, font);
+    showRepairsPage = new ShowRepairsPage(controller, window, font);
+    addEditVehiclePage = new AddEditVehiclePage(controller, window, font);
     basePage = new BasePage(controller, window, font);
     closePage = new ClosePage(controller, window, font);
 }
@@ -97,6 +100,24 @@ void GraphicView::mouseMovedHandle() {
             }
             break;
 
+        case PageName::showRegister:
+            if (showRegisterPage->isMouseOver()) {
+                isCursorChange = true;
+            }
+            break;
+
+        case PageName::showRepairs:
+            if (showRepairsPage->isMouseOver()) {
+                isCursorChange = true;
+            }
+            break;
+
+        case PageName::addEditVehicle:
+            if (addEditVehiclePage->isMouseOver()) {
+                isCursorChange = true;
+            }
+            break;
+
         case PageName::base:
             if (basePage->isMouseOver()) {
                 isCursorChange = true;
@@ -140,6 +161,18 @@ void GraphicView::mouseButtonPressedHandle(Event &event) {
                 pageName = vehicleDataPage->mouseClick();
                 break;
 
+            case PageName::showRegister:
+                pageName = showRegisterPage->mouseClick();
+                break;
+
+            case PageName::showRepairs:
+                pageName = showRepairsPage->mouseClick();
+                break;
+
+            case PageName::addEditVehicle:
+                pageName = addEditVehiclePage->mouseClick();
+                break;
+
             case PageName::base:
                 pageName = basePage->mouseClick();
                 break;
@@ -163,6 +196,14 @@ void GraphicView::mouseWheelMovedHandle(Event &event) {
     switch (pageName) {
         case PageName::showVehicles:
             showVehiclesPage->scroll(event.mouseWheel.delta);
+            break;
+
+        case PageName::showRegister:
+            showRegisterPage->scroll(event.mouseWheel.delta);
+            break;
+
+        case PageName::showRepairs:
+            showRepairsPage->scroll(event.mouseWheel.delta);
             break;
 
         default:
@@ -198,6 +239,24 @@ void GraphicView::drawPage() {
             createTitle(vehicleType + " data");
             createFrame(width - 200, frameHeight, framePosY);
             vehicleDataPage->draw();
+            break;
+
+        case PageName::showRegister:
+            createTitle("Show register");
+            createFrame(width - 200, frameHeight, framePosY);
+            showRegisterPage->draw();
+            break;
+
+        case PageName::showRepairs:
+            createTitle("Show repairs");
+            createFrame(width - 200, frameHeight, framePosY);
+            showRepairsPage->draw();
+            break;
+
+        case PageName::addEditVehicle:
+            createTitle("Add Vehicle");
+            createFrame(width - 200, frameHeight, framePosY);
+            addEditVehiclePage->draw();
             break;
 
         case PageName::base:

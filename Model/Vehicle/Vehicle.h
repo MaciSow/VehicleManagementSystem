@@ -14,18 +14,11 @@ class Vehicle {
 protected:
     string plate;
     Status *status;
-public:
-    Status *getStatus() const;
 
-public:
-    StatusType getStatusType();
-
-protected:
     string brand;
     string model;
     vector<Repair *> repairs;
     vector<Road *> roadRegister;
-
 
 public:
     Vehicle(const string &plate, Status *status, const string &brand, const string &model);
@@ -49,6 +42,15 @@ public:
     virtual VehicleType getVehicleType() = 0;
 
     virtual vector<string> getVehicleAllData() = 0;
+
+    vector<vector<string>> getRegisterData();
+
+    vector<vector<string>> getRepairsData();
+
+    Status *getStatus() const;
+
+    StatusType getStatusType();
+
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_VEHICLE_H

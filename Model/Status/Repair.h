@@ -12,6 +12,8 @@ public:
 
     void log();
 
+    vector<string> getRepairData();
+
 private:
     string name;
     string description;

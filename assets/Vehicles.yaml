@@ -25,6 +25,26 @@
       distance: 1200
       start: 01-06-2020
       end: 02-06-2020
+    - name: Niko
+      surname: Kania
+      distance: 1200
+      start: 01-06-2020
+      end: 02-06-2020
+    - name: Niko
+      surname: Kania
+      distance: 1200
+      start: 01-06-2020
+      end: 02-06-2020
+    - name: Will
+      surname: Kowalsky
+      distance: 8200
+      start: 02-06-2020
+      end: 05-06-2020
+    - name: Niko
+      surname: Kania
+      distance: 1200
+      start: 01-06-2020
+      end: 02-06-2020
 - class: Car
   plate: WE#LS123
   brand: Skoda

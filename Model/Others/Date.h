@@ -24,6 +24,8 @@ public:
 
     void setDateFromString(string date);
 
+    string getStringDate();
+
     void log();
 };
 

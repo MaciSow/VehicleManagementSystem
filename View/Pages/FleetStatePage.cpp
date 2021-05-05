@@ -1,50 +1,6 @@
 #include "FleetStatePage.h"
 
-FleetStatePage::FleetStatePage(MainController *controller, RenderWindow *window, const Font &font) :
-        controller(controller), window(window), font(font) {
-    createElements();
-}
-
-FleetStatePage::~FleetStatePage() {
-
-}
-
-bool FleetStatePage::isMouseOver() {
-    bool isCursorOver = false;
-    if (btnBack->isMouseOver(window)) {
-        isCursorOver = true;
-    }
-    return isCursorOver;
-}
-
-PageName FleetStatePage::mouseClick() {
-    if (btnBack->isClick(window)) {
-        clear();
-        return PageName::home;
-    }
-    return PageName::fleetState;
-}
-
-void FleetStatePage::draw() {
-    fillState();
-    btnBack->drawTo(window);
-}
-
-void FleetStatePage::createElements() {
-    float width = (float) (window->getSize().x);
-    float height = (float) (window->getSize().y);
-    float btnWidth = 150;
-    float btnPosX = width - btnWidth - 32;
-    float btnPosY = height - 50 - 32;
-
-    btnBack = new Button({btnPosX, btnPosY}, "Back", font, btnWidth);
-    btnBack->setColor({0, 0, 0, 205}, {196, 55, 55, 205});
-}
-
-void FleetStatePage::clear() {
-
-}
-
+// private
 void FleetStatePage::fillState() {
     float width = (float) (window->getSize().x);
     float posX;
@@ -83,4 +39,34 @@ void FleetStatePage::fillState() {
         window->draw(item);
         window->draw(value);
     }
+}
+
+void FleetStatePage::create() {
+    createBtnBack();
+}
+
+void FleetStatePage::clear() {}
+
+// public
+FleetStatePage::FleetStatePage(MainController *controller, RenderWindow *window, const Font &font)
+{
+    this->controller=controller;
+    this->window=window;
+    this->font=font;
+    createBtnBack();
+}
+
+FleetStatePage::~FleetStatePage() = default;
+
+PageName FleetStatePage::mouseClick() {
+    if (handleBtnBackClick()) {
+        clear();
+        return PageName::home;
+    }
+    return PageName::fleetState;
+}
+
+void FleetStatePage::draw() {
+    fillState();
+    drawBackBtn();
 }

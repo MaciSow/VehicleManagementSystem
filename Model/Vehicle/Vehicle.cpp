@@ -71,5 +71,22 @@ vector<string> Vehicle::getVehicleAllData() {
     return vehicleData;
 }
 
+vector<vector<string>> Vehicle::getRegisterData() {
+    vector<vector<string>> registerData;
 
+    for (Road *road: roadRegister) {
+        registerData.push_back(road->getRoadData());
+    }
 
+    return registerData;
+}
+
+vector<vector<string>> Vehicle::getRepairsData() {
+    vector<vector<string>> repairsData;
+
+    for (Repair *repair: repairs) {
+        repairsData.push_back(repair->getRepairData());
+    }
+
+    return repairsData;
+}
