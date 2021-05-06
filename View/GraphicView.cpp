@@ -69,7 +69,15 @@ void GraphicView::start() {
 }
 
 void GraphicView::textEnteredHandle(Event &event) {
+    switch (pageName) {
+        case PageName::addEditVehicle:
+            addEditVehiclePage->textEntered(event);
+            break;
 
+
+        default:
+            break;
+    }
 }
 
 void GraphicView::mouseMovedHandle() {

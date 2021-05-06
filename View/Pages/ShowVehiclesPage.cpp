@@ -31,7 +31,7 @@ bool ShowVehiclesPage::isMouseOver() {
 PageName ShowVehiclesPage::mouseClick() {
     if (btnAdd->isClick(window)) {
         clear();
-        return PageName::home;
+        return PageName::addEditVehicle;
     }
 
     if (btnBack->isClick(window)) {

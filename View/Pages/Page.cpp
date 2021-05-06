@@ -5,12 +5,9 @@ void Page::create() {
 }
 
 void Page::clear() {
-
 }
 
 void Page::createBtnBack() {
-    float width = (float) (window->getSize().x);
-    float height = (float) (window->getSize().y);
     float btnWidth = 150;
     float btnPosX = width - btnWidth - 32;
     float btnPosY = height - 50 - 32;
@@ -32,18 +29,22 @@ bool Page::handleBtnBackHover() {
 }
 
 // public
-Page::Page() {
-
+Page::Page(MainController *controller, RenderWindow *window, const Font &font) {
+    this->controller = controller;
+    this->window = window;
+    this->font = font;
+    width = (float) (window->getSize().x);
+    height = (float) (window->getSize().y);
 }
 
-Page::~Page() {
-}
+Page::~Page() = default;
 
 bool Page::isMouseOver() {
     return handleBtnBackHover();
 }
 
 PageName Page::mouseClick() {
+    return PageName::home;
 }
 
 void Page::draw() {

@@ -19,6 +19,7 @@ private:
     float width = 250;
     float height = 50;
     int fontSize = 16;
+    bool isHidden = false;
     string id = "";
     enum State {
         normal,
@@ -51,6 +52,10 @@ public:
     bool isClick(RenderWindow *&window);
 
     void drawTo(RenderWindow *&window);
+
+    void setIsHidden(bool isHidden);
+
+    bool getIsHidden() const;
 };
 
 #endif  //VEHICLEMENAGMENTSYSTEM_VIEW_BUTTON_H

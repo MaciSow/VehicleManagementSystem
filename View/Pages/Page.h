@@ -17,20 +17,30 @@ protected:
     Font font;
     Button *btnBack;
 
-    virtual void create();
+    float width = 20;
+    float height = 20;
+
+    virtual void create() = 0;
+
     virtual void clear();
 
     void createBtnBack();
+
     void drawBackBtn();
+
     bool handleBtnBackClick();
+
     bool handleBtnBackHover();
 
 public:
-    Page();
+    Page(MainController *controller, RenderWindow *window, const Font &font);
+
     ~Page();
 
     virtual bool isMouseOver();
-    virtual PageName mouseClick();
+
+    virtual PageName mouseClick() = 0;
+
     virtual void draw();
 };
 

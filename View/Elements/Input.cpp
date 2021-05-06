@@ -10,8 +10,8 @@ Input::Input(Vector2f position, Font& font, string label, float width, string id
 Input::~Input() {
 }
 
-void Input::setIsNumber() {
-	isNumber = true;
+void Input::setIsNumber(bool isNumber) {
+	this->isNumber = isNumber;
 }
 
 void Input::setValue(string value)
@@ -240,4 +240,8 @@ bool Input::validate()
 	}
 
 	return true;
+}
+
+void Input::setLabel(string label) {
+    this->label.setString(label);
 }

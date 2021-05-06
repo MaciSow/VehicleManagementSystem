@@ -45,7 +45,7 @@ public:
 	Input(Vector2f position, Font& font ,string label = "", float width = 250, string id = "" );
 	~Input();
 
-	void setIsNumber();
+	void setIsNumber(bool isNumber = true);
 	void setValue(string value);
 	void setWidth(float width);
 	void setLimit(int limit);
@@ -58,6 +58,8 @@ public:
 	void clear();
 	bool validate();
 	string getText();
+
+    void setLabel(string label);
 };
 
 #endif  //VEHICLEMENAGMENTSYSTEM_VIEW_INPUT_H

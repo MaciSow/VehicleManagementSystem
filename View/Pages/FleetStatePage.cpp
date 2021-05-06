@@ -42,17 +42,13 @@ void FleetStatePage::fillState() {
 }
 
 void FleetStatePage::create() {
-    createBtnBack();
 }
 
 void FleetStatePage::clear() {}
 
 // public
 FleetStatePage::FleetStatePage(MainController *controller, RenderWindow *window, const Font &font)
-{
-    this->controller=controller;
-    this->window=window;
-    this->font=font;
+        : Page(controller, window, font) {
     createBtnBack();
 }
 

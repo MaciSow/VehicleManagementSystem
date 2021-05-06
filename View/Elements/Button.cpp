@@ -51,6 +51,9 @@ bool Button::isMouseOver(RenderWindow *&window) {
     int btnPosX = (int) button.getPosition().x;
     int btnPosY = (int) button.getPosition().y;
 
+    if (isHidden) {
+        return false;
+    }
 
     if (mouseX > btnPosX && mouseX < btnPosX + width &&
         mouseY > btnPosY && mouseY < btnPosY + height) {
@@ -117,4 +120,12 @@ void Button::setButtonState(State state) {
         default:
             break;
     }
+}
+
+bool Button::getIsHidden() const {
+    return isHidden;
+}
+
+void Button::setIsHidden(bool isHidden) {
+    this->isHidden = isHidden;
 }
