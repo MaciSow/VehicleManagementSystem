@@ -133,3 +133,7 @@ void MainController::unselectVehicle() {
 void MainController::editVehicle(vector<string> vehicleData) {
     selectedVehicle->updateAllData(vehicleData);
 }
+
+void MainController::setAvailable(bool isNow) {
+
+}

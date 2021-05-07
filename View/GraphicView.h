@@ -1,6 +1,10 @@
 #ifndef VEHICLEMENAGMENTSYSTEM_VIEW_GRAPHICVIEW_H
 #define VEHICLEMENAGMENTSYSTEM_VIEW_GRAPHICVIEW_H
 
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <iostream>
+
 #include "../Controller/MainController.h"
 #include "Elements/Button.h"
 #include "Elements/Input.h"
@@ -10,15 +14,12 @@
 #include "Pages/VehicleDataPage.h"
 #include "Pages/BasePage.h"
 #include "Pages/ClosePage.h"
-
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include "iostream"
 #include "Pages/ShowVehiclesPage.h"
 #include "Pages/ShowRegisterPage.h"
 #include "Pages/ShowRepairsPage.h"
 #include "Pages/AddEditVehiclePage.h"
 #include "Pages/ChangeStatusPage.h"
+#include "Pages/AvailablePage.h"
 
 using namespace std;
 using namespace sf;
@@ -39,6 +40,7 @@ private:
     ShowVehiclesPage* showVehiclesPage;
     VehicleDataPage* vehicleDataPage;
     ChangeStatusPage* changeStatusPage;
+    AvailablePage* availablePage;
     ShowRegisterPage* showRegisterPage;
     ShowRepairsPage* showRepairsPage;
     AddEditVehiclePage* addEditVehiclePage;

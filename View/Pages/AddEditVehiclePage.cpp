@@ -99,7 +99,6 @@ void AddEditVehiclePage::textEntered(Event &event) {
     }
 }
 
-
 // private
 void AddEditVehiclePage::create() {
     float btnWidth = 150;
@@ -332,14 +331,6 @@ void AddEditVehiclePage::prepareBtnOptions() {
 }
 
 void AddEditVehiclePage::chooseMouseClick() {
-// todo: fix refresh hover btn after change choice
-
-//    for (Button *button : btnOptions) {
-//        if (!button->getIsHidden()) {
-//            button->setActive(false);
-//        }
-//    };
-
     if (btnOptions[0]->isClick(window)) {
         inputs[4]->clear();
         inputs[4]->setValue("Yes");

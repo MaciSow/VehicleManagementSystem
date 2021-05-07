@@ -39,6 +39,8 @@ public:
     void createVehicle(vector<string> vehicleData, VehicleType vehicleType);
 
     void editVehicle(vector<string> vehicleData);
+
+    void setAvailable(bool isNow);
 };
 
 
