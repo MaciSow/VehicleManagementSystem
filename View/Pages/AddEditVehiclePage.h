@@ -2,47 +2,62 @@
 #define VEHICLEMENAGMENTSYSTEM_ADDEDITVEHICLEPAGE_H
 
 #include "Page.h"
-#include "../Elements/Input.h"
 
 class AddEditVehiclePage : public virtual Page {
 private:
+    bool isEdit = false;
+    bool isOpen = false;
+
     Button *btnSave;
-    vector<Button *> vehicleChoice;
-    vector<Button *> btnChoose;
+    vector<Button *> btnVehicleChoices;
+    vector<Button *> btnOptions;
     vector<Input *> inputs;
     VehicleType vehicleType = CAR;
 
-    void clear() override;
-
-    void changeVehicle(Button *&button);
-
-    void checkVehicle();
-
-    void clearInputs();
-
-    void clearBtnChoose();
-
-    void prepareInputs();
-
-    void prepareBtnChoose();
-
-    void chooseMouseClick();
-
-    void saveData();
 public:
     AddEditVehiclePage(MainController *controller, RenderWindow *window, const Font &font);
 
     ~AddEditVehiclePage();
 
-    void textEntered(Event &event);
+    void draw() override;
 
-    bool isMouseOver();
+    bool isMouseOver() override;
 
     PageName mouseClick() override;
 
+    void textEntered(Event &event);
+
+private:
     void create() override;
 
-    void draw() override;
+    void prepare();
+
+    void clear() override;
+
+    void changeVehicleChoice(Button *&button);
+
+    void prepareVehicleChoice(Button *&button);
+
+    void updateVehicleType();
+
+    void fillInputs();
+
+    void clearInputs();
+
+    void clearBtnOptions();
+
+    void prepareInputs();
+
+    void prepareBtnOptions();
+
+    void chooseMouseClick();
+
+    void disableVehicleChoice();
+
+    void clearVehicleChoice();
+
+
+    void saveData();
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_ADDEDITVEHICLEPAGE_H

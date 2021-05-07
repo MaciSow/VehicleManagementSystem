@@ -62,13 +62,22 @@ VehicleType Van::getVehicleType() {
 }
 
 vector<string> Van::getVehicleAllData() {
-    vector<string> vehicleData = {model, brand, "", "", "", plate};
-    vehicleData[2] = to_string(capacity) + " kg";
+    vector<string> vehicleData = {brand, model, "", "", "", plate};
+    vehicleData[2] = to_string(capacity);
     vehicleData[3] = isDoubleWheel ? "Yes" : "No";
     vehicleData[4] = isSlideDoors ? "Yes" : "No";
     vehicleData.push_back(status->getStatusName());
 
     return vehicleData;
+}
+
+void Van::updateAllData(vector<string> vehicleData) {
+    this->plate = vehicleData[0];
+    this->brand = vehicleData[1];
+    this->model = vehicleData[2];
+    this->capacity = stoi(vehicleData[3]);
+    this->isDoubleWheel = vehicleData[4] == "Yes";
+    this->isSlideDoors = vehicleData[5] == "Yes";
 }
 
 

@@ -3,9 +3,10 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "../../Controller/MainController.h"
 #include "PageName.h"
+#include "../../Controller/MainController.h"
 #include "../Elements/Button.h"
+#include "../Elements/Input.h"
 
 using namespace std;
 using namespace sf;
@@ -21,6 +22,8 @@ protected:
     float height = 576;
 
     virtual void create() = 0;
+
+//    virtual void prepare() = 0;
 
     virtual void clear();
 

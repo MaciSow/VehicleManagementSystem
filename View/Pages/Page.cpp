@@ -4,6 +4,9 @@
 void Page::create() {
 }
 
+//void Page::prepare() {
+//}
+
 void Page::clear() {
 }
 
@@ -49,3 +52,5 @@ PageName Page::mouseClick() {
 
 void Page::draw() {
 }
+
+

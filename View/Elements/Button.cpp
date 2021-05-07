@@ -37,6 +37,7 @@ void Button::setPosition(Vector2f position) {
 
 void Button::setActive(bool isActive) {
     this->isActive = isActive;
+    this->isBlock = false;
     setButtonState(hover);
 }
 

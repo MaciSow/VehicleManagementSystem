@@ -62,11 +62,20 @@ VehicleType Truck::getVehicleType() {
 }
 
 vector<string> Truck::getVehicleAllData() {
-    vector<string> vehicleData = {model, brand, "", "", "", plate};
-    vehicleData[2] = to_string(capacity) + " kg";
+    vector<string> vehicleData = {brand, model, "", "", "", plate};
+    vehicleData[2] = to_string(capacity);
     vehicleData[3] = to_string(axisAmount);
     vehicleData[4] = hasTrailer ? "Yes" : "No";
     vehicleData.push_back(status->getStatusName());
 
     return vehicleData;
+}
+
+void Truck::updateAllData(vector<string> vehicleData) {
+    this->plate = vehicleData[0];
+    this->brand = vehicleData[1];
+    this->model = vehicleData[2];
+    this->capacity = stoi(vehicleData[3]);
+    this->axisAmount = stoi(vehicleData[4]);
+    this->hasTrailer = vehicleData[5] == "Yes";
 }

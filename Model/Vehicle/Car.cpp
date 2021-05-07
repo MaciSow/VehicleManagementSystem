@@ -57,7 +57,7 @@ VehicleType Car::getVehicleType() {
 }
 
 vector<string> Car::getVehicleAllData() {
-    vector<string> vehicleData = {model, brand, "", "", bodyStyle, plate};
+    vector<string> vehicleData = {brand, model, "", "", bodyStyle, plate};
     vehicleData[2] = to_string(seatsAmount);
     vehicleData[3] = to_string(doorsAmount);
     vehicleData.push_back(status->getStatusName());
@@ -78,4 +78,13 @@ Car::Car(const string &plate, Status *status, const string &brand, const string 
     vector<Road *> roadRegister;
     this->repairs = repairs;
     this->roadRegister = roadRegister;
+}
+
+void Car::updateAllData(vector<string> vehicleData) {
+    this->plate = vehicleData[0];
+    this->brand = vehicleData[1];
+    this->model = vehicleData[2];
+    this->seatsAmount = stoi(vehicleData[3]);
+    this->doorsAmount = stoi(vehicleData[4]);
+    this->bodyStyle = vehicleData[5];
 }

@@ -43,6 +43,8 @@ public:
 
     virtual vector<string> getVehicleAllData() = 0;
 
+    virtual void updateAllData(vector<string> vehicleData) = 0;
+
     vector<vector<string>> getRegisterData();
 
     vector<vector<string>> getRepairsData();
@@ -50,7 +52,6 @@ public:
     Status *getStatus() const;
 
     StatusType getStatusType();
-
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_VEHICLE_H

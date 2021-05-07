@@ -24,8 +24,7 @@ bool VehicleDataPage::isMouseOver() {
 
 PageName VehicleDataPage::mouseClick() {
     if (btnEdit->isClick(window)) {
-        clear();
-        return PageName::showVehicles;
+        return PageName::addEditVehicle;
     }
 
     if (btnDelete->isClick(window)) {
@@ -39,17 +38,14 @@ PageName VehicleDataPage::mouseClick() {
     }
 
     if (btnChangeStatus->isClick(window)) {
-        clear();
         return PageName::changeStatus;
     }
 
     if (btnShowRegister->isClick(window)) {
-        clear();
         return PageName::showRegister;
     }
 
     if (btnShowRepairs->isClick(window)) {
-        clear();
         return PageName::showRepairs;
     }
 
@@ -89,7 +85,7 @@ void VehicleDataPage::draw() {
 }
 
 void VehicleDataPage::clear() {
-
+    controller->unselectVehicle();
 }
 
 void VehicleDataPage::fillData() {
@@ -108,11 +104,13 @@ void VehicleDataPage::fillData() {
             break;
         case VAN:
             labels[2] = "Capacity";
+            values[2] += " kg";
             labels[3] = "Double Wheels";
             labels[4] = "Slide Doors";
             break;
         case TRUCK:
             labels[2] = "Capacity";
+            values[2] += " kg";
             labels[3] = "Axis";
             labels[4] = "Trailer";
             break;

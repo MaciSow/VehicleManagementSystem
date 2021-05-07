@@ -35,6 +35,8 @@ public:
     VehicleType getVehicleType();
 
     vector<string> getVehicleAllData();
+
+    void updateAllData(vector<string> vehicleData) override;
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_TRUCK_H

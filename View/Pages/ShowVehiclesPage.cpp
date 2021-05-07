@@ -41,7 +41,7 @@ PageName ShowVehiclesPage::mouseClick() {
 
     for (ListItem *item : items) {
         if (item->isClick(window)) {
-            controller->setSelectedVehicle(item->getId());
+            controller->selectVehicle(item->getId());
             isOpen = false;
             return PageName::vehicleData;
         }

@@ -279,7 +279,12 @@ void GraphicView::drawPage() {
             break;
 
         case PageName::addEditVehicle:
-            createTitle("Add Vehicle");
+            if (!controller->getSelectedVehicle()) {
+                createTitle("Add Vehicle");
+            } else {
+                vehicleType = controller->getSelectedVehicle()->getVehicleTypeName();
+                createTitle("Edit " + vehicleType);
+            }
             createFrame(width - 200, frameHeight, framePosY);
             addEditVehiclePage->draw();
             break;

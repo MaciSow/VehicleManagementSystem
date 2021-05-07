@@ -62,13 +62,22 @@ VehicleType Bus::getVehicleType() {
 }
 
 vector<string> Bus::getVehicleAllData() {
-    vector<string> vehicleData = {model, brand, "", "", "", plate};
+    vector<string> vehicleData = {brand, model, "", "", "", plate};
     vehicleData[2] = to_string(seatsAmount);
     vehicleData[3] = isCoach ? "Yes" : "No";
     vehicleData[4] = hasWC ? "Yes" : "No";
     vehicleData.push_back(status->getStatusName());
 
     return vehicleData;
+}
+
+void Bus::updateAllData(vector<string> vehicleData) {
+    this->plate = vehicleData[0];
+    this->brand = vehicleData[1];
+    this->model = vehicleData[2];
+    this->seatsAmount = stoi(vehicleData[3]);
+    this->isCoach = vehicleData[4] == "Yes";
+    this->hasWC = vehicleData[5] == "Yes";
 }
 
 

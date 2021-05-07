@@ -16,12 +16,13 @@ private:
     File *f1;
     string path = "assets/";
     string filename = "Vehicles.yaml";
-    Vehicle* selectedVehicle;
+    Vehicle *selectedVehicle = nullptr;
 public:
     Vehicle *getSelectedVehicle() const;
 
-public:
-    void setSelectedVehicle(string plate);
+    void selectVehicle(string plate);
+
+    void unselectVehicle();
 
     bool isCreating = false;
 
@@ -36,6 +37,8 @@ public:
     vector<vector<string>> getVehicleList();
 
     void createVehicle(vector<string> vehicleData, VehicleType vehicleType);
+
+    void editVehicle(vector<string> vehicleData);
 };
 
 

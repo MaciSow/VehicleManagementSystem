@@ -62,7 +62,7 @@ vector<vector<string>> MainController::getVehicleList() {
     return vehicleList;
 }
 
-void MainController::setSelectedVehicle(string plate) {
+void MainController::selectVehicle(string plate) {
     selectedVehicle = fleet->getVehicleByPlate(plate);
 }
 
@@ -124,4 +124,12 @@ void MainController::createVehicle(vector<string> vehicleData, VehicleType vehic
     }
 
     fleet->addVehicle(vehicle);
+}
+
+void MainController::unselectVehicle() {
+    selectedVehicle = nullptr;
+}
+
+void MainController::editVehicle(vector<string> vehicleData) {
+    selectedVehicle->updateAllData(vehicleData);
 }
