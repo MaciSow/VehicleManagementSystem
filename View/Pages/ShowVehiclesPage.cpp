@@ -78,7 +78,7 @@ void ShowVehiclesPage::createElements() {
 }
 
 void ShowVehiclesPage::clear() {
-
+    isOpen = false;
 }
 
 void ShowVehiclesPage::createHeader() {
@@ -149,6 +149,7 @@ void ShowVehiclesPage::fillList(float listWidth, float itemHeight) {
     for (auto row:controller->getVehicleList()) {
         items.push_back(new ListItem({listWidth, itemHeight}, row, font, VEHICLES, row[3]));
     }
+    cout << items.size() << endl;
 }
 
 void ShowVehiclesPage::refresh() {
@@ -158,4 +159,5 @@ void ShowVehiclesPage::refresh() {
     isOpen = true;
     items.clear();
     createElements();
+
 }

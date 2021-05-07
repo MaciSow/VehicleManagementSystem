@@ -46,7 +46,7 @@ void File::readVehiclesData(const string &fileName, Fleet *&fleet) {
         }
 //        cout << nextLine << endl;
 //        auto *vehicle = new Vehicle("dfs", "dsada", "sad", "were");
-//        fleet->addVehicle(vehicle);
+//        fleet->createVehicle(vehicle);
 
 //        fleet->log();
     }

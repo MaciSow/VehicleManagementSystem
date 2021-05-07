@@ -27,8 +27,9 @@ private:
 	int limit = (int)floor((width-20)/10);
 	int fontSize = 16;
 	bool isNumber = false;
+	bool isEditable = true;
 
-	enum State {
+    enum State {
 		inactive,
 		hover,
 		active
@@ -58,8 +59,9 @@ public:
 	void clear();
 	bool validate();
 	string getText();
-
     void setLabel(string label);
+    bool getIsEditable() const;
+    void setIsEditable(bool isEditable);
 };
 
 #endif  //VEHICLEMENAGMENTSYSTEM_VIEW_INPUT_H

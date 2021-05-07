@@ -64,3 +64,18 @@ vector<string> Car::getVehicleAllData() {
 
     return vehicleData;
 }
+
+Car::Car(const string &plate, Status *status, const string &brand, const string &model, int seatsAmount,
+         int doorsAmount, const string &bodyStyle) {
+    this->plate = plate;
+    this->status = status;
+    this->brand = brand;
+    this->model = model;
+    this->seatsAmount = seatsAmount;
+    this->doorsAmount = doorsAmount;
+    this->bodyStyle = bodyStyle;
+    vector<Repair *> repairs;
+    vector<Road *> roadRegister;
+    this->repairs = repairs;
+    this->roadRegister = roadRegister;
+}

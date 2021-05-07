@@ -20,6 +20,14 @@ public:
         vector<Repair *> repairs,
         vector<Road *> roadRegister);
 
+    Car(const string &plate,
+        Status *status,
+        const string &brand,
+        const string &model,
+        int seatsAmount,
+        int doorsAmount,
+        const string &bodyStyle);
+
     virtual ~Car();
 
     void log();

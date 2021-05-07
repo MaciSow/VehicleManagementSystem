@@ -17,8 +17,8 @@ protected:
     Font font;
     Button *btnBack;
 
-    float width = 20;
-    float height = 20;
+    float width = 960;
+    float height = 576;
 
     virtual void create() = 0;
 

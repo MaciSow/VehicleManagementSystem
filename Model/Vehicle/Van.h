@@ -17,8 +17,18 @@ public:
         int capacity,
         bool isDoubleWheel,
         bool isSlideDoors,
-        vector<Repair*>repairs,
-        vector<Road* > roadRegister);
+        vector<Repair *> repairs,
+        vector<Road *> roadRegister);
+
+
+    Van(const string &plate,
+        Status *status,
+        const string &brand,
+        const string &model,
+        int capacity,
+        bool isDoubleWheel,
+        bool isSlideDoors
+    );
 
     virtual ~Van();
 

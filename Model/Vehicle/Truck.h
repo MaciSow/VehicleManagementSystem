@@ -19,6 +19,15 @@ public:
           vector<Repair *> repairs,
           vector<Road *> roadRegister);
 
+    Truck(const string &plate,
+          Status *status,
+          const string &brand,
+          const string &model,
+          int capacity,
+          int axisAmount,
+          bool hasTrailer);
+
+
     virtual ~Truck();
 
     void log();

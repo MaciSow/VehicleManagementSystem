@@ -69,3 +69,59 @@ void MainController::setSelectedVehicle(string plate) {
 Vehicle *MainController::getSelectedVehicle() const {
     return selectedVehicle;
 }
+
+void MainController::createVehicle(vector<string> vehicleData, VehicleType vehicleType) {
+    Vehicle *vehicle;
+    Status *status = new Status(AVAILABLE);
+
+    switch (vehicleType) {
+        case CAR:
+            vehicle = new Car(
+                    vehicleData[0],
+                    status,
+                    vehicleData[1],
+                    vehicleData[2],
+                    stoi(vehicleData[3]),
+                    stoi(vehicleData[4]),
+                    vehicleData[5]
+            );
+            break;
+        case BUS:
+            vehicle = new Bus(
+                    vehicleData[0],
+                    status,
+                    vehicleData[1],
+                    vehicleData[2],
+                    stoi(vehicleData[3]),
+                    vehicleData[4] == "Yes",
+                    vehicleData[5] == "Yes"
+            );
+            break;
+        case VAN:
+            vehicle = new Van(
+                    vehicleData[0],
+                    status,
+                    vehicleData[1],
+                    vehicleData[2],
+                    stoi(vehicleData[3]),
+                    vehicleData[4] == "Yes",
+                    vehicleData[5] == "Yes"
+            );
+            break;
+        case TRUCK:
+            vehicle = new Truck(
+                    vehicleData[0],
+                    status,
+                    vehicleData[1],
+                    vehicleData[2],
+                    stoi(vehicleData[3]),
+                    stoi(vehicleData[4]),
+                    vehicleData[5] == "Yes"
+            );
+            break;
+        default:
+            break;
+    }
+
+    fleet->addVehicle(vehicle);
+}

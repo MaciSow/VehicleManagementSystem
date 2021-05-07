@@ -18,6 +18,14 @@ public:
         vector<Repair *> repairs,
         vector<Road *> roadRegister);
 
+    Bus(const string &plate,
+        Status *status,
+        const string &brand,
+        const string &model,
+        int seatsAmount,
+        bool isCoach,
+        bool hasWC);
+
     virtual ~Bus();
 
     void log();

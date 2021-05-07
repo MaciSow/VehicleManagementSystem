@@ -9,6 +9,7 @@ GraphicView::GraphicView(MainController *&ctr) {
     fleetStatePage = new FleetStatePage(controller, window, font);
     showVehiclesPage = new ShowVehiclesPage(controller, window, font);
     vehicleDataPage = new VehicleDataPage(controller, window, font);
+    changeStatusPage = new ChangeStatusPage(controller, window, font);
     showRegisterPage = new ShowRegisterPage(controller, window, font);
     showRepairsPage = new ShowRepairsPage(controller, window, font);
     addEditVehiclePage = new AddEditVehiclePage(controller, window, font);
@@ -108,6 +109,12 @@ void GraphicView::mouseMovedHandle() {
             }
             break;
 
+        case PageName::changeStatus:
+            if (changeStatusPage->isMouseOver()) {
+                isCursorChange = true;
+            }
+            break;
+
         case PageName::showRegister:
             if (showRegisterPage->isMouseOver()) {
                 isCursorChange = true;
@@ -167,6 +174,10 @@ void GraphicView::mouseButtonPressedHandle(Event &event) {
 
             case PageName::vehicleData:
                 pageName = vehicleDataPage->mouseClick();
+                break;
+
+            case PageName::changeStatus:
+                pageName = changeStatusPage->mouseClick();
                 break;
 
             case PageName::showRegister:
@@ -247,6 +258,12 @@ void GraphicView::drawPage() {
             createTitle(vehicleType + " data");
             createFrame(width - 200, frameHeight, framePosY);
             vehicleDataPage->draw();
+            break;
+
+        case PageName::changeStatus:
+            createTitle("Change status");
+            createFrame(width - 300, 250, framePosY + 60);
+            changeStatusPage->draw();
             break;
 
         case PageName::showRegister:

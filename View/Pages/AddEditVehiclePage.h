@@ -8,9 +8,8 @@ class AddEditVehiclePage : public virtual Page {
 private:
     Button *btnSave;
     vector<Button *> vehicleChoice;
-
-    vector<Input *> inputs;
     vector<Button *> btnChoose;
+    vector<Input *> inputs;
     VehicleType vehicleType = CAR;
 
     void clear() override;
@@ -27,6 +26,9 @@ private:
 
     void prepareBtnChoose();
 
+    void chooseMouseClick();
+
+    void saveData();
 public:
     AddEditVehiclePage(MainController *controller, RenderWindow *window, const Font &font);
 

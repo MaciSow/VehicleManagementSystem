@@ -18,6 +18,7 @@
 #include "Pages/ShowRegisterPage.h"
 #include "Pages/ShowRepairsPage.h"
 #include "Pages/AddEditVehiclePage.h"
+#include "Pages/ChangeStatusPage.h"
 
 using namespace std;
 using namespace sf;
@@ -37,6 +38,7 @@ private:
     FleetStatePage* fleetStatePage;
     ShowVehiclesPage* showVehiclesPage;
     VehicleDataPage* vehicleDataPage;
+    ChangeStatusPage* changeStatusPage;
     ShowRegisterPage* showRegisterPage;
     ShowRepairsPage* showRepairsPage;
     AddEditVehiclePage* addEditVehiclePage;

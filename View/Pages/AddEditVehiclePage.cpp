@@ -102,7 +102,7 @@ bool AddEditVehiclePage::isMouseOver() {
 
 PageName AddEditVehiclePage::mouseClick() {
     if (btnSave->isClick(window)) {
-
+        saveData();
         clear();
         return PageName::showVehicles;
     }
@@ -111,49 +111,24 @@ PageName AddEditVehiclePage::mouseClick() {
         input->checkSelection(window);
     }
 
-    if (btnChoose[0]->isClick(window)) {
-        inputs[4]->clear();
-        inputs[4]->setValue("Yes");
-        btnChoose[0]->setActive(true);
-        btnChoose[1]->setActive(false);
+    for (Button *button : vehicleChoice) {
+        if (button->isClick(window)) {
+            changeVehicle(button);
+            checkVehicle();
+            clearInputs();
+            prepareInputs();
+            clearBtnChoose();
+            prepareBtnChoose();
+        }
     }
-
-    if (btnChoose[1]->isClick(window)) {
-        inputs[4]->clear();
-        inputs[4]->setValue("No");
-        btnChoose[1]->setActive(true);
-        btnChoose[0]->setActive(false);
-    }
-
-    if (btnChoose[2]->isClick(window)) {
-        inputs[5]->clear();
-        inputs[5]->setValue("Yes");
-        btnChoose[2]->setActive(true);
-        btnChoose[3]->setActive(false);
-    }
-
-    if (btnChoose[3]->isClick(window)) {
-        inputs[5]->clear();
-        inputs[5]->setValue("No");
-        btnChoose[3]->setActive(true);
-        btnChoose[2]->setActive(false);
-    }
+    chooseMouseClick();
 
     if (handleBtnBackClick()) {
         clear();
         return PageName::showVehicles;
     }
 
-    for (Button *button : vehicleChoice) {
-        if (button->isClick(window)) {
-            changeVehicle(button);
-            checkVehicle();
-            clearInputs();
-            clearBtnChoose();
-            prepareInputs();
-            prepareBtnChoose();
-        }
-    }
+
     return PageName::addEditVehicle;
 }
 
@@ -210,6 +185,7 @@ void AddEditVehiclePage::checkVehicle() {
 void AddEditVehiclePage::clearInputs() {
     for (Input *input : inputs) {
         input->clear();
+        input->setIsEditable(true);
     }
 }
 
@@ -243,7 +219,9 @@ void AddEditVehiclePage::prepareInputs() {
             inputs[4]->setIsNumber(false);
 
             inputs[4]->setValue("Yes");
+            inputs[4]->setIsEditable(false);
             inputs[5]->setValue("Yes");
+            inputs[5]->setIsEditable(false);
             break;
         case VAN:
             inputs[4]->setWidth(132);
@@ -256,7 +234,9 @@ void AddEditVehiclePage::prepareInputs() {
             inputs[4]->setIsNumber(false);
 
             inputs[4]->setValue("Yes");
+            inputs[4]->setIsEditable(false);
             inputs[5]->setValue("Yes");
+            inputs[5]->setIsEditable(false);
             break;
         case TRUCK:
             inputs[4]->setWidth(260);
@@ -269,6 +249,7 @@ void AddEditVehiclePage::prepareInputs() {
             inputs[4]->setIsNumber();
 
             inputs[5]->setValue("Yes");
+            inputs[5]->setIsEditable(false);
             break;
         default:
             break;
@@ -297,4 +278,53 @@ void AddEditVehiclePage::prepareBtnChoose() {
         default:
             break;
     }
+}
+
+void AddEditVehiclePage::chooseMouseClick() {
+// todo: fix refresh hover btn after change choice
+
+//    for (Button *button : btnChoose) {
+//        if (!button->getIsHidden()) {
+//            button->setActive(false);
+//        }
+//    };
+
+    if (btnChoose[0]->isClick(window)) {
+        inputs[4]->clear();
+        inputs[4]->setValue("Yes");
+        btnChoose[1]->setActive(false);
+        btnChoose[0]->setActive(true);
+    }
+
+    if (btnChoose[1]->isClick(window)) {
+        inputs[4]->clear();
+        inputs[4]->setValue("No");
+        btnChoose[0]->setActive(false);
+        btnChoose[1]->setActive(true);
+    }
+
+    if (btnChoose[2]->isClick(window)) {
+        inputs[5]->clear();
+        inputs[5]->setValue("Yes");
+        btnChoose[3]->setActive(false);
+        btnChoose[2]->setActive(true);
+    }
+
+    if (btnChoose[3]->isClick(window)) {
+        inputs[5]->clear();
+        inputs[5]->setValue("No");
+        btnChoose[2]->setActive(false);
+        btnChoose[3]->setActive(true);
+    }
+
+
+}
+
+void AddEditVehiclePage::saveData() {
+    vector<string> data;
+
+    for (Input *input : inputs) {
+        data.push_back(input->getText());
+    }
+    controller->createVehicle(data, vehicleType);
 }

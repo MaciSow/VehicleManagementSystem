@@ -40,7 +40,7 @@ PageName VehicleDataPage::mouseClick() {
 
     if (btnChangeStatus->isClick(window)) {
         clear();
-        return PageName::showVehicles;
+        return PageName::changeStatus;
     }
 
     if (btnShowRegister->isClick(window)) {

@@ -13,17 +13,21 @@ private:
     Text text;
     Color baseCol = {0, 0, 0, 205};
     Color hoverCol = {78, 112, 30, 205};
+    Color blockCol = {204, 204, 204, 255};
     Color pressedCol = hoverCol;
 
     bool isActive = false;
+    bool isHidden = false;
+    bool isBlock = false;
     float width = 250;
     float height = 50;
     int fontSize = 16;
-    bool isHidden = false;
+
     string id = "";
     enum State {
         normal,
-        hover
+        hover,
+        block
     };
 
     void create(Vector2f position, string title, Font &font);
@@ -44,6 +48,8 @@ public:
     void setPosition(Vector2f position);
 
     void setActive(bool isActive);
+
+    void setBlock(bool isBlock = true);
 
     bool getActive();
 

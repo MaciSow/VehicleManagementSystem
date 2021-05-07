@@ -45,15 +45,15 @@ bool Button::getActive() {
 }
 
 bool Button::isMouseOver(RenderWindow *&window) {
+    if (isHidden || isBlock) {
+        return false;
+    }
+
     int mouseX = Mouse::getPosition(*window).x;
     int mouseY = Mouse::getPosition(*window).y;
 
     int btnPosX = (int) button.getPosition().x;
     int btnPosY = (int) button.getPosition().y;
-
-    if (isHidden) {
-        return false;
-    }
 
     if (mouseX > btnPosX && mouseX < btnPosX + width &&
         mouseY > btnPosY && mouseY < btnPosY + height) {
@@ -117,6 +117,9 @@ void Button::setButtonState(State state) {
         case hover:
             button.setFillColor(hoverCol);
             break;
+        case block:
+            button.setFillColor(blockCol);
+            break;
         default:
             break;
     }
@@ -128,4 +131,13 @@ bool Button::getIsHidden() const {
 
 void Button::setIsHidden(bool isHidden) {
     this->isHidden = isHidden;
+}
+
+void Button::setBlock(bool isBlock) {
+    this->isBlock = isBlock;
+    if (isBlock) {
+        setButtonState(block);
+    } else {
+        setButtonState(normal);
+    }
 }

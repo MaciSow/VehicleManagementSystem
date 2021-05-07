@@ -43,6 +43,10 @@ string Input::getId() {
 }
 
 bool Input::isMouseOver(RenderWindow*& window) {
+    if (!isEditable) {
+        return false;
+    }
+
 	int mouseX = Mouse::getPosition(*window).x;
 	int mouseY = Mouse::getPosition(*window).y;
 
@@ -244,4 +248,12 @@ bool Input::validate()
 
 void Input::setLabel(string label) {
     this->label.setString(label);
+}
+
+bool Input::getIsEditable() const {
+    return isEditable;
+}
+
+void Input::setIsEditable(bool isEditable) {
+    Input::isEditable = isEditable;
 }

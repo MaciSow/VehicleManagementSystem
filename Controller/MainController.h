@@ -34,6 +34,8 @@ public:
     vector<int> getStateData();
 
     vector<vector<string>> getVehicleList();
+
+    void createVehicle(vector<string> vehicleData, VehicleType vehicleType);
 };
 
 
