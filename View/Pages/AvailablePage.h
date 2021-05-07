@@ -5,29 +5,28 @@
 
 class AvailablePage : public virtual Page {
 private:
-    Button *btnSave;
-
     Button *btnReturn;
     Button *btnStop;
-
-    void clear() override;
-
-    void createSeparator();
-
-    void checkChoice();
 
 public:
     AvailablePage(MainController *controller, RenderWindow *window, const Font &font);
 
     ~AvailablePage();
 
+    void draw() override;
+
     bool isMouseOver() override;
 
     PageName mouseClick() override;
 
+private:
     void create() override;
 
-    void draw() override;
+    void clear() override;
+
+    void createSeparator();
+
+    void checkChoice();
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_AVAILABLEPAGE_H

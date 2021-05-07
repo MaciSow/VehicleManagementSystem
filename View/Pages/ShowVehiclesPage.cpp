@@ -1,12 +1,26 @@
 #include "ShowVehiclesPage.h"
 
-ShowVehiclesPage::ShowVehiclesPage(MainController *controller, RenderWindow *window, const Font &font) :
-        controller(controller), window(window), font(font) {
-    createElements();
+// public
+ShowVehiclesPage::ShowVehiclesPage(MainController *controller, RenderWindow *window, const Font &font)
+        : Page(controller, window, font) {
+    create();
+    createBtnBack();
 }
 
-ShowVehiclesPage::~ShowVehiclesPage() {
+ShowVehiclesPage::~ShowVehiclesPage() = default;
 
+void ShowVehiclesPage::draw() {
+    drawBtnBack();
+    createHeader();
+
+    if (items.empty()) {
+        float listWidth = width - 208;
+        float itemHeight = 60;
+        fillList(listWidth, itemHeight);
+    }
+
+    drawList();
+    btnAdd->drawTo(window);
 }
 
 bool ShowVehiclesPage::isMouseOver() {
@@ -15,7 +29,7 @@ bool ShowVehiclesPage::isMouseOver() {
         isCursorOver = true;
     }
 
-    if (btnBack->isMouseOver(window)) {
+    if (handleBtnBackHover()) {
         isCursorOver = true;
     }
 
@@ -34,7 +48,7 @@ PageName ShowVehiclesPage::mouseClick() {
         return PageName::addEditVehicle;
     }
 
-    if (btnBack->isClick(window)) {
+    if (handleBtnBackClick()) {
         clear();
         return PageName::home;
     }
@@ -42,43 +56,48 @@ PageName ShowVehiclesPage::mouseClick() {
     for (ListItem *item : items) {
         if (item->isClick(window)) {
             controller->selectVehicle(item->getId());
-            isOpen = false;
+            clear();
             return PageName::vehicleData;
         }
     }
     return PageName::showVehicles;
 }
 
-void ShowVehiclesPage::draw() {
-    if (!isOpen) {
-        refresh();
+void ShowVehiclesPage::scroll(int offset) {
+    if (offset < -1) {
+        offset = -1;
+    } else if (offset > 1) {
+        offset = 1;
     }
 
-    createHeader();
+    if (offset > 0 && scrollOffset == 0) {
+        return;
+    }
+
+    int countItems = (int)items.size();
+    if (offset < 0 && scrollOffset + limit >= countItems) {
+        return;
+    }
+
+    scrollOffset -= offset;
+
     drawList();
-    btnAdd->drawTo(window);
-    btnBack->drawTo(window);
+    isMouseOver();
 }
 
-void ShowVehiclesPage::createElements() {
-    float width = (float) (window->getSize().x);
-    float height = (float) (window->getSize().y);
+// private
+void ShowVehiclesPage::create() {
     float btnWidth = 150;
-    float btnPosX = width - btnWidth - 32;
     float btnPosY = height - 50 - 32;
 
-    float listWidth = width - 208;
-    float itemHeight = 60;
-
-    fillList(listWidth, itemHeight);
-
     btnAdd = new Button({32, btnPosY}, "Add", font, btnWidth);
-    btnBack = new Button({btnPosX, btnPosY}, "Back", font, btnWidth);
-    btnBack->setColor({0, 0, 0, 205}, {196, 55, 55, 205});
 }
 
 void ShowVehiclesPage::clear() {
-    isOpen = false;
+    scrollOffset = 0;
+    length = 0;
+    limit = 5;
+    items.clear();
 }
 
 void ShowVehiclesPage::createHeader() {
@@ -109,55 +128,22 @@ void ShowVehiclesPage::createHeader() {
     window->draw(line);
 }
 
+void ShowVehiclesPage::fillList(float listWidth, float itemHeight) {
+    for (auto row:controller->getVehicleList()) {
+        items.push_back(new ListItem({listWidth, itemHeight}, row, font, VEHICLES, row[3]));
+        length++;
+    }
+}
+
 void ShowVehiclesPage::drawList() {
     int positionOffset = 0;
     float positionY = 138;
 
-    for (int i = offset; i < offset + limit; i++) {
-
+    for (int i = scrollOffset; (i < scrollOffset + limit) && (i < length); i++) {
         items[i]->setPosition(Vector2f(104, positionY));
         items[i]->drawTo(window);
 
         positionOffset++;
         positionY += 64;
     }
-}
-
-void ShowVehiclesPage::scroll(int offset) {
-    if (offset < -1) {
-        offset = -1;
-    } else if (offset > 1) {
-        offset = 1;
-    }
-
-    if (offset > 0 && this->offset == 0) {
-        return;
-    }
-
-    int countItems = items.size();
-    if (offset < 0 && this->offset + limit >= countItems) {
-        return;
-    }
-
-    this->offset -= offset;
-
-    drawList();
-    isMouseOver();
-}
-
-void ShowVehiclesPage::fillList(float listWidth, float itemHeight) {
-    for (auto row:controller->getVehicleList()) {
-        items.push_back(new ListItem({listWidth, itemHeight}, row, font, VEHICLES, row[3]));
-    }
-    cout << items.size() << endl;
-}
-
-void ShowVehiclesPage::refresh() {
-    offset = 0;
-    length = 0;
-    limit = 5;
-    isOpen = true;
-    items.clear();
-    createElements();
-
 }

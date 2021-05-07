@@ -1,31 +1,25 @@
 #ifndef VEHICLEMENAGMENTSYSTEM_VIEW_CLOSEPAGE_H
 #define VEHICLEMENAGMENTSYSTEM_VIEW_CLOSEPAGE_H
 
+#include "Page.h"
 
-#include "../Elements/Button.h"
-#include "../Elements/Input.h"
-#include "../../Controller/MainController.h"
-#include "PageName.h"
-#include "iostream"
-
-using namespace std;
-using namespace sf;
-
-class  ClosePage {
-private:
-    MainController*controller;
-    RenderWindow *window;
-    Font font;
-
+class ClosePage : public virtual Page {
 
 public:
-    ClosePage(MainController*&controller, RenderWindow *&window, Font &font);
+    ClosePage(MainController *controller, RenderWindow *window, const Font &font);
+
     ~ ClosePage();
 
+    void draw() override;
 
-    bool isMouseOver();
-    PageName mouseClick();
-    void draw();
+    bool isMouseOver() override;
+
+    PageName mouseClick() override;
+
+private:
+    void create() override;
+
+    void clear() override;
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_VIEW_CLOSEPAGE_H

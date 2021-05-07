@@ -1,36 +1,30 @@
 #ifndef VEHICLEMENAGMENTSYSTEM_VIEW_HOMEPAGE_H
 #define VEHICLEMENAGMENTSYSTEM_VIEW_HOMEPAGE_H
-#include <SFML/Graphics.hpp>
-#include "../Elements/Button.h"
-#include "../Elements/Input.h"
-#include "../../Controller/MainController.h"
-#include "PageName.h"
-#include "iostream"
 
-using namespace std;
-using namespace sf;
+#include "Page.h"
 
-class HomePage {
+class HomePage : public virtual Page {
 private:
-    MainController* controller;
-    RenderWindow* window;
-    Font font;
-
-    Button* btnFleetState;
-    Button* btnShowVehicles;
-    Button* btnShowDriver;
-    Button* btnExit;
-
-    void createElements();
+    Button *btnFleetState;
+    Button *btnShowVehicles;
+    Button *btnShowDriver;
+    Button *btnExit;
 
 public:
-    HomePage(MainController*& controller, RenderWindow*& window, Font& font);
+    HomePage(MainController *controller, RenderWindow *window, const Font &font);
+
     ~HomePage();
 
-    bool isMouseOver();
-    PageName mouseClick();
-    void draw();
-};
+    void draw() override;
 
+    bool isMouseOver() override;
+
+    PageName mouseClick() override;
+
+private:
+    void create() override;
+
+    void clear() override;
+};
 
 #endif //VEHICLEMENAGMENTSYSTEM_VIEW_HOMEPAGE_H

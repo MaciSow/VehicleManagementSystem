@@ -1,24 +1,28 @@
 #include "ClosePage.h"
 
-ClosePage::ClosePage(MainController *&controller, RenderWindow *&window, Font &font) {
-    this->controller = controller;
-    this->window = window;
-    this->font = font;
-
+// public
+ClosePage::ClosePage(MainController *controller, RenderWindow *window, const Font &font)
+        : Page(controller, window, font) {
+    create();
 }
 
-ClosePage::~ClosePage() {
+ClosePage::~ClosePage() = default;
+
+void ClosePage::draw() {
 }
 
 bool ClosePage::isMouseOver() {
-
     return true;
 }
 
 PageName ClosePage::mouseClick() {
+}
+
+// private
+void ClosePage::create() {
 
 }
 
-void ClosePage::draw() {
-
+void ClosePage::clear() {
+    Page::clear();
 }

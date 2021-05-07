@@ -1,16 +1,31 @@
 #include "ShowRegisterPage.h"
 
-ShowRegisterPage::ShowRegisterPage(MainController *controller, RenderWindow *window, const Font &font) :
-        controller(controller), window(window), font(font) {
-    createElements();
+// public
+ShowRegisterPage::ShowRegisterPage(MainController *controller, RenderWindow *window, const Font &font)
+        : Page(controller, window, font) {
+    create();
+    createBtnBack();
 }
 
-ShowRegisterPage::~ShowRegisterPage() {
+ShowRegisterPage::~ShowRegisterPage() = default;
+
+void ShowRegisterPage::draw() {
+    drawBtnBack();
+
+    if (items.empty()) {
+        float listWidth = width - 208;
+        float itemHeight = 60;
+        fillList(listWidth, itemHeight);
+    }
+
+    createHeader();
+    drawList();
 }
 
 bool ShowRegisterPage::isMouseOver() {
     bool isCursorOver = false;
-    if (btnBack->isMouseOver(window)) {
+
+    if (handleBtnBackHover()) {
         isCursorOver = true;
     }
 
@@ -18,7 +33,7 @@ bool ShowRegisterPage::isMouseOver() {
 }
 
 PageName ShowRegisterPage::mouseClick() {
-    if (btnBack->isClick(window)) {
+    if (handleBtnBackClick()) {
         clear();
         return PageName::vehicleData;
     }
@@ -26,15 +41,37 @@ PageName ShowRegisterPage::mouseClick() {
     return PageName::showRegister;
 }
 
-void ShowRegisterPage::createElements() {
-    float width = (float) (window->getSize().x);
-    float height = (float) (window->getSize().y);
-    float btnWidth = 150;
-    float btnPosX = width - btnWidth - 32;
-    float btnPosY = height - 50 - 32;
 
-    btnBack = new Button({btnPosX, btnPosY}, "Back", font, btnWidth);
-    btnBack->setColor({0, 0, 0, 205}, {196, 55, 55, 205});
+void ShowRegisterPage::scroll(int offset) {
+    if (offset < -1) {
+        offset = -1;
+    } else if (offset > 1) {
+        offset = 1;
+    }
+
+    if (offset > 0 && scrollOffset == 0) {
+        return;
+    }
+
+    int countItems = (int)items.size();
+    if (offset < 0 && scrollOffset + limit >= countItems) {
+        return;
+    }
+
+    scrollOffset -= offset;
+
+    drawList();
+    isMouseOver();
+}
+
+// private
+void ShowRegisterPage::create() {}
+
+void ShowRegisterPage::clear() {
+    scrollOffset = 0;
+    length = 0;
+    limit = 5;
+    items.clear();
 }
 
 void ShowRegisterPage::createHeader() {
@@ -70,12 +107,18 @@ void ShowRegisterPage::createHeader() {
     window->draw(line);
 }
 
+void ShowRegisterPage::fillList(float listWidth, float itemHeight) {
+    for (auto row:controller->getSelectedVehicle()->getRegisterData()) {
+        items.push_back(new ListItem({listWidth, itemHeight}, row, font, REGISTER, to_string(length)));
+        length++;
+    }
+}
+
 void ShowRegisterPage::drawList() {
     int positionOffset = 0;
     float positionY = 138;
 
-    for (int i = offset; (i < offset + limit) && (i < length); i++) {
-
+    for (int i = scrollOffset; (i < scrollOffset + limit) && (i < length); i++) {
         items[i]->setPosition(Vector2f(104, positionY));
         items[i]->drawTo(window);
 
@@ -84,68 +127,4 @@ void ShowRegisterPage::drawList() {
     }
 }
 
-void ShowRegisterPage::fillList(float listWidth, float itemHeight) {
-    for (auto row:controller->getSelectedVehicle()->getRegisterData()) {
-        items.push_back(new ListItem({listWidth, itemHeight}, row, font, REGISTER, to_string(length)));
-        length++;
-    }
-}
 
-void ShowRegisterPage::scroll(int offset) {
-    if (offset < -1) {
-        offset = -1;
-    } else if (offset > 1) {
-        offset = 1;
-    }
-
-    if (offset > 0 && this->offset == 0) {
-        return;
-    }
-
-    int countItems = items.size();
-    if (offset < 0 && this->offset + limit >= countItems) {
-        return;
-    }
-
-    this->offset -= offset;
-
-    drawList();
-    isMouseOver();
-}
-
-void ShowRegisterPage::draw() {
-    if (!isOpen) {
-        refresh();
-    }
-
-    if (!items.size()) {
-        float width = (float) (window->getSize().x);
-        float listWidth = width - 208;
-        float itemHeight = 60;
-
-        fillList(listWidth, itemHeight);
-    }
-
-    createHeader();
-    drawList();
-
-    btnBack->drawTo(window);
-}
-
-void ShowRegisterPage::clear() {
-    offset = 0;
-    length = 0;
-    limit = 5;
-    isOpen = false;
-    items.clear();
-}
-
-void ShowRegisterPage::refresh() {
-    cout << "refresh";
-    offset = 0;
-    length = 0;
-    limit = 5;
-    isOpen = true;
-    items.clear();
-    createElements();
-}

@@ -7,6 +7,7 @@
 #include "../../Controller/MainController.h"
 #include "../Elements/Button.h"
 #include "../Elements/Input.h"
+#include "../Elements/ListItem.h"
 
 using namespace std;
 using namespace sf;
@@ -17,10 +18,23 @@ protected:
     RenderWindow *window;
     Font font;
     Button *btnBack;
+    Button *btnSave;
 
     float width = 960;
     float height = 576;
 
+public:
+    Page(MainController *controller, RenderWindow *window, const Font &font);
+
+    ~Page();
+
+    virtual void draw();
+
+    virtual bool isMouseOver();
+
+    virtual PageName mouseClick() = 0;
+
+protected:
     virtual void create() = 0;
 
 //    virtual void prepare() = 0;
@@ -29,22 +43,23 @@ protected:
 
     void createBtnBack();
 
-    void drawBackBtn();
+    void drawBtnBack();
 
     bool handleBtnBackClick();
 
     bool handleBtnBackHover();
 
-public:
-    Page(MainController *controller, RenderWindow *window, const Font &font);
+    void createBtnSave();
 
-    ~Page();
+    void drawBtnSave();
 
-    virtual bool isMouseOver();
+    bool handleBtnSaveClick();
 
-    virtual PageName mouseClick() = 0;
+    bool handleBtnSaveHover();
 
-    virtual void draw();
+    void activeBtnSave();
+
+    void blockBtnSave();
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_PAGE_H

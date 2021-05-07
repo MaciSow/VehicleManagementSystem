@@ -1,13 +1,18 @@
 #include "HomePage.h"
 
-HomePage::HomePage(MainController *&controller, RenderWindow *&window, Font &font) {
-    this->controller = controller;
-    this->window = window;
-    this->font = font;
-    createElements();
+// public
+HomePage::HomePage(MainController *controller, RenderWindow *window, const Font &font)
+        : Page(controller, window, font) {
+    create();
 }
 
-HomePage::~HomePage() {
+HomePage::~HomePage() = default;
+
+void HomePage::draw() {
+    btnFleetState->drawTo(window);
+    btnShowVehicles->drawTo(window);
+    btnShowDriver->drawTo(window);
+    btnExit->drawTo(window);
 }
 
 bool HomePage::isMouseOver() {
@@ -43,24 +48,18 @@ PageName HomePage::mouseClick() {
     return PageName::home;
 }
 
-
-void HomePage::draw() {
-    btnFleetState->drawTo(window);
-    btnShowVehicles->drawTo(window);
-    btnShowDriver->drawTo(window);
-    btnExit->drawTo(window);
-}
-
-// private methods
-
-void HomePage::createElements() {
-    float posX = (float) (window->getSize().x / 2 - 125);
+// private
+void HomePage::create() {
+    auto posX = (float) (width / 2 - 125);
     float posY = 150;
-    int offset = 80;
+    float offset = 80;
 
     btnFleetState = new Button({posX, posY}, "Fleet state", font);
     btnShowVehicles = new Button({posX, posY += offset}, "Show vehicles", font);
     btnShowDriver = new Button({posX, posY += offset}, "Show drivers", font);
     btnExit = new Button({posX, posY += offset}, "Exit", font);
     btnExit->setColor({0, 0, 0, 205}, {196, 55, 55, 205});
+}
+
+void HomePage::clear() {
 }

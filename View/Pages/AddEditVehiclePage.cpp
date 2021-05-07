@@ -1,20 +1,19 @@
 #include "AddEditVehiclePage.h"
 
 // public
-AddEditVehiclePage::AddEditVehiclePage(MainController *controller, RenderWindow *window, const Font &font) : Page(
-        controller, window, font) {
+AddEditVehiclePage::AddEditVehiclePage(MainController *controller, RenderWindow *window, const Font &font)
+        : Page(controller, window, font) {
     create();
     createBtnBack();
+    createBtnSave();
 }
 
-AddEditVehiclePage::~AddEditVehiclePage() {
-
-}
+AddEditVehiclePage::~AddEditVehiclePage() = default;
 
 void AddEditVehiclePage::draw() {
     prepare();
-    drawBackBtn();
-    btnSave->drawTo(window);
+    drawBtnBack();
+    drawBtnSave();
 
     for (Button *button : btnVehicleChoices) {
         button->drawTo(window);
@@ -52,8 +51,7 @@ bool AddEditVehiclePage::isMouseOver() {
         }
     }
 
-    if (btnSave->isMouseOver(window) ||
-        handleBtnBackHover()) {
+    if (handleBtnBackHover() || handleBtnSaveHover()) {
         isCursorOver = true;
     }
     return isCursorOver;
@@ -85,6 +83,10 @@ PageName AddEditVehiclePage::mouseClick() {
     }
 
     if (btnSave->isClick(window)) {
+
+    }
+
+    if (handleBtnSaveClick()) {
         saveData();
         clear();
         return PageName::showVehicles;
@@ -146,6 +148,9 @@ void AddEditVehiclePage::create() {
 void AddEditVehiclePage::prepare() {
     if (!isOpen) {
         isOpen = true;
+
+        activeBtnSave();
+
         isEdit = !!controller->getSelectedVehicle();
 
         vehicleType = CAR;
@@ -184,9 +189,9 @@ void AddEditVehiclePage::changeVehicleChoice(Button *&button) {
 }
 
 void AddEditVehiclePage::prepareVehicleChoice(Button *&button) {
-    for (Button *button : btnVehicleChoices) {
-        button->setActive(false);
-        button->isMouseOver(window);
+    for (Button *btnChoice : btnVehicleChoices) {
+        btnChoice->setActive(false);
+        btnChoice->isMouseOver(window);
     }
     button->setActive(true);
 }

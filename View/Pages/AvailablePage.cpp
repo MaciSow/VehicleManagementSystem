@@ -1,45 +1,30 @@
 #include "AvailablePage.h"
 
-// private
-
-void AvailablePage::create() {
-    float btnPosX = width / 2;
-    float btnPosY = height / 2 - 16;
-
-    btnSave = new Button({32, height - 50 - 32}, "Save", font, 150);
-    btnSave->setBlock();
-
-    btnReturn = new Button({btnPosX - 125, btnPosY - 84}, "Return from road", font);
-    btnStop = new Button({btnPosX - 125, btnPosY + 42}, "Stop journey now", font);
-
-    RectangleShape line({100, 2});
-    line.setFillColor({136, 136, 136, 255});
-    line.move(btnPosX - 116, btnPosY);
-
-}
-
-void AvailablePage::clear() {
-    btnReturn->setActive(false);
-    btnStop->setActive(false);
-    btnSave->setBlock(true);
-}
-
 // public
 AvailablePage::AvailablePage(MainController *controller, RenderWindow *window, const Font &font)
         : Page(controller, window, font) {
     create();
     createBtnBack();
+    createBtnSave();
 }
 
 AvailablePage::~AvailablePage() = default;
 
+void AvailablePage::draw() {
+    drawBtnBack();
+    drawBtnSave();
+    createSeparator();
+
+    btnReturn->drawTo(window);
+    btnStop->drawTo(window);
+}
+
 bool AvailablePage::isMouseOver() {
     bool isCursorOver = false;
 
-    if (btnSave->isMouseOver(window) ||
+    if (handleBtnBackHover() || handleBtnSaveHover() ||
         btnReturn->isMouseOver(window) ||
-        btnStop->isMouseOver(window) ||
-        handleBtnBackHover()) {
+        btnStop->isMouseOver(window)) {
         isCursorOver = true;
     }
 
@@ -57,7 +42,7 @@ PageName AvailablePage::mouseClick() {
         btnStop->setActive(true);
     }
 
-    if (btnSave->isClick(window)) {
+    if (handleBtnSaveClick()) {
         controller->setAvailable(btnStop->getActive());
         clear();
         return PageName::vehicleData;
@@ -72,14 +57,24 @@ PageName AvailablePage::mouseClick() {
     return PageName::available;
 }
 
-void AvailablePage::draw() {
-    btnReturn->drawTo(window);
-    btnStop->drawTo(window);
+// private
+void AvailablePage::create() {
+    float btnPosX = width / 2;
+    float btnPosY = height / 2 - 16;
 
-    btnSave->drawTo(window);
+    btnReturn = new Button({btnPosX - 125, btnPosY - 84}, "Return from road", font);
+    btnStop = new Button({btnPosX - 125, btnPosY + 42}, "Stop journey now", font);
 
-    createSeparator();
-    drawBackBtn();
+    RectangleShape line({100, 2});
+    line.setFillColor({136, 136, 136, 255});
+    line.move(btnPosX - 116, btnPosY);
+
+}
+
+void AvailablePage::clear() {
+    btnReturn->setActive(false);
+    btnStop->setActive(false);
+    blockBtnSave();
 }
 
 void AvailablePage::createSeparator() {
@@ -105,7 +100,7 @@ void AvailablePage::createSeparator() {
 
 void AvailablePage::checkChoice() {
     if (btnReturn->getActive() || btnStop->getActive()) {
-        btnSave->setBlock(false);
+        activeBtnSave();
     }
 }
 

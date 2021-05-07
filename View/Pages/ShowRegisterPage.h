@@ -1,57 +1,40 @@
 #ifndef VEHICLEMENAGMENTSYSTEM_SHOWREGISTERPAGE_H
 #define VEHICLEMENAGMENTSYSTEM_SHOWREGISTERPAGE_H
 
-#include <SFML/Graphics.hpp>
-#include <iostream>
+#include "Page.h"
 
-#include "../../Controller/MainController.h"
-#include "PageName.h"
-#include "../Elements/Button.h"
-#include "../Elements/ListItem.h"
-
-using namespace std;
-using namespace sf;
-
-class ShowRegisterPage {
+class ShowRegisterPage : public virtual Page {
 private:
-    MainController *controller;
-    RenderWindow *window;
-    Font font;
-
     Vehicle *vehicle;
     vector<ListItem *> items;
-    Button *btnBack;
 
-    int offset = 0;
+    int scrollOffset = 0;
     int length = 0;
     int limit = 5;
-
-    bool isOpen = false;
-
-    void createElements();
-
-    void createHeader();
-
-    void drawList();
-
-    void fillList(float listWidth, float itemHeight);
-
-    void refresh();
-
-    void clear();
 
 public:
     ShowRegisterPage(MainController *controller, RenderWindow *window, const Font &font);
 
     ~ShowRegisterPage();
 
-    bool isMouseOver();
+    void draw() override;
 
-    PageName mouseClick();
+    bool isMouseOver() override;
+
+    PageName mouseClick() override;
 
     void scroll(int offset);
 
-    void draw();
+private:
+    void create() override;
+
+    void clear() override;
+
+    void createHeader();
+
+    void fillList(float listWidth, float itemHeight);
+
+    void drawList();
 };
 
 

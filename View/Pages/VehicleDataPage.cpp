@@ -1,24 +1,38 @@
 #include "VehicleDataPage.h"
 
-VehicleDataPage::VehicleDataPage(MainController *controller, RenderWindow *window, const Font &font) :
-        controller(controller), window(window), font(font) {
-    createElements();
+// public
+VehicleDataPage::VehicleDataPage(MainController *controller, RenderWindow *window, const Font &font)
+        : Page(controller, window, font) {
+    create();
+    createBtnBack();
     vehicle = controller->getSelectedVehicle();
 }
 
-VehicleDataPage::~VehicleDataPage() {
+VehicleDataPage::~VehicleDataPage() = default;
+
+void VehicleDataPage::draw() {
+    drawBtnBack();
+    fillData();
+
+    btnEdit->drawTo(window);
+    btnDelete->drawTo(window);
+    btnChangeStatus->drawTo(window);
+    btnShowRegister->drawTo(window);
+    btnShowRepairs->drawTo(window);
 }
 
 bool VehicleDataPage::isMouseOver() {
     bool isCursorOver = false;
-    if (btnEdit->isMouseOver(window) ||
+
+    if (handleBtnBackHover() ||
+        btnEdit->isMouseOver(window) ||
         btnDelete->isMouseOver(window) ||
-        btnBack->isMouseOver(window) ||
         btnChangeStatus->isMouseOver(window) ||
         btnShowRegister->isMouseOver(window) ||
         btnShowRepairs->isMouseOver(window)) {
         isCursorOver = true;
     }
+
     return isCursorOver;
 }
 
@@ -28,11 +42,6 @@ PageName VehicleDataPage::mouseClick() {
     }
 
     if (btnDelete->isClick(window)) {
-        clear();
-        return PageName::showVehicles;
-    }
-
-    if (btnBack->isClick(window)) {
         clear();
         return PageName::showVehicles;
     }
@@ -49,12 +58,16 @@ PageName VehicleDataPage::mouseClick() {
         return PageName::showRepairs;
     }
 
+    if (handleBtnBackClick()) {
+        clear();
+        return PageName::showVehicles;
+    }
+
     return PageName::vehicleData;
 }
 
-void VehicleDataPage::createElements() {
-    float width = (float) (window->getSize().x);
-    float height = (float) (window->getSize().y);
+// private
+void VehicleDataPage::create() {
     float btnWidth = 150;
     float btnHeight = 32;
     float btnPosY = height - 50 - 32;
@@ -63,8 +76,6 @@ void VehicleDataPage::createElements() {
 
     btnEdit = new Button({32, btnPosY}, "Edit", font, btnWidth);
     btnDelete = new Button({48 + btnWidth, btnPosY}, "Delete", font, btnWidth);
-    btnBack = new Button({width - btnWidth - 32, btnPosY}, "Back", font, btnWidth);
-    btnBack->setColor({0, 0, 0, 205}, {196, 55, 55, 205});
 
     btnPosY = height / 2 - 38;
 
@@ -73,23 +84,11 @@ void VehicleDataPage::createElements() {
     btnShowRepairs = new Button({btnPosX, btnPosY += offset}, "Show repairs", font, btnWidth, btnHeight);
 }
 
-void VehicleDataPage::draw() {
-    fillData();
-    btnEdit->drawTo(window);
-    btnDelete->drawTo(window);
-    btnBack->drawTo(window);
-
-    btnChangeStatus->drawTo(window);
-    btnShowRegister->drawTo(window);
-    btnShowRepairs->drawTo(window);
-}
-
 void VehicleDataPage::clear() {
     controller->unselectVehicle();
 }
 
 void VehicleDataPage::fillData() {
-    float width = (float) (window->getSize().x);
     float posX;
     float posY = 60;
     float offset = 64;

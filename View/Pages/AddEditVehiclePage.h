@@ -8,7 +8,6 @@ private:
     bool isEdit = false;
     bool isOpen = false;
 
-    Button *btnSave;
     vector<Button *> btnVehicleChoices;
     vector<Button *> btnOptions;
     vector<Input *> inputs;

@@ -1,5 +1,27 @@
 #include "Page.h"
 
+// public
+Page::Page(MainController *controller, RenderWindow *window, const Font &font) {
+    this->controller = controller;
+    this->window = window;
+    this->font = font;
+    width = (float) (window->getSize().x);
+    height = (float) (window->getSize().y);
+}
+
+Page::~Page() = default;
+
+void Page::draw() {
+}
+
+bool Page::isMouseOver() {
+    return handleBtnBackHover();
+}
+
+PageName Page::mouseClick() {
+    return PageName::home;
+}
+
 // protected
 void Page::create() {
 }
@@ -19,7 +41,7 @@ void Page::createBtnBack() {
     btnBack->setColor({0, 0, 0, 205}, {196, 55, 55, 205});
 }
 
-void Page::drawBackBtn() {
+void Page::drawBtnBack() {
     btnBack->drawTo(window);
 }
 
@@ -31,26 +53,34 @@ bool Page::handleBtnBackHover() {
     return btnBack->isMouseOver(window);
 }
 
-// public
-Page::Page(MainController *controller, RenderWindow *window, const Font &font) {
-    this->controller = controller;
-    this->window = window;
-    this->font = font;
-    width = (float) (window->getSize().x);
-    height = (float) (window->getSize().y);
+void Page::createBtnSave() {
+    float btnWidth = 150;
+    float btnPosX = 32;
+    float btnPosY = height - 50 - 32;
+
+    btnSave = new Button({btnPosX, btnPosY}, "Save", font, btnWidth);
+    btnSave->setBlock();
 }
 
-Page::~Page() = default;
-
-bool Page::isMouseOver() {
-    return handleBtnBackHover();
+void Page::drawBtnSave() {
+    btnSave->drawTo(window);
 }
 
-PageName Page::mouseClick() {
-    return PageName::home;
+bool Page::handleBtnSaveClick() {
+    return btnSave->isClick(window);
 }
 
-void Page::draw() {
+bool Page::handleBtnSaveHover() {
+    return btnSave->isMouseOver(window);
 }
+
+void Page::activeBtnSave() {
+    btnSave->setBlock(false);
+}
+
+void Page::blockBtnSave() {
+    btnSave->setBlock(true);
+}
+
 
 

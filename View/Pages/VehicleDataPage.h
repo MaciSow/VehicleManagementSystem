@@ -1,48 +1,34 @@
 #ifndef VEHICLEMENAGMENTSYSTEM_VEHICLEDATAPAGE_H
 #define VEHICLEMENAGMENTSYSTEM_VEHICLEDATAPAGE_H
 
-#include <SFML/Graphics.hpp>
-#include <iostream>
+#include "Page.h"
 
-#include "../../Controller/MainController.h"
-#include "PageName.h"
-#include "../Elements/Button.h"
-
-using namespace std;
-using namespace sf;
-
-class VehicleDataPage {
+class VehicleDataPage : public virtual Page {
 private:
-    MainController *controller;
-    RenderWindow *window;
-    Font font;
     Vehicle *vehicle;
-
     Button *btnEdit;
     Button *btnDelete;
-    Button *btnBack;
-
     Button *btnChangeStatus;
     Button *btnShowRegister;
     Button *btnShowRepairs;
-
-    void createElements();
-
-    void fillData();
-
-    void clear();
 
 public:
     VehicleDataPage(MainController *controller, RenderWindow *window, const Font &font);
 
     ~VehicleDataPage();
 
-    bool isMouseOver();
+    void draw() override;
 
-    PageName mouseClick();
+    bool isMouseOver() override;
 
-    void draw();
+    PageName mouseClick() override;
+
+private:
+    void create() override;
+
+    void clear() override;
+
+    void fillData();
 };
-
 
 #endif //VEHICLEMENAGMENTSYSTEM_VEHICLEDATAPAGE_H

@@ -1,24 +1,5 @@
 #include "ChangeStatusPage.h"
 
-// private
-
-void ChangeStatusPage::create() {
-    float btnPosX = width / 2;
-    float btnPosY = height / 2 - 16;
-
-    btnAvailable = new Button({btnPosX - 274, btnPosY - 74}, "Available", font);
-    btnRoad = new Button({btnPosX + 24, btnPosY - 74}, "On the road", font);
-    btnBroke = new Button({btnPosX - 274, btnPosY + 24}, "Broke down", font);
-    btnRepair = new Button({btnPosX + 24, btnPosY + 24}, "In repair", font);
-}
-
-void ChangeStatusPage::clear() {
-    btnAvailable->setBlock(false);
-    btnRoad->setBlock(false);
-    btnBroke->setBlock(false);
-    btnRepair->setBlock(false);
-}
-
 // public
 ChangeStatusPage::ChangeStatusPage(MainController *controller, RenderWindow *window, const Font &font)
         : Page(controller, window, font) {
@@ -27,6 +8,16 @@ ChangeStatusPage::ChangeStatusPage(MainController *controller, RenderWindow *win
 }
 
 ChangeStatusPage::~ChangeStatusPage() = default;
+
+void ChangeStatusPage::draw() {
+    setBtnBlock();
+
+    btnAvailable->drawTo(window);
+    btnRoad->drawTo(window);
+    btnBroke->drawTo(window);
+    btnRepair->drawTo(window);
+    drawBtnBack();
+}
 
 bool ChangeStatusPage::isMouseOver() {
     bool isCursorOver = false;
@@ -66,14 +57,22 @@ PageName ChangeStatusPage::mouseClick() {
     return PageName::changeStatus;
 }
 
-void ChangeStatusPage::draw() {
-    setBtnBlock();
+// private
+void ChangeStatusPage::create() {
+    float btnPosX = width / 2;
+    float btnPosY = height / 2 - 16;
 
-    btnAvailable->drawTo(window);
-    btnRoad->drawTo(window);
-    btnBroke->drawTo(window);
-    btnRepair->drawTo(window);
-    drawBackBtn();
+    btnAvailable = new Button({btnPosX - 274, btnPosY - 74}, "Available", font);
+    btnRoad = new Button({btnPosX + 24, btnPosY - 74}, "On the road", font);
+    btnBroke = new Button({btnPosX - 274, btnPosY + 24}, "Broke down", font);
+    btnRepair = new Button({btnPosX + 24, btnPosY + 24}, "In repair", font);
+}
+
+void ChangeStatusPage::clear() {
+    btnAvailable->setBlock(false);
+    btnRoad->setBlock(false);
+    btnBroke->setBlock(false);
+    btnRepair->setBlock(false);
 }
 
 void ChangeStatusPage::setBtnBlock() {
