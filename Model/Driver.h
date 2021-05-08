@@ -22,6 +22,10 @@ public:
 
     string getFullName();
 
+    const string &getId() const;
+
+    void setAvailable(bool isAvailable = true);
+
 private:
     string id;
     string name;

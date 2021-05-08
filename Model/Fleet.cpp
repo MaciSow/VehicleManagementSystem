@@ -96,10 +96,36 @@ const vector<Vehicle *> &Fleet::getVehicles() const {
 
 Vehicle *Fleet::getVehicleByPlate(string plate) {
     for (Vehicle *vehicle :vehicles) {
-        if (plate == vehicle->getPlate()){
+        if (plate == vehicle->getPlate()) {
             return vehicle;
         }
     }
+    return nullptr;
+}
+
+vector<Driver *> Fleet::getDrivers(bool onlyAvailable) {
+    if (!onlyAvailable) {
+        return drivers;
+    }
+
+    vector<Driver *> driversList;
+
+    for (Driver *driver :drivers) {
+        if (driver->isAvailableStatus()) {
+            driversList.push_back(driver);
+        }
+    }
+
+    return driversList;
+}
+
+Driver *Fleet::getDriver(string driverId) {
+    for (Driver *driver :drivers) {
+        if (driver->getId() == driverId) {
+            return driver;
+        }
+    }
+
     return nullptr;
 }
 

@@ -30,6 +30,10 @@ public:
     const vector<Vehicle *> &getVehicles() const;
 
     Vehicle* getVehicleByPlate(string plate);
+
+    vector<Driver *> getDrivers(bool onlyAvailable = false);
+
+    Driver * getDriver(string driverId);
 };
 
 

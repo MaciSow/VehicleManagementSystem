@@ -11,6 +11,7 @@ GraphicView::GraphicView(MainController *&ctr) {
     vehicleDataPage = new VehicleDataPage(controller, window, font);
     changeStatusPage = new ChangeStatusPage(controller, window, font);
     availablePage = new AvailablePage(controller, window, font);
+    roadPage = new RoadPage(controller, window, font);
     showRegisterPage = new ShowRegisterPage(controller, window, font);
     showRepairsPage = new ShowRepairsPage(controller, window, font);
     addEditVehiclePage = new AddEditVehiclePage(controller, window, font);
@@ -75,6 +76,10 @@ void GraphicView::textEnteredHandle(Event &event) {
         case PageName::addEditVehicle:
             addEditVehiclePage->textEntered(event);
             break;
+
+        case PageName::road:
+            roadPage->textEntered(event);
+            break;
         default:
             break;
     }
@@ -116,6 +121,12 @@ void GraphicView::mouseMovedHandle() {
 
         case PageName::available:
             if (availablePage->isMouseOver()) {
+                isCursorChange = true;
+            }
+            break;
+
+        case PageName::road:
+            if (roadPage->isMouseOver()) {
                 isCursorChange = true;
             }
             break;
@@ -189,6 +200,10 @@ void GraphicView::mouseButtonPressedHandle(Event &event) {
                 pageName = availablePage->mouseClick();
                 break;
 
+            case PageName::road:
+                pageName = roadPage->mouseClick();
+                break;
+
             case PageName::showRegister:
                 pageName = showRegisterPage->mouseClick();
                 break;
@@ -232,6 +247,10 @@ void GraphicView::mouseWheelMovedHandle(Event &event) {
 
         case PageName::showRepairs:
             showRepairsPage->scroll(event.mouseWheel.delta);
+            break;
+
+        case PageName::road:
+            roadPage->scroll(event.mouseWheel.delta);
             break;
 
         default:
@@ -279,6 +298,12 @@ void GraphicView::drawPage() {
             createTitle("Available");
             createFrame(width - 300, 250, framePosY + 60);
             availablePage->draw();
+            break;
+
+        case PageName::road:
+            createTitle("On the road");
+            createFrame(width - 300, frameHeight, framePosY);
+            roadPage->draw();
             break;
 
         case PageName::showRegister:

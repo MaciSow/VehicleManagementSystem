@@ -39,7 +39,7 @@ PageName ChangeStatusPage::mouseClick() {
     }
 
     if (btnRoad->isClick(window)) {
-        return PageName::vehicleData;
+        return PageName::road;
     }
 
     if (btnBroke->isClick(window)) {

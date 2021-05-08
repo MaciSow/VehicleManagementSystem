@@ -14,7 +14,6 @@ class Vehicle {
 protected:
     string plate;
     Status *status;
-
     string brand;
     string model;
     vector<Repair *> repairs;
@@ -50,6 +49,8 @@ public:
     vector<vector<string>> getRepairsData();
 
     Status *getStatus() const;
+
+    void setStatus(Status *status);
 
     StatusType getStatusType();
 };

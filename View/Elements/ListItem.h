@@ -15,6 +15,12 @@ enum ListType {
     CHOOSEDRIVER
 };
 
+enum State {
+    active,
+    hover,
+    pressed
+};
+
 class ListItem {
 private:
     RectangleShape listItem;
@@ -25,20 +31,15 @@ private:
     Text column3;
     Text column4;
 
+    bool isPressed = false;
+
     float width = 250;
     float height = 50;
     int h1 = 24;
     int h2 = 18;
     string id = "";
-    enum State {
-        active,
-        hover,
-        pressed
-    };
 
     void create(vector<string> data, Font &font);
-
-    void setListItemState(State state);
 
     Color getStatusColor(string status);
 
@@ -54,6 +55,8 @@ public:
 
     int getHeight();
 
+    void setListItemState(State state);
+
     void setPosition(Vector2f position);
 
     bool isMouseOver(RenderWindow *&window);
@@ -63,6 +66,10 @@ public:
     void release(RenderWindow *&window);
 
     void drawTo(RenderWindow *&window);
+
+    void setPressed(bool isPressed = true);
+
+    bool getPressed() const;
 };
 
 #endif  //VEHICLEMENAGMENTSYSTEM_VIEW_LIST_ITEM_H

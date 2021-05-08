@@ -2,6 +2,12 @@
 
 Date::Date(int day, int month, int year) : day(day), month(month), year(year) {}
 
+Date::Date() {
+    day = 1;
+    month = 1;
+    year = 2021;
+}
+
 Date::~Date() {
 
 }
@@ -33,4 +39,8 @@ void Date::log() {
 
 string Date::getStringDate() {
     return to_string(day) + '.' + to_string(month) + '.' + to_string(year);
+}
+
+void Date::addDays(int days) {
+    day += days;
 }

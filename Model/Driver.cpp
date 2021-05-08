@@ -38,3 +38,11 @@ bool Driver::isAvailableStatus() const {
 string Driver::getFullName() {
     return name + " " + surname;
 }
+
+const string &Driver::getId() const {
+    return id;
+}
+
+void Driver::setAvailable(bool isAvailable) {
+    this->isAvailable = isAvailable;
+}

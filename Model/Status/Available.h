@@ -5,7 +5,7 @@
 
 class Available: public Status {
 public:
-    Available(StatusType statusType);
+    Available();
 
     virtual ~Available();
 };

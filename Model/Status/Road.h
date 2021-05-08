@@ -9,7 +9,7 @@
 
 class Road : public Status{
 public:
-    Road(StatusType statusType, int distance, Driver *driver, Date *startDate, Date *endDate);
+    Road(int distance, Driver *driver, Date *startDate, Date *endDate);
 
     virtual ~Road();
 

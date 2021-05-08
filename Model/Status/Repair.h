@@ -6,7 +6,7 @@
 
 class Repair : public Status {
 public:
-    Repair(StatusType statusType, const string &name, const string &description, Date *fixDate);
+    Repair(const string &name, const string &description, Date *fixDate);
 
     virtual ~Repair();
 

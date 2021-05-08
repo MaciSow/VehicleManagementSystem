@@ -20,6 +20,7 @@
 #include "Pages/AddEditVehiclePage.h"
 #include "Pages/ChangeStatusPage.h"
 #include "Pages/AvailablePage.h"
+#include "Pages/RoadPage.h"
 
 using namespace std;
 using namespace sf;
@@ -41,6 +42,7 @@ private:
     VehicleDataPage* vehicleDataPage;
     ChangeStatusPage* changeStatusPage;
     AvailablePage* availablePage;
+    RoadPage* roadPage;
     ShowRegisterPage* showRegisterPage;
     ShowRepairsPage* showRepairsPage;
     AddEditVehiclePage* addEditVehiclePage;

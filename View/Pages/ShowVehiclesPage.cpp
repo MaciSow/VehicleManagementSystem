@@ -129,7 +129,7 @@ void ShowVehiclesPage::createHeader() {
 }
 
 void ShowVehiclesPage::fillList(float listWidth, float itemHeight) {
-    for (auto row:controller->getVehicleList()) {
+    for (auto row:controller->getVehiclesList()) {
         items.push_back(new ListItem({listWidth, itemHeight}, row, font, VEHICLES, row[3]));
         length++;
     }

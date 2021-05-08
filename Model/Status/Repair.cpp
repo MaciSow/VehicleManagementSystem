@@ -1,7 +1,10 @@
 #include "Repair.h"
 
-Repair::Repair(StatusType statusType, const string &name, const string &description, Date *fixDate) : Status(
-        statusType), name(name), description(description), fixDate(fixDate) {}
+Repair::Repair(const string &name, const string &description, Date *fixDate)
+        : Status(REPAIR),
+          name(name),
+          description(description),
+          fixDate(fixDate) {}
 
 Repair::~Repair() {
 

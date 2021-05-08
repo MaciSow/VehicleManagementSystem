@@ -174,7 +174,7 @@ Status *File::readStatus() {
 
     switch (getStatusNumber(statusType)) {
         case AVAILABLE:
-            return new Available(AVAILABLE);
+            return new Available();
         case ROAD:
             getline(File, nextLine);
             return readRoad(getValue());
@@ -210,13 +210,13 @@ Road *File::readRoad(string id) {
     Date *start = readDate();
     Date *end = readDate();
 
-    return new Road(ROAD, distance, driver, start, end);
+    return new Road(distance, driver, start, end);
 }
 
 Broke *File::readBroke() {
     string name = getValue();
     string description = getValue();
-    return new Broke(BROKE, name, description);
+    return new Broke(name, description);
 }
 
 Driver *File::readShortDriver() {
@@ -241,7 +241,7 @@ Repair *File::readRepair() {
     string name = cropValue(nextLine);
     string description = getValue();
     Date *date = readDate();
-    return new Repair(REPAIR, name, description, date);
+    return new Repair(name, description, date);
 }
 
 vector<Repair *> File::readRepairs() {

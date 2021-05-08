@@ -13,6 +13,7 @@ private:
     int year;
 
 public:
+    Date();
 
     Date(int day, int month, int year);
 
@@ -27,6 +28,8 @@ public:
     string getStringDate();
 
     void log();
+
+    void addDays(int days);
 };
 
 

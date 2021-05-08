@@ -9,7 +9,7 @@ private:
     string description;
 
 public:
-    Broke(StatusType statusType, const string &name, const string &description);
+    Broke(const string &name, const string &description);
 
     virtual ~Broke();
 

@@ -34,13 +34,17 @@ public:
 
     vector<int> getStateData();
 
-    vector<vector<string>> getVehicleList();
+    vector<vector<string>> getVehiclesList();
 
     void createVehicle(vector<string> vehicleData, VehicleType vehicleType);
 
     void editVehicle(vector<string> vehicleData);
 
     void setAvailable(bool isNow);
+
+    void setRoad(int distance, int pause, string driverId);
+
+    vector<vector<string>> getDriversList(bool onlyAvailable = false);
 };
 
 

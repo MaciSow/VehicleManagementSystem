@@ -90,3 +90,7 @@ vector<vector<string>> Vehicle::getRepairsData() {
 
     return repairsData;
 }
+
+void Vehicle::setStatus(Status *status) {
+    this->status = status;
+}

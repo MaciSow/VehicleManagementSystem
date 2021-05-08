@@ -55,7 +55,6 @@ private:
 
     void clearVehicleChoice();
 
-
     void saveData();
 };
 

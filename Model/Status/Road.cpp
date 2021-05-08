@@ -4,8 +4,8 @@
 Road::~Road() {
 }
 
-Road::Road(StatusType statusType, int distance, Driver *driver, Date *startDate, Date *endDate)
-        : Status(statusType),
+Road::Road(int distance, Driver *driver, Date *startDate, Date *endDate)
+        : Status(ROAD),
           distance(distance),
           driver(driver),
           startDate(startDate),

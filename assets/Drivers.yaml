@@ -18,6 +18,14 @@
   name: Roby
   surname: Rambo
   status: available
+- id: rob3am3420
+  name: Michael
+  surname: Rambo
+  status: available
+- id: rob4am3420
+  name: John
+  surname: Rambo
+  status: available
 - id: gumsol096
   name: Gummy
   surname: Solver

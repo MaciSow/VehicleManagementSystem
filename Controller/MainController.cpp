@@ -46,7 +46,7 @@ vector<int> MainController::getStateData() {
     return stateData;
 }
 
-vector<vector<string>> MainController::getVehicleList() {
+vector<vector<string>> MainController::getVehiclesList() {
     vector<vector<string>> vehicleList;
 
     for (Vehicle *vehicle: fleet->getVehicles()) {
@@ -72,7 +72,7 @@ Vehicle *MainController::getSelectedVehicle() const {
 
 void MainController::createVehicle(vector<string> vehicleData, VehicleType vehicleType) {
     Vehicle *vehicle;
-    Status *status = new Status(AVAILABLE);
+    Status *status = new Available();
 
     switch (vehicleType) {
         case CAR:
@@ -136,4 +136,27 @@ void MainController::editVehicle(vector<string> vehicleData) {
 
 void MainController::setAvailable(bool isNow) {
 
+}
+
+vector<vector<string>> MainController::getDriversList(bool onlyAvailable) {
+    vector<vector<string>> driversList;
+
+    for (Driver *driver:fleet->getDrivers(true)) {
+        vector<string> driverName = {driver->getFullName(), driver->getId()};
+        driversList.push_back(driverName);
+    };
+
+    return driversList;
+}
+
+void MainController::setRoad(int distance, int pause, string driverId) {
+    Driver *driver = fleet->getDriver(driverId);
+    driver->setAvailable(false);
+
+// todo prepare Date class to count date
+    Date *endDate = new Date();
+    endDate->addDays(pause);
+
+    Status *status = new Road(distance, driver, new Date(), endDate);
+    selectedVehicle->setStatus(status);
 }

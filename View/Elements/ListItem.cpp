@@ -40,13 +40,17 @@ void ListItem::setPosition(Vector2f position) {
             this->column2.setPosition({itemPosX + 316, itemPosY + 16});
             this->column3.setPosition({itemPosX + itemWidth - 110, itemPosY + 16});
             break;
+        case CHOOSEDRIVER:
+            this->column1.setPosition({itemPosX + 16, itemPosY + 12});
+            break;
         default:
             break;
     }
 }
 
-
 bool ListItem::isMouseOver(RenderWindow *&window) {
+
+
     int mouseX = (int) Mouse::getPosition(*window).x;
     int mouseY = (int) Mouse::getPosition(*window).y;
 
@@ -55,9 +59,19 @@ bool ListItem::isMouseOver(RenderWindow *&window) {
 
     if (mouseX > btnPosX && mouseX < btnPosX + width &&
         mouseY > btnPosY && mouseY < btnPosY + height) {
-        setListItemState(hover);
 
+        if(isPressed){
+            setListItemState(pressed);
+            return false;
+        }
+
+        setListItemState(hover);
         return true;
+    }
+
+    if(isPressed){
+        setListItemState(pressed);
+        return false;
     }
 
     setListItemState(active);
@@ -188,3 +202,17 @@ Color ListItem::getStatusColor(string status) {
     return {0, 0, 0, 255};
 }
 
+void ListItem::setPressed(bool isPressed) {
+    this->isPressed = isPressed;
+
+    if (isPressed){
+        setListItemState(pressed);
+        return;
+    }
+
+    setListItemState(active);
+}
+
+bool ListItem::getPressed() const {
+    return isPressed;
+}
