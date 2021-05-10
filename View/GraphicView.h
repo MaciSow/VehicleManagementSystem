@@ -22,6 +22,7 @@
 #include "Pages/AvailablePage.h"
 #include "Pages/RoadPage.h"
 #include "Pages/RepairPage.h"
+#include "Pages/BrokePage.h"
 
 using namespace std;
 using namespace sf;
@@ -44,6 +45,7 @@ private:
     ChangeStatusPage* changeStatusPage;
     AvailablePage* availablePage;
     RoadPage* roadPage;
+    BrokePage* brokePage;
     RepairPage* repairPage;
     ShowRegisterPage* showRegisterPage;
     ShowRepairsPage* showRepairsPage;

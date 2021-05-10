@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include "../Others/StatusType.h"
+#include "../Others/Date.h"
 
 using namespace std;
 
@@ -14,7 +15,6 @@ protected:
 public:
     StatusType getStatusType() const;
 
-public:
     Status(StatusType statusType);
 
     virtual ~Status() = default;

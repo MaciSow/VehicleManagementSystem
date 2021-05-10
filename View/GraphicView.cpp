@@ -12,6 +12,7 @@ GraphicView::GraphicView(MainController *&ctr) {
     changeStatusPage = new ChangeStatusPage(controller, window, font);
     availablePage = new AvailablePage(controller, window, font);
     roadPage = new RoadPage(controller, window, font);
+    brokePage = new BrokePage(controller, window, font);
     repairPage = new RepairPage(controller, window, font);
     showRegisterPage = new ShowRegisterPage(controller, window, font);
     showRepairsPage = new ShowRepairsPage(controller, window, font);
@@ -82,7 +83,11 @@ void GraphicView::textEnteredHandle(Event &event) {
             roadPage->textEntered(event);
             break;
 
-        case PageName::repair:
+        case PageName::broke:
+            brokePage->textEntered(event);
+            break;
+
+            case PageName::repair:
             repairPage->textEntered(event);
             break;
         default:
@@ -132,6 +137,11 @@ void GraphicView::mouseMovedHandle() {
 
         case PageName::road:
             if (roadPage->isMouseOver()) {
+                isCursorChange = true;
+            }
+
+        case PageName::broke:
+            if (brokePage->isMouseOver()) {
                 isCursorChange = true;
             }
 
@@ -213,6 +223,11 @@ void GraphicView::mouseButtonPressedHandle(Event &event) {
             case PageName::road:
                 pageName = roadPage->mouseClick();
                 break;
+
+            case PageName::broke:
+                pageName = brokePage->mouseClick();
+                break;
+
             case PageName::repair:
                 pageName = repairPage->mouseClick();
                 break;
@@ -317,6 +332,12 @@ void GraphicView::drawPage() {
             createTitle("On the road");
             createFrame(width - 300, frameHeight, framePosY);
             roadPage->draw();
+            break;
+
+        case PageName::broke:
+            createTitle("Broke down");
+            createFrame(width - 300, 250, framePosY+60);
+            brokePage->draw();
             break;
 
         case PageName::repair:

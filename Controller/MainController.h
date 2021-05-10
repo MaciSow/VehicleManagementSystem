@@ -17,6 +17,7 @@ private:
     string path = "assets/";
     string filename = "Vehicles.yaml";
     Vehicle *selectedVehicle = nullptr;
+
 public:
     Vehicle *getSelectedVehicle() const;
 
@@ -45,6 +46,8 @@ public:
     void setRoad(int distance, int pause, string driverId);
 
     vector<vector<string>> getDriversList(bool onlyAvailable = false);
+
+    void setBroke(string name, string description);
 
     void setRepair(int takeTime);
 };

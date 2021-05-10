@@ -135,7 +135,17 @@ void MainController::editVehicle(vector<string> vehicleData) {
 }
 
 void MainController::setAvailable(bool isNow) {
+    Status *status = selectedVehicle->getStatus();
+    Road *road = dynamic_cast<Road *>(status);
 
+    if (isNow) {
+        road->setEndDate(new Date());
+    } else {
+        road->setReturn();
+    }
+
+    selectedVehicle->addRoad(road);
+    selectedVehicle->setStatus(new Available());
 }
 
 vector<vector<string>> MainController::getDriversList(bool onlyAvailable) {
@@ -153,11 +163,7 @@ void MainController::setRoad(int distance, int pause, string driverId) {
     Driver *driver = fleet->getDriver(driverId);
     driver->setAvailable(false);
 
-// todo prepare Date class to count date
-    Date *endDate = new Date();
-    endDate->addDays(pause);
-
-    Status *status = new Road(distance, driver, new Date(), endDate);
+    Status *status = new Road(distance, driver, pause);
     selectedVehicle->setStatus(status);
 }
 
@@ -176,4 +182,17 @@ void MainController::setRepair(int takeTime) {
         return;
     }
     selectedVehicle->setStatus(repair);
+}
+
+void MainController::setBroke(string name, string description) {
+    Status *status = selectedVehicle->getStatus();
+
+    if (Road *road = dynamic_cast<Road *>(status)) {
+        road->setEndDate(new Date());
+        selectedVehicle->addRoad(road);
+    }
+
+    Broke *broke = new Broke(name, description);
+    selectedVehicle->setStatus(broke);
+    return;
 }
