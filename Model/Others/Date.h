@@ -30,6 +30,8 @@ public:
     void log();
 
     void addDays(int days);
+
+    int getDay() const;
 };
 
 

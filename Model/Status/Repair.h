@@ -12,7 +12,9 @@ public:
 
     void log();
 
-    vector<string> getRepairData();
+    vector<string> getRepairData(); //todo change to getData
+
+    vector<string> getData();
 
 private:
     string name;

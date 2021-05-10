@@ -12,6 +12,7 @@ GraphicView::GraphicView(MainController *&ctr) {
     changeStatusPage = new ChangeStatusPage(controller, window, font);
     availablePage = new AvailablePage(controller, window, font);
     roadPage = new RoadPage(controller, window, font);
+    repairPage = new RepairPage(controller, window, font);
     showRegisterPage = new ShowRegisterPage(controller, window, font);
     showRepairsPage = new ShowRepairsPage(controller, window, font);
     addEditVehiclePage = new AddEditVehiclePage(controller, window, font);
@@ -80,6 +81,10 @@ void GraphicView::textEnteredHandle(Event &event) {
         case PageName::road:
             roadPage->textEntered(event);
             break;
+
+        case PageName::repair:
+            repairPage->textEntered(event);
+            break;
         default:
             break;
     }
@@ -127,6 +132,11 @@ void GraphicView::mouseMovedHandle() {
 
         case PageName::road:
             if (roadPage->isMouseOver()) {
+                isCursorChange = true;
+            }
+
+        case PageName::repair:
+            if (repairPage->isMouseOver()) {
                 isCursorChange = true;
             }
             break;
@@ -202,6 +212,9 @@ void GraphicView::mouseButtonPressedHandle(Event &event) {
 
             case PageName::road:
                 pageName = roadPage->mouseClick();
+                break;
+            case PageName::repair:
+                pageName = repairPage->mouseClick();
                 break;
 
             case PageName::showRegister:
@@ -304,6 +317,12 @@ void GraphicView::drawPage() {
             createTitle("On the road");
             createFrame(width - 300, frameHeight, framePosY);
             roadPage->draw();
+            break;
+
+        case PageName::repair:
+            createTitle("In repair");
+            createFrame(width - 300, 250, framePosY + 60);
+            repairPage->draw();
             break;
 
         case PageName::showRegister:

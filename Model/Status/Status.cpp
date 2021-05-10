@@ -46,4 +46,8 @@ string Status::getStatusName() {
     }
 }
 
+vector<string> Status::getData() {
+    return vector<string>();
+}
+
 

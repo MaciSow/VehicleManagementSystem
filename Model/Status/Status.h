@@ -19,6 +19,8 @@ public:
 
     virtual ~Status() = default;
 
+    virtual vector<string> getData();
+
     void log();
 
     string getStatusName();

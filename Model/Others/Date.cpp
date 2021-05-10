@@ -44,3 +44,7 @@ string Date::getStringDate() {
 void Date::addDays(int days) {
     day += days;
 }
+
+int Date::getDay() const {
+    return day;
+}

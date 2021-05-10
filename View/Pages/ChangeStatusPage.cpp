@@ -47,7 +47,7 @@ PageName ChangeStatusPage::mouseClick() {
     }
 
     if (btnRepair->isClick(window)) {
-        return PageName::vehicleData;
+        return PageName::repair;
     }
 
     if (handleBtnBackClick()) {

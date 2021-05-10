@@ -13,6 +13,8 @@ public:
 
     virtual ~Broke();
 
+    vector<string> getData();
+
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_BROKE_H

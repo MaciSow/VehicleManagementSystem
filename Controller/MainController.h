@@ -45,6 +45,8 @@ public:
     void setRoad(int distance, int pause, string driverId);
 
     vector<vector<string>> getDriversList(bool onlyAvailable = false);
+
+    void setRepair(int takeTime);
 };
 
 

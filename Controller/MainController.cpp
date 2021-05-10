@@ -160,3 +160,20 @@ void MainController::setRoad(int distance, int pause, string driverId) {
     Status *status = new Road(distance, driver, new Date(), endDate);
     selectedVehicle->setStatus(status);
 }
+
+void MainController::setRepair(int takeTime) {
+    Status *status = selectedVehicle->getStatus();
+    vector<string> statusData = status->getData();
+
+    Date *fixDate = new Date();
+    fixDate->addDays(takeTime);
+
+    Repair *repair = new Repair(statusData[0], statusData[1], fixDate);
+
+    if (!takeTime) {
+        selectedVehicle->addRepair(repair);
+        selectedVehicle->setStatus(new Available());
+        return;
+    }
+    selectedVehicle->setStatus(repair);
+}

@@ -23,3 +23,11 @@ vector<string> Repair::getRepairData() {
 
     return repairData;
 }
+
+vector<string> Repair::getData() {
+    vector<string> repairData;
+    repairData.push_back(name);
+    repairData.push_back(description);
+    repairData.push_back(fixDate->getStringDate());
+    return repairData;
+}

@@ -4,10 +4,6 @@
 #include "Page.h"
 
 class AvailablePage : public virtual Page {
-private:
-    Button *btnReturn;
-    Button *btnStop;
-
 public:
     AvailablePage(MainController *controller, RenderWindow *window, const Font &font);
 
@@ -20,6 +16,9 @@ public:
     PageName mouseClick() override;
 
 private:
+    Button *btnReturn;
+    Button *btnStop;
+
     void create() override;
 
     void clear() override;
