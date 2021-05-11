@@ -23,6 +23,9 @@
 #include "Pages/RoadPage.h"
 #include "Pages/RepairPage.h"
 #include "Pages/BrokePage.h"
+#include "Pages/ShowDriversPage.h"
+#include "Pages/DriverDataPage.h"
+#include "Pages/AddEditDriverPage.h"
 
 using namespace std;
 using namespace sf;
@@ -50,6 +53,9 @@ private:
     ShowRegisterPage* showRegisterPage;
     ShowRepairsPage* showRepairsPage;
     AddEditVehiclePage* addEditVehiclePage;
+    ShowDriversPage* showDriversPage;
+    DriverDataPage* driverDataPage;
+    AddEditDriverPage* addEditDriverPage;
     BasePage* basePage;
     ClosePage* closePage;
 

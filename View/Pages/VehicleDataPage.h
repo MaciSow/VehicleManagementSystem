@@ -29,6 +29,8 @@ private:
     void clear() override;
 
     void fillData();
+
+    Color getStatusColor(string status);
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_VEHICLEDATAPAGE_H

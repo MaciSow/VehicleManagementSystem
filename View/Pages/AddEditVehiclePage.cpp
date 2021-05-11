@@ -151,7 +151,7 @@ void AddEditVehiclePage::prepare() {
 
         activeBtnSave();
 
-        isEdit = !!controller->getSelectedVehicle();
+        isEdit = controller->getSelectedVehicle();
 
         vehicleType = CAR;
         prepareVehicleChoice(btnVehicleChoices[0]);

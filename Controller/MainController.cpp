@@ -1,6 +1,5 @@
 #include "MainController.h"
 
-
 MainController::MainController() {
 
     fleet = new Fleet();
@@ -151,9 +150,17 @@ void MainController::setAvailable(bool isNow) {
 vector<vector<string>> MainController::getDriversList(bool onlyAvailable) {
     vector<vector<string>> driversList;
 
-    for (Driver *driver:fleet->getDrivers(true)) {
-        vector<string> driverName = {driver->getFullName(), driver->getId()};
-        driversList.push_back(driverName);
+    for (Driver *driver:fleet->getDrivers(onlyAvailable)) {
+        vector<string> row;
+        row.push_back(driver->getFullName());
+
+        if (!onlyAvailable) {
+            row.push_back(driver->getStatusName());
+        }
+
+        row.push_back(driver->getId());
+
+        driversList.push_back(row);
     };
 
     return driversList;
@@ -195,4 +202,27 @@ void MainController::setBroke(string name, string description) {
     Broke *broke = new Broke(name, description);
     selectedVehicle->setStatus(broke);
     return;
+}
+
+Driver *MainController::getSelectedDriver() const {
+    return selectedDriver;
+}
+
+void MainController::selectDriver(string driverId) {
+    selectedDriver = fleet->getDriver(driverId);
+}
+
+void MainController::unselectDriver() {
+    selectedDriver = nullptr;
+}
+
+void MainController::createDriver(string name, string surname) {
+    Driver *driver = new Driver(name, surname, true);
+    fleet->addDriver(driver);
+    selectedDriver = driver;
+}
+
+void MainController::editDriver(string name, string surname) {
+    selectedDriver->setName(name);
+    selectedDriver->setSurname(surname);
 }

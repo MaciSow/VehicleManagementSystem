@@ -3,12 +3,15 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 class Driver {
 public:
-    Driver(const string &id, const string &name, const string &surname, bool isAvaliable);
+    Driver(const string &id, const string &name, const string &surname, bool isAvailable);
+
+    Driver(const string &name, const string &surname, bool isAvailable);
 
     Driver(const string &name, const string &surname);
 
@@ -25,6 +28,14 @@ public:
     const string &getId() const;
 
     void setAvailable(bool isAvailable = true);
+
+    vector<string> getAllData();
+
+    string getStatusName();
+
+    void setName(const string &name);
+
+    void setSurname(const string &surname);
 
 private:
     string id;

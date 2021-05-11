@@ -14,6 +14,9 @@ enum class PageName {
     showRegister,
     showRepairs,
     addEditVehicle,
+    showDrivers,
+    driverData,
+    addEditDriver,
     base,
     close
 };

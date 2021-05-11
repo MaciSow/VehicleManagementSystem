@@ -17,6 +17,9 @@ GraphicView::GraphicView(MainController *&ctr) {
     showRegisterPage = new ShowRegisterPage(controller, window, font);
     showRepairsPage = new ShowRepairsPage(controller, window, font);
     addEditVehiclePage = new AddEditVehiclePage(controller, window, font);
+    showDriversPage = new ShowDriversPage(controller, window, font);
+    driverDataPage = new DriverDataPage(controller, window, font);
+    addEditDriverPage = new AddEditDriverPage(controller, window, font);
     basePage = new BasePage(controller, window, font);
     closePage = new ClosePage(controller, window, font);
 }
@@ -87,8 +90,12 @@ void GraphicView::textEnteredHandle(Event &event) {
             brokePage->textEntered(event);
             break;
 
-            case PageName::repair:
+        case PageName::repair:
             repairPage->textEntered(event);
+            break;
+
+        case PageName::addEditDriver:
+            addEditDriverPage->textEntered(event);
             break;
         default:
             break;
@@ -169,6 +176,24 @@ void GraphicView::mouseMovedHandle() {
             }
             break;
 
+        case PageName::showDrivers:
+            if (showDriversPage->isMouseOver()) {
+                isCursorChange = true;
+            }
+            break;
+
+        case PageName::driverData:
+            if (driverDataPage->isMouseOver()) {
+                isCursorChange = true;
+            }
+            break;
+
+        case PageName::addEditDriver:
+            if (addEditDriverPage->isMouseOver()) {
+                isCursorChange = true;
+            }
+            break;
+
         case PageName::base:
             if (basePage->isMouseOver()) {
                 isCursorChange = true;
@@ -244,6 +269,18 @@ void GraphicView::mouseButtonPressedHandle(Event &event) {
                 pageName = addEditVehiclePage->mouseClick();
                 break;
 
+            case PageName::showDrivers:
+                pageName = showDriversPage->mouseClick();
+                break;
+
+            case PageName::driverData:
+                pageName = driverDataPage->mouseClick();
+                break;
+
+            case PageName::addEditDriver:
+                pageName = addEditDriverPage->mouseClick();
+                break;
+
             case PageName::base:
                 pageName = basePage->mouseClick();
                 break;
@@ -275,6 +312,10 @@ void GraphicView::mouseWheelMovedHandle(Event &event) {
 
         case PageName::showRepairs:
             showRepairsPage->scroll(event.mouseWheel.delta);
+            break;
+
+        case PageName::showDrivers:
+            showDriversPage->scroll(event.mouseWheel.delta);
             break;
 
         case PageName::road:
@@ -336,7 +377,7 @@ void GraphicView::drawPage() {
 
         case PageName::broke:
             createTitle("Broke down");
-            createFrame(width - 300, 250, framePosY+60);
+            createFrame(width - 300, 250, framePosY + 60);
             brokePage->draw();
             break;
 
@@ -367,6 +408,28 @@ void GraphicView::drawPage() {
             }
             createFrame(width - 200, frameHeight, framePosY);
             addEditVehiclePage->draw();
+            break;
+
+        case PageName::showDrivers:
+            createTitle("Show drivers");
+            createFrame(width - 200, frameHeight, framePosY);
+            showDriversPage->draw();
+            break;
+
+        case PageName::driverData:
+            createTitle("Driver data");
+            createFrame(width - 300, 250, framePosY + 60);
+            driverDataPage->draw();
+            break;
+
+        case PageName::addEditDriver:
+            if (!controller->getSelectedDriver()) {
+                createTitle("Add Vehicle");
+            } else {
+                createTitle("Edit Vehicle");
+            }
+            createFrame(width - 300, 250, framePosY + 60);
+            addEditDriverPage->draw();
             break;
 
         case PageName::base:

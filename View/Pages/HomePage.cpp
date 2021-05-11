@@ -38,7 +38,7 @@ PageName HomePage::mouseClick() {
     }
 
     if (btnShowDriver->isClick(window)) {
-        return PageName::close; //TODO name page to in
+        return PageName::showDrivers;
     }
 
     if (btnExit->isClick(window)) {

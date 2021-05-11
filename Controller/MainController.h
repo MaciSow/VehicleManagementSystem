@@ -6,7 +6,6 @@
 
 #include "../Model/Others/File.h"
 #include "../Model/Fleet.h"
-//#include "../View/ConsoleView.h"
 
 using namespace std;
 
@@ -16,14 +15,21 @@ private:
     File *f1;
     string path = "assets/";
     string filename = "Vehicles.yaml";
-    Vehicle *selectedVehicle = nullptr;
 
+    Vehicle *selectedVehicle = nullptr;
+    Driver *selectedDriver = nullptr;
 public:
     Vehicle *getSelectedVehicle() const;
 
     void selectVehicle(string plate);
 
     void unselectVehicle();
+
+    Driver *getSelectedDriver() const;
+
+    void selectDriver(string driverId);
+
+    void unselectDriver();
 
     bool isCreating = false;
 
@@ -50,6 +56,10 @@ public:
     void setBroke(string name, string description);
 
     void setRepair(int takeTime);
+
+    void createDriver(string name, string surname);
+
+    void editDriver(string name, string surname);
 };
 
 

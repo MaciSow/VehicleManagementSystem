@@ -138,10 +138,26 @@ void VehicleDataPage::fillData() {
         item.setFillColor(Color::Black);
         item.setPosition({posX - item.getLocalBounds().width, posY += offset});
 
-        value.setFillColor(Color::Black);
+        value.setFillColor(i == 6 ? getStatusColor(values[6]) : Color::Black);
         value.setPosition({posX + 8, posY});
 
         window->draw(item);
         window->draw(value);
     }
+}
+
+Color VehicleDataPage::getStatusColor(string status) {
+    if (status == "Available") {
+        return {5, 128, 10, 255};
+    }
+
+    if (status == "Broke down") {
+        return {175, 28, 28, 255};
+    }
+
+    if (status == "In repair") {
+        return {223, 134, 0, 255};
+    }
+
+    return {0, 0, 0, 255};
 }
