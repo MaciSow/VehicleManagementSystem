@@ -21,7 +21,7 @@ GraphicView::GraphicView(MainController *&ctr) {
     driverDataPage = new DriverDataPage(controller, window, font);
     addEditDriverPage = new AddEditDriverPage(controller, window, font);
     basePage = new BasePage(controller, window, font);
-    closePage = new ClosePage(controller, window, font);
+    exitPage = new ExitPage(controller, window, font);
 }
 
 GraphicView::~GraphicView() = default;
@@ -200,8 +200,8 @@ void GraphicView::mouseMovedHandle() {
             }
             break;
 
-        case PageName::close:
-            if (closePage->isMouseOver()) {
+        case PageName::exit:
+            if (exitPage->isMouseOver()) {
                 isCursorChange = true;
             }
             break;
@@ -285,8 +285,8 @@ void GraphicView::mouseButtonPressedHandle(Event &event) {
                 pageName = basePage->mouseClick();
                 break;
 
-            case PageName::close:
-                pageName = closePage->mouseClick();
+            case PageName::exit:
+                pageName = exitPage->mouseClick();
                 break;
 
             default:
@@ -438,10 +438,10 @@ void GraphicView::drawPage() {
             basePage->draw();
             break;
 
-        case PageName::close:
-            createTitle("Save file");
-            createFrame(width - 200, 300, height / 2 - 150);
-            closePage->draw();
+        case PageName::exit:
+            createTitle("Close");
+            createFrame(width - 300, 250, framePosY + 60);
+            exitPage->draw();
             break;
 
         default:
@@ -498,7 +498,7 @@ void GraphicView::createBackground() {
 
 void GraphicView::cleanPage() {
     delete homePage;
-    delete closePage;
+    delete exitPage;
     controller->clean();
 }
 

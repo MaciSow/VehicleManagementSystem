@@ -4,23 +4,17 @@ MainController::MainController() {
 
     fleet = new Fleet();
     f1 = new File();
-    f1->readVehiclesData(path + filename, fleet);
+    f1->readVehiclesData(path + vehiclesDataFilename, fleet);
 
     f1 = new File();
-    filename = "Drivers.yaml";
-    f1->readDriversData(path + filename, fleet);
-
-//    fleet->log();
-
-    cout << fleet->getVehicles()[1]->getRegisterData().size();
-
+    f1->readDriversData(path + driversDataFilename, fleet);
 }
 
-void MainController::save(string filename) {
-//	if (filename == "") {
-//		filename = this->filename;
+void MainController::save() {
+//	if (vehiclesDataFilename == "") {
+//		vehiclesDataFilename = this->vehiclesDataFilename;
 //	}
-//	f1->saveData(list, path + filename);
+//	f1->saveData(list, path + vehiclesDataFilename);
 }
 
 void MainController::clean() {

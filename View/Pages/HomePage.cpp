@@ -42,7 +42,7 @@ PageName HomePage::mouseClick() {
     }
 
     if (btnExit->isClick(window)) {
-        return PageName::close;
+        return PageName::exit;
     }
 
     return PageName::home;

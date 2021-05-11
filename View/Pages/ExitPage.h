@@ -3,12 +3,11 @@
 
 #include "Page.h"
 
-class ClosePage : public virtual Page {
-
+class ExitPage : public virtual Page {
 public:
-    ClosePage(MainController *controller, RenderWindow *window, const Font &font);
+    ExitPage(MainController *controller, RenderWindow *window, const Font &font);
 
-    ~ ClosePage();
+    ~ExitPage();
 
     void draw() override;
 
@@ -17,9 +16,11 @@ public:
     PageName mouseClick() override;
 
 private:
-    void create() override;
+    Button *btnYes;
+    Button *btnNo;
+    Text text;
 
-    void clear() override;
+    void create() override;
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_VIEW_CLOSEPAGE_H

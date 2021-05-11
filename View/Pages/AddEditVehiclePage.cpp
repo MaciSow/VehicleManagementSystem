@@ -104,6 +104,7 @@ void AddEditVehiclePage::textEntered(Event &event) {
 // private
 void AddEditVehiclePage::create() {
     float btnWidth = 150;
+    float btnPosX = width / 2;
     float btnPosY = height - 50 - 32;
 
     btnSave = new Button({32, btnPosY}, "Save", font, btnWidth);
@@ -111,30 +112,30 @@ void AddEditVehiclePage::create() {
     btnPosY = 110;
 
     btnVehicleChoices.push_back(
-            new Button({width / 2 - 380 / 4 * 3 - btnWidth / 2, btnPosY}, "Car", font, btnWidth, 50, "Car"));
+            new Button({btnPosX - 380 / 4 * 3 - btnWidth / 2, btnPosY}, "Car", font, btnWidth, 50, "Car"));
     btnVehicleChoices.push_back(
-            new Button({width / 2 - 380 / 4 - btnWidth / 2, btnPosY}, "Bus", font, btnWidth, 50, "Bus"));
+            new Button({btnPosX - 380 / 4 - btnWidth / 2, btnPosY}, "Bus", font, btnWidth, 50, "Bus"));
     btnVehicleChoices.push_back(
-            new Button({width / 2 + 380 / 4 - btnWidth / 2, btnPosY}, "Van", font, btnWidth, 50, "Van"));
+            new Button({btnPosX + 380 / 4 - btnWidth / 2, btnPosY}, "Van", font, btnWidth, 50, "Van"));
     btnVehicleChoices.push_back(
-            new Button({width / 2 + 380 / 4 * 3 - btnWidth / 2, btnPosY}, "Truck", font, btnWidth, 50, "Truck"));
+            new Button({btnPosX + 380 / 4 * 3 - btnWidth / 2, btnPosY}, "Truck", font, btnWidth, 50, "Truck"));
 
     btnVehicleChoices[0]->setActive(true);
 
-    inputs.push_back(new Input({width / 2 - 360, 200}, font, "Plate:", 400));
-    inputs.push_back(new Input({width / 2 - 360, 300}, font, "Brand:", 400));
-    inputs.push_back(new Input({width / 2 - 360, 400}, font, "Model:", 400));
-    inputs.push_back(new Input({width / 2 + 100, 200}, font, "Seats:", 260));
-    inputs.push_back(new Input({width / 2 + 100, 300}, font, "Doors:", 260));
-    inputs.push_back(new Input({width / 2 + 100, 400}, font, "Body style:", 260));
+    inputs.push_back(new Input({btnPosX - 360, 200}, font, "Plate:", 400));
+    inputs.push_back(new Input({btnPosX - 360, 300}, font, "Brand:", 400));
+    inputs.push_back(new Input({btnPosX - 360, 400}, font, "Model:", 400));
+    inputs.push_back(new Input({btnPosX + 100, 200}, font, "Seats:", 260));
+    inputs.push_back(new Input({btnPosX + 100, 300}, font, "Doors:", 260));
+    inputs.push_back(new Input({btnPosX + 100, 400}, font, "Body style:", 260));
 
     inputs[3]->setIsNumber();
     inputs[4]->setIsNumber();
 
-    btnOptions.push_back(new Button({width / 2 + 232, 300}, "_/", font, 64, 40));
-    btnOptions.push_back(new Button({width / 2 + 296, 300}, "X", font, 64, 40));
-    btnOptions.push_back(new Button({width / 2 + 232, 400}, "_/", font, 64, 40));
-    btnOptions.push_back(new Button({width / 2 + 296, 400}, "X", font, 64, 40));
+    btnOptions.push_back(new Button({btnPosX + 232, 300}, "_/", font, 64, 40));
+    btnOptions.push_back(new Button({btnPosX + 296, 300}, "X", font, 64, 40));
+    btnOptions.push_back(new Button({btnPosX + 232, 400}, "_/", font, 64, 40));
+    btnOptions.push_back(new Button({btnPosX + 296, 400}, "X", font, 64, 40));
 
     btnOptions[0]->setActive(true);
     btnOptions[1]->setColor({0, 0, 0, 205}, {196, 55, 55, 205});

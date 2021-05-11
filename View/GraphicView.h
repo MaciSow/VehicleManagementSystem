@@ -13,7 +13,7 @@
 #include "Pages/FleetStatePage.h"
 #include "Pages/VehicleDataPage.h"
 #include "Pages/BasePage.h"
-#include "Pages/ClosePage.h"
+#include "Pages/ExitPage.h"
 #include "Pages/ShowVehiclesPage.h"
 #include "Pages/ShowRegisterPage.h"
 #include "Pages/ShowRepairsPage.h"
@@ -57,7 +57,7 @@ private:
     DriverDataPage* driverDataPage;
     AddEditDriverPage* addEditDriverPage;
     BasePage* basePage;
-    ClosePage* closePage;
+    ExitPage* exitPage;
 
     void textEnteredHandle(Event& event);
     void mouseMovedHandle();

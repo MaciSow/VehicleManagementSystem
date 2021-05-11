@@ -18,6 +18,7 @@ enum class PageName {
     driverData,
     addEditDriver,
     base,
+    exit,
     close
 };
 

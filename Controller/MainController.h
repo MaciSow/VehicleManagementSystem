@@ -14,7 +14,8 @@ private:
     Fleet *fleet;
     File *f1;
     string path = "assets/";
-    string filename = "Vehicles.yaml";
+    string vehiclesDataFilename = "Vehicles.yaml";
+    string driversDataFilename = "Drivers.yaml";
 
     Vehicle *selectedVehicle = nullptr;
     Driver *selectedDriver = nullptr;
@@ -35,7 +36,7 @@ public:
 
     MainController();
 
-    void save(string filename);
+    void save();
 
     void clean();
 

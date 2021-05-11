@@ -64,11 +64,6 @@ void AvailablePage::create() {
 
     btnReturn = new Button({btnPosX - 125, btnPosY - 84}, "Return from road", font);
     btnStop = new Button({btnPosX - 125, btnPosY + 42}, "Stop journey now", font);
-
-    RectangleShape line({100, 2});
-    line.setFillColor({136, 136, 136, 255});
-    line.move(btnPosX - 116, btnPosY);
-
 }
 
 void AvailablePage::clear() {
@@ -103,4 +98,3 @@ void AvailablePage::checkChoice() {
         activeBtnSave();
     }
 }
-
