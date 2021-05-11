@@ -16,6 +16,8 @@ public:
 
     vector<string> getData();
 
+    vector<string> getStatusPrintData(bool shortVersion = false);
+
 private:
     string name;
     string description;

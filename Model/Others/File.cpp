@@ -3,18 +3,18 @@
 
 void File::readVehiclesData(const string &fileName, Fleet *&fleet) {
 
-    File.open(fileName, ios::in);
+    FileRead.open(fileName, ios::in);
 
-    if (!File.is_open()) {
+    if (!FileRead.is_open()) {
         cout << "Nie znaleziono pliku " << fileName << endl;
         return;
     }
 
     bool validClass = true;
-    getline(File, nextLine);
+    getline(FileRead, nextLine);
     Vehicle *vehicle;
 
-    while (!File.eof() && validClass && nextLine.length()) {
+    while (!FileRead.eof() && validClass && nextLine.length()) {
         if (nextLine.length() && nextLine.substr(0, 8) == "- class:") {
             string classType = cropValue(nextLine);
 
@@ -51,7 +51,7 @@ void File::readVehiclesData(const string &fileName, Fleet *&fleet) {
 //        fleet->log();
     }
 
-    File.close();
+    FileRead.close();
 }
 
 string File::cropValue(string line) {
@@ -69,7 +69,7 @@ string File::cropValue(string line) {
 string File::getValue() {
     string txt;
 
-    getline(File, txt);
+    getline(FileRead, txt);
     txt = cropValue(txt);
 
     return txt;
@@ -168,20 +168,22 @@ Truck *File::readTruck() {
 }
 
 Status *File::readStatus() {
-    getline(File, nextLine);
+    getline(FileRead, nextLine);
 
     string statusType = getValue();
+    string id;
 
     switch (getStatusNumber(statusType)) {
         case AVAILABLE:
             return new Available();
         case ROAD:
-            getline(File, nextLine);
-            return readRoad(getValue());
+            id = getValue();
+            getline(FileRead, nextLine);
+            return readRoad(id);
         case BROKE:
             return readBroke();
         case REPAIR:
-            getline(File, nextLine);
+            getline(FileRead, nextLine);
             return readRepair();
         default:
             return nullptr;
@@ -228,7 +230,7 @@ Driver *File::readShortDriver() {
 Driver *File::readDriver() {
     string id = cropValue(nextLine);
     vector<string> driverData = getNLines(3);
-    bool isAvailable = driverData[2] == "available";
+    bool isAvailable = driverData[2] == "Available";
     return new Driver(id, driverData[0], driverData[1], isAvailable);
 }
 
@@ -245,58 +247,148 @@ Repair *File::readRepair() {
 }
 
 vector<Repair *> File::readRepairs() {
-    getline(File, nextLine);
-    getline(File, nextLine);
+    getline(FileRead, nextLine);
+    getline(FileRead, nextLine);
 
     vector<Repair *> repairs;
     while (nextLine.substr(4, 7) == "- name:") {
         repairs.push_back(readRepair());
-        getline(File, nextLine);
+        getline(FileRead, nextLine);
     }
 
     return repairs;
 }
 
 vector<Road *> File::readRegister() {
-    getline(File, nextLine);
+    getline(FileRead, nextLine);
 
     vector<Road *> roadRegister;
-    while (nextLine.length() &&  nextLine.substr(4, 7) == "- name:") {
+    while (nextLine.length() && nextLine.substr(4, 7) == "- name:") {
         roadRegister.push_back(readRoad());
-        getline(File, nextLine);
+        getline(FileRead, nextLine);
     }
     return roadRegister;
 }
 
 void File::readDriversData(const string &fileName, Fleet *&fleet) {
-    File.open(fileName, ios::in);
+    FileRead.open(fileName, ios::in);
 
-    if (!File.is_open()) {
+    if (!FileRead.is_open()) {
         cout << "Nie znaleziono pliku " << fileName << endl;
         return;
     }
 
     bool validData = true;
-    getline(File, nextLine);
+    getline(FileRead, nextLine);
     Driver *driver;
 
-    while (!File.eof() && validData) {
+    while (!FileRead.eof() && validData) {
         if (nextLine.substr(0, 5) == "- id:") {
             driver = readDriver();
             fleet->addDriver(driver);
-            getline(File, nextLine);
+            getline(FileRead, nextLine);
         } else {
             validData = false;
         }
     }
 //    fleet->log();
-    File.close();
+    FileRead.close();
 }
 
-string File::saveData(Fleet *fleet, string fileName) {
-    if (fileName == "") {
-        fileName = "new.yaml";
+void File::saveVehiclesData(string fileName, vector<Vehicle *> vehicles) {
+    FilePrint = ofstream(fileName);
+
+    if (FilePrint.is_open()) {
+        for (Vehicle *vehicle: vehicles) {
+            printVehicleData(vehicle);
+            FilePrint << "  status:" << endl;
+            printStatusData(vehicle->getStatus());
+            FilePrint << "  repairs:" << endl;
+            printRepairsData(vehicle->getRepairs());
+            FilePrint << "  register:" << endl;
+            printRegisterData(vehicle->getRoadRegister());
+        }
+        FilePrint.close();
+        return;
     }
 
-    return fileName;
+    cout << "Fail save data";
+}
+
+void File::saveDriversData(string fileName, vector<Driver *> drivers) {
+    FilePrint = ofstream(fileName);
+
+    if (FilePrint.is_open()) {
+        for (Driver *driver: drivers) {
+            vector<string> driverData = driver->getDriverPrintData();
+
+            string separator = "- ";
+
+            FilePrint << separator + *driverData.begin() << endl;
+
+            separator = "  ";
+            for (int i = 1; i < driverData.size(); i++) {
+                FilePrint << separator + *(driverData.begin() + i) << endl;
+            }
+        }
+        FilePrint.close();
+        return;
+    }
+
+    cout << "Fail save data";
+}
+
+void File::printVehicleData(Vehicle *vehicle) {
+    vector<string> vehicleBasicData = vehicle->getBasicPrintData();
+    string separator = "- ";
+
+    FilePrint << separator + *vehicleBasicData.begin() << endl;
+
+    separator = "  ";
+    for (int i = 1; i < vehicleBasicData.size(); i++) {
+        FilePrint << separator + *(vehicleBasicData.begin() + i) << endl;
+    }
+
+    vector<string> vehicleSpecificData = vehicle->getSpecificPrintData();
+
+    for (const string &row: vehicleSpecificData) {
+        FilePrint << separator + row << endl;
+    }
+}
+
+void File::printStatusData(Status *status) {
+    vector<string> statusData = status->getStatusPrintData();
+    string separator = "    ";
+
+    for (const string &row: statusData) {
+        FilePrint << separator + row << endl;
+    }
+}
+
+void File::printRepairsData(vector<Repair *> repairs) {
+    for (Repair *repair: repairs) {
+        vector<string> repairData = repair->getStatusPrintData(true);
+        string separator = "    - ";
+
+        FilePrint << separator + *repairData.begin() << endl;
+
+        separator = "      ";
+        for (int i = 1; i < repairData.size(); i++) {
+            FilePrint << separator + *(repairData.begin() + i) << endl;
+        }
+    }
+}
+
+void File::printRegisterData(vector<Road *> roadRegister) {
+    for (Road *road: roadRegister) {
+        vector<string> roadData = road->getStatusPrintData(true);
+        string separator = "    - ";
+
+        FilePrint << separator + *roadData.begin() << endl;
+
+        separator = "      ";
+        for (int i = 1; i < roadData.size(); i++) {
+            FilePrint << separator + *(roadData.begin() + i) << endl;
+        }
+    }
 }

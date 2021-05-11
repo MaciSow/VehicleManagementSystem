@@ -25,13 +25,15 @@ public:
 
     void setDateFromString(string date);
 
-    string getStringDate();
+    string getStringDate(string separator = ".");
 
     void log();
 
     void addDays(int days);
 
     int getDay() const;
+
+
 };
 
 

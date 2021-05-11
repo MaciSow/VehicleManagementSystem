@@ -45,3 +45,20 @@ void Road::setEndDate(Date *endDate) {
 void Road::setReturn() {
 // todo magic function to calculate days
 }
+
+vector<string> Road::getStatusPrintData(bool shortVersion) {
+    vector<string> roadData;
+    vector<string> driverData = driver->getAllData();
+
+    if (!shortVersion) {
+        roadData.push_back("type: " + getStatusTypeName());
+        roadData.push_back("id: " + driver->getId());
+    }
+    roadData.push_back("name: " + driverData[0]);
+    roadData.push_back("surname: " + driverData[1]);
+    roadData.push_back("distance: " + to_string(distance));
+    roadData.push_back("start: " + startDate->getStringDate("-"));
+    roadData.push_back("end: " + endDate->getStringDate("-"));
+
+    return roadData;
+}

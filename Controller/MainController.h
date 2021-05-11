@@ -12,7 +12,8 @@ using namespace std;
 class MainController {
 private:
     Fleet *fleet;
-    File *f1;
+    File *vehiclesFile;
+    File *driversFile;
     string path = "assets/";
     string vehiclesDataFilename = "Vehicles.yaml";
     string driversDataFilename = "Drivers.yaml";

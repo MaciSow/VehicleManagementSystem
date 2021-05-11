@@ -53,6 +53,14 @@ public:
     void setStatus(Status *status);
 
     StatusType getStatusType();
+
+    vector<string> getBasicPrintData();
+
+    virtual vector<string> getSpecificPrintData() = 0;
+
+    const vector<Repair *> &getRepairs() const;
+
+    const vector<Road *> &getRoadRegister() const;
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_VEHICLE_H

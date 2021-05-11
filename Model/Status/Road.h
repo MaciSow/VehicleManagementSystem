@@ -24,6 +24,8 @@ public:
 
     void setReturn();
 
+    vector<string> getStatusPrintData(bool shortVersion = false);
+
 private:
     int distance;
     Driver * driver;

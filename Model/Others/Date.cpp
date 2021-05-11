@@ -37,8 +37,8 @@ void Date::log() {
     cout << day << '.' << month << '.' << year << endl;
 }
 
-string Date::getStringDate() {
-    return to_string(day) + '.' + to_string(month) + '.' + to_string(year);
+string Date::getStringDate(string separator) {
+    return to_string(day) + separator + to_string(month) + separator + to_string(year);
 }
 
 void Date::addDays(int days) {

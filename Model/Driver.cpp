@@ -62,10 +62,23 @@ string Driver::getStatusName() {
     return isAvailable ? "Available" : "On the road";
 }
 
+string Driver::getStatusTypeName() {
+    return isAvailable ? "Available" : "Road";
+}
+
 void Driver::setName(const string &name) {
     Driver::name = name;
 }
 
 void Driver::setSurname(const string &surname) {
     Driver::surname = surname;
+}
+
+vector<string> Driver::getDriverPrintData() {
+    vector<string> driverData;
+    driverData.push_back("id: " + id);
+    driverData.push_back("name: " + name);
+    driverData.push_back("surname: " + surname);
+    driverData.push_back("status: " + getStatusTypeName());
+    return driverData;
 }

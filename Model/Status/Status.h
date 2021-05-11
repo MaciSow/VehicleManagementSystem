@@ -24,6 +24,10 @@ public:
     void log();
 
     string getStatusName();
+
+    string getStatusTypeName();
+
+    virtual vector<string> getStatusPrintData(bool shortVersion = false);
 };
 
 

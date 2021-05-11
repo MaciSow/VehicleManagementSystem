@@ -33,9 +33,13 @@ public:
 
     string getStatusName();
 
+    string getStatusTypeName();
+
     void setName(const string &name);
 
     void setSurname(const string &surname);
+
+    vector<string> getDriverPrintData();
 
 private:
     string id;

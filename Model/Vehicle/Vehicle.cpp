@@ -94,3 +94,22 @@ vector<vector<string>> Vehicle::getRepairsData() {
 void Vehicle::setStatus(Status *status) {
     this->status = status;
 }
+
+vector<string> Vehicle::getBasicPrintData() {
+    vector<string> vehicleData;
+
+    vehicleData.push_back("class: " + getVehicleTypeName());
+    vehicleData.push_back("plate: " + plate);
+    vehicleData.push_back("brand: " + brand);
+    vehicleData.push_back("model: " + model);
+
+    return vehicleData;
+}
+
+const vector<Repair *> &Vehicle::getRepairs() const {
+    return repairs;
+}
+
+const vector<Road *> &Vehicle::getRoadRegister() const {
+    return roadRegister;
+}

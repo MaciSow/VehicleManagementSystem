@@ -88,3 +88,13 @@ void Car::updateAllData(vector<string> vehicleData) {
     this->doorsAmount = stoi(vehicleData[4]);
     this->bodyStyle = vehicleData[5];
 }
+
+vector<string> Car::getSpecificPrintData() {
+    vector<string> vehicleData;
+
+    vehicleData.push_back("seats: " + to_string(seatsAmount));
+    vehicleData.push_back("doors: " + to_string(doorsAmount));
+    vehicleData.push_back("body: " + bodyStyle);
+
+    return vehicleData;
+}

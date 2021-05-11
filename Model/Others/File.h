@@ -18,7 +18,8 @@ using namespace std;
 
 class File {
 private:
-    ifstream File;
+    ifstream FileRead;
+    ofstream FilePrint;
     string nextLine;
 public:
     void readVehiclesData(const string &fileName, Fleet *&fleet);
@@ -61,7 +62,17 @@ public:
 
     vector<string> getNLines(int count);
 
-    string saveData(Fleet *fleet, string fileName);
+    void saveVehiclesData(string fileName, vector<Vehicle *> vehicles);
+
+    void printVehicleData(Vehicle *vehicle);
+
+    void printStatusData(Status *status);
+
+    void printRepairsData(vector<Repair *> repairs);
+
+    void printRegisterData(vector<Road *> roadRegister);
+
+    void saveDriversData(string fileName, vector<Driver *> drivers);
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_FILE_H

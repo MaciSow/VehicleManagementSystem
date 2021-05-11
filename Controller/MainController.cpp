@@ -3,18 +3,17 @@
 MainController::MainController() {
 
     fleet = new Fleet();
-    f1 = new File();
-    f1->readVehiclesData(path + vehiclesDataFilename, fleet);
+    vehiclesFile = new File();
+    vehiclesFile->readVehiclesData(path + vehiclesDataFilename, fleet);
 
-    f1 = new File();
-    f1->readDriversData(path + driversDataFilename, fleet);
+    driversFile = new File();
+    driversFile->readDriversData(path + driversDataFilename, fleet);
 }
 
 void MainController::save() {
-//	if (vehiclesDataFilename == "") {
-//		vehiclesDataFilename = this->vehiclesDataFilename;
-//	}
-//	f1->saveData(list, path + vehiclesDataFilename);
+    vehiclesFile->saveVehiclesData(path + vehiclesDataFilename, fleet->getVehicles());
+
+    driversFile->saveDriversData(path + driversDataFilename, fleet->getDrivers());
 }
 
 void MainController::clean() {

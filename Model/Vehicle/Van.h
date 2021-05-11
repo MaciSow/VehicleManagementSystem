@@ -6,8 +6,8 @@
 
 class Van : public virtual WareTransport {
 private:
-    bool isDoubleWheel;
-    bool isSlideDoors;
+    bool hasDoubleWheel;
+    bool hasSlideDoors;
 
 public:
     Van(const string &plate,
@@ -15,8 +15,8 @@ public:
         const string &brand,
         const string &model,
         int capacity,
-        bool isDoubleWheel,
-        bool isSlideDoors,
+        bool hasDoubleWheel,
+        bool hasSlideDoors,
         vector<Repair *> repairs,
         vector<Road *> roadRegister);
 
@@ -26,8 +26,8 @@ public:
         const string &brand,
         const string &model,
         int capacity,
-        bool isDoubleWheel,
-        bool isSlideDoors
+        bool hasDoubleWheel,
+        bool hasSlideDoors
     );
 
     virtual ~Van();
@@ -39,6 +39,8 @@ public:
     vector<string> getVehicleAllData();
 
     void updateAllData(vector<string> vehicleData) override;
+
+    vector<string> getSpecificPrintData();
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_VAN_H

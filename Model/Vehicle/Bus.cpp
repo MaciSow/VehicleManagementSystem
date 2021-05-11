@@ -80,4 +80,14 @@ void Bus::updateAllData(vector<string> vehicleData) {
     this->hasWC = vehicleData[5] == "Yes";
 }
 
+vector<string> Bus::getSpecificPrintData() {
+    vector<string> vehicleData;
+
+    vehicleData.push_back("seats: " + to_string(seatsAmount));
+    vehicleData.push_back("coach: " + to_string(isCoach ? 1 : 0));
+    vehicleData.push_back("wc: " + to_string(hasWC ? 1 : 0));
+
+    return vehicleData;
+}
+
 

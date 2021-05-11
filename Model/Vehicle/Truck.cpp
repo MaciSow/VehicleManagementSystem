@@ -79,3 +79,13 @@ void Truck::updateAllData(vector<string> vehicleData) {
     this->axisAmount = stoi(vehicleData[4]);
     this->hasTrailer = vehicleData[5] == "Yes";
 }
+
+vector<string> Truck::getSpecificPrintData() {
+    vector<string> vehicleData;
+
+    vehicleData.push_back("capacity: " + to_string(capacity));
+    vehicleData.push_back("axis: " + to_string(axisAmount));
+    vehicleData.push_back("trailer: " + to_string(hasTrailer ? 1 : 0));
+
+    return vehicleData;
+}

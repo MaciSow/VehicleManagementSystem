@@ -15,6 +15,7 @@ public:
 
     vector<string> getData();
 
+    vector<string> getStatusPrintData(bool shortVersion = false);
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_BROKE_H

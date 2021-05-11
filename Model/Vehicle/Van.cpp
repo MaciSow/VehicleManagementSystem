@@ -9,8 +9,8 @@ Van::Van(const string &plate,
          const string &brand,
          const string &model,
          int capacity,
-         bool isDoubleWheel,
-         bool isSlideDoors,
+         bool hasDoubleWheel,
+         bool hasSlideDoors,
          vector<Repair *> repairs,
          vector<Road *> roadRegister) {
     this->plate = plate;
@@ -18,21 +18,21 @@ Van::Van(const string &plate,
     this->brand = brand;
     this->model = model;
     this->capacity = capacity;
-    this->isDoubleWheel = isDoubleWheel;
-    this->isSlideDoors = isSlideDoors;
+    this->hasDoubleWheel = hasDoubleWheel;
+    this->hasSlideDoors = hasSlideDoors;
     this->repairs = repairs;
     this->roadRegister = roadRegister;
 }
 
 Van::Van(const string &plate, Status *status, const string &brand, const string &model, int capacity,
-         bool isDoubleWheel, bool isSlideDoors) {
+         bool hasDoubleWheel, bool hasSlideDoors) {
     this->plate = plate;
     this->status = status;
     this->brand = brand;
     this->model = model;
     this->capacity = capacity;
-    this->isDoubleWheel = isDoubleWheel;
-    this->isSlideDoors = isSlideDoors;
+    this->hasDoubleWheel = hasDoubleWheel;
+    this->hasSlideDoors = hasSlideDoors;
     vector<Repair *> repairs;
     vector<Road *> roadRegister;
     this->repairs = repairs;
@@ -45,8 +45,8 @@ void Van::log() {
     cout << brand << endl;
     cout << model << endl;
     cout << capacity << endl;
-    cout << isDoubleWheel << endl;
-    cout << isSlideDoors << endl;
+    cout << hasDoubleWheel << endl;
+    cout << hasSlideDoors << endl;
     status->log();
     for (Repair *repair: repairs) {
         repair->log();
@@ -64,8 +64,8 @@ VehicleType Van::getVehicleType() {
 vector<string> Van::getVehicleAllData() {
     vector<string> vehicleData = {brand, model, "", "", "", plate};
     vehicleData[2] = to_string(capacity);
-    vehicleData[3] = isDoubleWheel ? "Yes" : "No";
-    vehicleData[4] = isSlideDoors ? "Yes" : "No";
+    vehicleData[3] = hasDoubleWheel ? "Yes" : "No";
+    vehicleData[4] = hasSlideDoors ? "Yes" : "No";
     vehicleData.push_back(status->getStatusName());
 
     return vehicleData;
@@ -76,8 +76,18 @@ void Van::updateAllData(vector<string> vehicleData) {
     this->brand = vehicleData[1];
     this->model = vehicleData[2];
     this->capacity = stoi(vehicleData[3]);
-    this->isDoubleWheel = vehicleData[4] == "Yes";
-    this->isSlideDoors = vehicleData[5] == "Yes";
+    this->hasDoubleWheel = vehicleData[4] == "Yes";
+    this->hasSlideDoors = vehicleData[5] == "Yes";
+}
+
+vector<string> Van::getSpecificPrintData() {
+    vector<string> vehicleData;
+
+    vehicleData.push_back("capacity: " + to_string(capacity));
+    vehicleData.push_back("doubleWheel: " + to_string(hasDoubleWheel ? 1 : 0));
+    vehicleData.push_back("slideDoors: " + to_string(hasSlideDoors ? 1 : 0));
+
+    return vehicleData;
 }
 
 

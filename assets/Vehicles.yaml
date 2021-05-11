@@ -86,13 +86,13 @@
   coach: 1
   wc: 1
   status:
-      type: Road
-      id: willkowal1321
-      name: Will
-      surname: Kowalsky
-      distance: 8200
-      start: 02-06-2020
-      end: 05-06-2020
+    type: Road
+    id: willkowal1321
+    name: Will
+    surname: Kowalsky
+    distance: 8200
+    start: 02-06-2020
+    end: 05-06-2020
   repairs:
     - name: Door
       description: Don't close
@@ -116,9 +116,9 @@
   doubleWheel: 1
   slideDoors: 1
   status:
-      type: Broke
-      name: Door
-      description: Don't close
+    type: Broke
+    name: Door
+    description: Don't close
   repairs:
     - name: Wheel
       description:
@@ -137,10 +137,10 @@
   axis: 3
   trailer: 0
   status:
-      type: Repair
-      name: Window
-      description: Is broke
-      fixDate: 21-03-2020
+    type: Repair
+    name: Window
+    description: Is broke
+    fixDate: 21-03-2020
   repairs:
     - name: Break
       description: Break is blocked

@@ -35,6 +35,8 @@ public:
     vector<string> getVehicleAllData();
 
     void updateAllData(vector<string> vehicleData) override;
+
+    vector<string> getSpecificPrintData();
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_BUS_H
