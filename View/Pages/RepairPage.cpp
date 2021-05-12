@@ -40,6 +40,7 @@ PageName RepairPage::mouseClick() {
     if (btnRepairNow->isClick(window)) {
         btnRepairNow->setActive(true);
         input->clear();
+        input->setPattern("^\\d{1,2}$");
     }
 
     if (handleBtnSaveClick()) {
@@ -60,9 +61,11 @@ PageName RepairPage::mouseClick() {
 
 void RepairPage::textEntered(Event &event) {
     input->typeOn(event);
+
     if (btnRepairNow->getActive()) {
         btnRepairNow->setActive(false);
     }
+
     checkChoice();
 }
 
@@ -112,9 +115,11 @@ void RepairPage::createSeparator() {
 }
 
 void RepairPage::checkChoice() {
-    if (btnRepairNow->getActive() || input->getText().length()) {
+    if (btnRepairNow->getActive() || (input->getText().length() && input->getValid())) {
         activeBtnSave();
+        return;
     }
+    blockBtnSave();
 }
 
 void RepairPage::save() {
@@ -135,7 +140,7 @@ void RepairPage::prepare() {
 
         if (status->getStatusType() == REPAIR) {
             string stringDate = status->getData()[2];
-            Date* date = new Date(stringDate);
+            Date *date = new Date(stringDate);
 
             input->setLabel("How long it will take yet");
             input->setValue(to_string(date->getDay()));

@@ -26,10 +26,18 @@ PageName Page::mouseClick() {
 void Page::create() {
 }
 
-//void Page::prepare() {
-//}
 
 void Page::clear() {
+}
+
+void Page::checkForm(vector<Input*> inputs) {
+    for (Input *input:inputs) {
+        if (!input->getValid() || !input->getText().length()) {
+            blockBtnSave();
+            return;
+        }
+    }
+    activeBtnSave();
 }
 
 void Page::createBtnBack() {

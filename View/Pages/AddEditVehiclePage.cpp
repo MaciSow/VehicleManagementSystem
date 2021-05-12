@@ -99,7 +99,7 @@ void AddEditVehiclePage::textEntered(Event &event) {
     for (Input *input : inputs) {
         input->typeOn(event);
     }
-
+    checkForm(inputs);
 }
 
 // private
@@ -173,6 +173,8 @@ void AddEditVehiclePage::clear() {
 
     isOpen = false;
     isEdit = false;
+
+    blockBtnSave();
 }
 
 void AddEditVehiclePage::changeVehicleChoice(Button *&button) {

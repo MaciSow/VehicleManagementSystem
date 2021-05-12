@@ -27,8 +27,6 @@ private:
 
     void clear() override;
 
-    void checkChoice();
-
     void save();
 
     void prepare();

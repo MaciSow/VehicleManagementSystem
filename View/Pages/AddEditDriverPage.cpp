@@ -62,7 +62,7 @@ void AddEditDriverPage::textEntered(Event &event) {
         input->typeOn(event);
     }
 
-    checkChoice();
+    checkForm(inputs);
 }
 
 // private
@@ -82,12 +82,6 @@ void AddEditDriverPage::clear() {
     blockBtnSave();
 }
 
-
-void AddEditDriverPage::checkChoice() {
-    if (inputs[0]->getText().length() && inputs[1]->getText().length()) {
-        activeBtnSave();
-    }
-}
 
 void AddEditDriverPage::save() {
     string name = inputs[0]->getText();

@@ -23,10 +23,6 @@ public:
 
     virtual ~Date();
 
-    Date getDateFromString(string date);
-
-    void setDateFromString(string date);
-
     string getStringDate(string separator = ".");
 
     void log();

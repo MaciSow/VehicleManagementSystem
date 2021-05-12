@@ -41,6 +41,8 @@ protected:
 
     virtual void clear();
 
+    void checkForm(vector<Input*> inputs);
+
     void createBtnBack();
 
     void drawBtnBack();

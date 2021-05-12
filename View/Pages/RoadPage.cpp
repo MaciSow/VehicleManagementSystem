@@ -101,7 +101,6 @@ void RoadPage::clear() {
 
 void RoadPage::createSeparator() {
     float posX = width / 2;
-    float posY = height / 2 - 12;
 
     RectangleShape line({width - 400, 2});
     line.setFillColor({136, 136, 136, 255});
@@ -192,7 +191,7 @@ void RoadPage::checkValues() {
         return;
     }
 
-    if (inputs[0]->getText().length() && inputs[1]->getText().length()) {
+    if (inputs[0]->getText().length() && inputs[0]->getValid() && inputs[1]->getValid()) {
         activeBtnSave();
         return;
     }
