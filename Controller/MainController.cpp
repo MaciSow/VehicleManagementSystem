@@ -126,6 +126,7 @@ void MainController::editVehicle(vector<string> vehicleData) {
     selectedVehicle->updateAllData(vehicleData);
 }
 
+// todo show RTTI
 void MainController::setAvailable(bool isNow) {
     Status *status = selectedVehicle->getStatus();
     Road *road = dynamic_cast<Road *>(status);
@@ -218,4 +219,14 @@ void MainController::createDriver(string name, string surname) {
 void MainController::editDriver(string name, string surname) {
     selectedDriver->setName(name);
     selectedDriver->setSurname(surname);
+}
+
+void MainController::deleteDriver() {
+    fleet->deleteDriver(selectedDriver->getId());
+    unselectDriver();
+}
+
+void MainController::deleteVehicle() {
+    fleet->deleteVehicle(selectedVehicle->getPlate());
+    unselectVehicle();
 }

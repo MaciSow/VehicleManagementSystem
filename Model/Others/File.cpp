@@ -314,7 +314,7 @@ void File::saveVehiclesData(string fileName, vector<Vehicle *> vehicles) {
 
     cout << "Fail save data";
 }
-
+// todo show Iteratory STL
 void File::saveDriversData(string fileName, vector<Driver *> drivers) {
     FilePrint = ofstream(fileName);
 

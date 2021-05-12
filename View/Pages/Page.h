@@ -62,6 +62,8 @@ protected:
     void activeBtnSave();
 
     void blockBtnSave();
+
+    void deleteDriver();
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_PAGE_H

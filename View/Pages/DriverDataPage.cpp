@@ -35,6 +35,7 @@ PageName DriverDataPage::mouseClick() {
     }
 
     if (btnDelete->isClick(window)) {
+        controller->deleteDriver();
         clear();
         return PageName::showDrivers;
     }

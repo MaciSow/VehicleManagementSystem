@@ -34,6 +34,10 @@ public:
     vector<Driver *> getDrivers(bool onlyAvailable = false);
 
     Driver * getDriver(string driverId);
+
+    void deleteDriver(string driverId);
+
+    void deleteVehicle(string plate);
 };
 
 

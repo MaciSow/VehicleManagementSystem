@@ -89,6 +89,3 @@ void Page::activeBtnSave() {
 void Page::blockBtnSave() {
     btnSave->setBlock(true);
 }
-
-
-

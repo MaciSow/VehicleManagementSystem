@@ -129,4 +129,30 @@ Driver *Fleet::getDriver(string driverId) {
     return nullptr;
 }
 
+void Fleet::deleteDriver(string driverId) {
+    int index = 0;
+
+    for (Driver *driver :drivers) {
+        if (driver->getId() != driverId) {
+            index++;
+        } else {
+            drivers.erase(drivers.begin() + index);
+        }
+
+    }
+}
+
+void Fleet::deleteVehicle(string plate) {
+    int index = 0;
+
+    for (Vehicle *vehicle :vehicles) {
+        if (vehicle->getPlate() != plate) {
+            index++;
+        } else {
+            vehicles.erase(vehicles.begin() + index);
+        }
+
+    }
+}
+
 

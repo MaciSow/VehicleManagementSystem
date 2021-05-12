@@ -44,7 +44,7 @@ Status *Vehicle::getStatus() const {
 const string &Vehicle::getPlate() const {
     return plate;
 }
-
+// todo show RTTI
 string Vehicle::getVehicleTypeName() {
     string vehicleType = "Unknown";
 

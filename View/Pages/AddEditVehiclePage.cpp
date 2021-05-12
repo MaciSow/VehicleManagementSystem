@@ -82,9 +82,6 @@ PageName AddEditVehiclePage::mouseClick() {
         return PageName::showVehicles;
     }
 
-    if (btnSave->isClick(window)) {
-
-    }
 
     if (handleBtnSaveClick()) {
         saveData();

@@ -62,6 +62,10 @@ public:
     void createDriver(string name, string surname);
 
     void editDriver(string name, string surname);
+
+    void deleteDriver();
+
+    void deleteVehicle();
 };
 
 

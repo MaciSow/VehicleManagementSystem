@@ -42,6 +42,7 @@ PageName VehicleDataPage::mouseClick() {
     }
 
     if (btnDelete->isClick(window)) {
+        controller->deleteVehicle();
         clear();
         return PageName::showVehicles;
     }
