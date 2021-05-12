@@ -99,6 +99,7 @@ void AddEditVehiclePage::textEntered(Event &event) {
     for (Input *input : inputs) {
         input->typeOn(event);
     }
+
 }
 
 // private
@@ -128,9 +129,6 @@ void AddEditVehiclePage::create() {
     inputs.push_back(new Input({btnPosX + 100, 200}, font, "Seats:", 260));
     inputs.push_back(new Input({btnPosX + 100, 300}, font, "Doors:", 260));
     inputs.push_back(new Input({btnPosX + 100, 400}, font, "Body style:", 260));
-
-    inputs[3]->setIsNumber();
-    inputs[4]->setIsNumber();
 
     btnOptions.push_back(new Button({btnPosX + 232, 300}, "_/", font, 64, 40));
     btnOptions.push_back(new Button({btnPosX + 296, 300}, "X", font, 64, 40));
@@ -232,6 +230,7 @@ void AddEditVehiclePage::prepareInputs() {
     if (isEdit) {
         optionValue = "";
     }
+    inputs[0]->setPattern("^[A-Z]{2,3}#[A-Z\\d]{4,5}$");
 
     switch (vehicleType) {
         case CAR:
@@ -242,7 +241,9 @@ void AddEditVehiclePage::prepareInputs() {
             inputs[4]->setLabel("Doors:");
             inputs[5]->setLabel("Body style:");
 
-            inputs[4]->setIsNumber();
+            inputs[3]->setPattern("^\\d{1}$");
+            inputs[4]->setPattern("^\\d{1}$");
+            inputs[5]->setPattern("^[A-Z]{1}[A-Za-z ]{2,}");
             break;
         case BUS:
             inputs[4]->setWidth(132);
@@ -252,7 +253,7 @@ void AddEditVehiclePage::prepareInputs() {
             inputs[4]->setLabel("Coach:");
             inputs[5]->setLabel("WC:");
 
-            inputs[4]->setIsNumber(false);
+            inputs[3]->setPattern("^\\d{1,2}$");
 
             inputs[4]->setValue(optionValue);
             inputs[4]->setIsEditable(false);
@@ -267,7 +268,7 @@ void AddEditVehiclePage::prepareInputs() {
             inputs[4]->setLabel("Double wheel:");
             inputs[5]->setLabel("Slide doors:");
 
-            inputs[4]->setIsNumber(false);
+            inputs[3]->setPattern("^\\d{5}$");
 
             inputs[4]->setValue(optionValue);
             inputs[4]->setIsEditable(false);
@@ -282,7 +283,7 @@ void AddEditVehiclePage::prepareInputs() {
             inputs[4]->setLabel("Axis:");
             inputs[5]->setLabel("Trailer:");
 
-            inputs[4]->setIsNumber();
+            inputs[3]->setPattern("^\\d{5}$");
 
             inputs[5]->setValue(optionValue);
             inputs[5]->setIsEditable(false);

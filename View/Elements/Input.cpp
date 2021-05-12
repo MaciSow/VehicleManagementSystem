@@ -11,9 +11,6 @@ Input::Input(Vector2f position, Font &font, string label, float width, float hei
 Input::~Input() {
 }
 
-void Input::setIsNumber(bool isNumber) {
-    this->isNumber = isNumber;
-}
 
 void Input::setValue(string value) {
     string newT = "";
@@ -114,6 +111,8 @@ void Input::typeOn(Event event) {
                 deleteLastChar();
             }
 
+            validateRegex();
+
             if (charTyped == ENTER_KEY) {
                 setSelected(false);
             }
@@ -124,6 +123,8 @@ void Input::typeOn(Event event) {
 void Input::clear() {
     text.str("");
     input.setString("");
+    isValid = true;
+    pattern = "^[A-Za-z\\d]{1}[A-Za-z\\d\\ ]*$";
 }
 
 string Input::getText() {
@@ -149,7 +150,7 @@ void Input::create(Vector2f position, Font &font, string label) {
     this->label.setFillColor(Color::Black);
 
     setInputState(inactive);
-    
+
     float centerY = posY + (height > 40 ? height / 4 : height / 2) - (fontSize / 2) - 3;
 
     input.setPosition({posX + 10, centerY});
@@ -168,14 +169,17 @@ void Input::setInputState(State state) {
             break;
         case active:
             addSlash();
-
             frame.setFillColor({255, 255, 255, 250});
             frame.setOutlineColor({0, 0, 0, 250});
-
             break;
-
         default:
             break;
+    }
+
+    if (!isValid) {
+        frame.setOutlineColor({175, 28, 28, 255});
+    } else {
+        frame.setOutlineColor({0, 0, 0, 250});
     }
 }
 
@@ -219,22 +223,33 @@ void Input::addSlash() {
     input.setString(text.str() + "_");
 }
 
-bool Input::validate() {
-    if (getText().size() < 1) {
-        return false;
-    }
+//bool Input::validate() {
+//    if (getText().size() < 1) {
+//
+//        return false;
+//    }
+//
+//
+//    if (isNumber) {
+//        try {
+//            stoi(getText());
+//        }
+//        catch (const std::exception &) {
+//
+//            return false;
+//        }
+//    }
+//    setInputState(valid);
+//    return true;
+//}
 
+void Input::validateRegex() {
+    string value = getText();
 
-    if (isNumber) {
-        try {
-            stoi(getText());
-        }
-        catch (const std::exception &) {
-            return false;
-        }
-    }
-
-    return true;
+    regex reg(pattern);
+    smatch matches;
+    isValid = regex_search(value, matches, reg);
+    setInputState(valid);
 }
 
 void Input::setLabel(string label) {
@@ -247,4 +262,12 @@ bool Input::getIsEditable() const {
 
 void Input::setIsEditable(bool isEditable) {
     Input::isEditable = isEditable;
+}
+
+void Input::setPattern(const string &pattern) {
+    Input::pattern = pattern;
+}
+
+bool Input::getValid() const {
+    return isValid;
 }

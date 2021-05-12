@@ -1,2 +1,0 @@
-add regex and validation
-add STL iterators - done in file read

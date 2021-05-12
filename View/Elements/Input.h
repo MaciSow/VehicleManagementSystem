@@ -2,9 +2,11 @@
 #define VEHICLEMENAGMENTSYSTEM_VIEW_INPUT_H
 
 #include <SFML/Graphics.hpp>
-#include "iostream"
-#include "sstream"
-#include "math.h"
+#include <iostream>
+#include <sstream>
+#include <cmath>
+#include <regex>
+
 
 #define DELETE_KEY 8
 #define ENTER_KEY 13
@@ -26,13 +28,15 @@ private:
     float height = 40;
     int limit = (int) floor((width - 20) / 10);
     int fontSize = 16;
-    bool isNumber = false;
     bool isEditable = true;
+    bool isValid = true;
+    string pattern = "^[A-Za-z\\d]{1}[A-Za-z\\d\\ -]*$";
 
     enum State {
         inactive,
         hover,
-        active
+        active,
+        valid
     };
 
     void create(Vector2f position, Font &font, string label);
@@ -45,13 +49,13 @@ private:
 
     void addSlash();
 
+    void validateRegex();
 
 public:
+
     Input(Vector2f position, Font &font, string label = "", float width = 250, float height = 40, string id = "");
 
     ~Input();
-
-    void setIsNumber(bool isNumber = true);
 
     void setValue(string value);
 
@@ -73,7 +77,9 @@ public:
 
     void clear();
 
-    bool validate();
+//    bool validate();
+
+    void setPattern(const string &pattern);
 
     string getText();
 
@@ -82,6 +88,8 @@ public:
     bool getIsEditable() const;
 
     void setIsEditable(bool isEditable);
+
+    bool getValid() const;
 };
 
 #endif  //VEHICLEMENAGMENTSYSTEM_VIEW_INPUT_H

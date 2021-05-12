@@ -11,6 +11,12 @@ BrokePage::BrokePage(MainController *controller, RenderWindow *window, const Fon
 BrokePage::~BrokePage() = default;
 
 void BrokePage::draw() {
+    if(!isOpen){
+        isOpen = true;
+        inputs[0]->setPattern("^[A-Za-z\\ ]+$");
+        inputs[1]->setPattern("^[A-Za-z\\d]{0,1}[A-Za-z\\d\\ ]*$");
+    }
+
     drawBtnBack();
     drawBtnSave();
 
@@ -77,7 +83,7 @@ void BrokePage::clear() {
     for (Input *input:inputs) {
         input->clear();
     }
-
+    isOpen = false;
     blockBtnSave();
 }
 

@@ -8,6 +8,8 @@ private:
     vector<Input *> inputs;
     vector<ListItem *> items;
 
+    bool isOpen = false;
+
     int scrollOffset = 0;
     int length = 0;
     int limit = 4;
@@ -37,11 +39,11 @@ private:
 
     void fillList(float listWidth, float itemHeight);
 
-    void selectItem(ListItem * item);
+    void selectItem(ListItem *item);
 
     void clearItems();
 
-    ListItem* getPressedItem();
+    ListItem *getPressedItem();
 
     void checkValues();
 

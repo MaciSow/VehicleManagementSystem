@@ -14,6 +14,12 @@ void RoadPage::draw() {
     inputs[0]->drawTo(window);
     inputs[1]->drawTo(window);
 
+    if(!isOpen){
+        isOpen = true;
+        inputs[0]->setPattern("^\\d{1,5}$");
+        inputs[1]->setPattern("^\\d{0,2}$");
+    }
+
     drawBtnBack();
     drawBtnSave();
     createSeparator();
@@ -77,15 +83,8 @@ PageName RoadPage::mouseClick() {
 
 // private
 void RoadPage::create() {
-    float btnPosX = width / 2;
-    float btnPosY = height / 2 - 16;
-
     inputs.push_back(new Input({200, 130}, font, "Kilometers:", 250));
     inputs.push_back(new Input({width - 450, 130}, font, "Pause days:", 250));
-
-    inputs[0]->setIsNumber();
-    inputs[1]->setIsNumber();
-
 }
 
 void RoadPage::clear() {
@@ -94,7 +93,9 @@ void RoadPage::clear() {
     limit = 4;
     items.clear();
     clearItems();
-
+    isOpen = false;
+    inputs[0]->clear();
+    inputs[1]->clear();
     blockBtnSave();
 }
 

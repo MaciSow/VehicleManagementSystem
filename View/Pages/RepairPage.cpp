@@ -72,7 +72,6 @@ void RepairPage::create() {
     float btnPosY = height / 2 - 16;
 
     input = new Input({btnPosX - 125, btnPosY - 84}, font, "How long it will take", 250);
-    input->setIsNumber();
 
     btnRepairNow = new Button({btnPosX - 125, btnPosY + 42}, "Repair it now", font);
 
@@ -132,6 +131,7 @@ void RepairPage::prepare() {
     if (!isOpen) {
         isOpen = true;
         Status *status = controller->getSelectedVehicle()->getStatus();
+        input->setPattern("^\\d{1,2}$");
 
         if (status->getStatusType() == REPAIR) {
             string stringDate = status->getData()[2];

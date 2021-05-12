@@ -102,6 +102,8 @@ void AddEditDriverPage::save() {
 void AddEditDriverPage::prepare() {
     if (!isOpen) {
         isOpen = true;
+        inputs[0]->setPattern("^[A-Z]{1}[A-Za-z\\ ]+$");
+        inputs[1]->setPattern("^[A-Z]{1}[A-Za-z\\ -]+$");
 
         isEdit = controller->getSelectedDriver();
 

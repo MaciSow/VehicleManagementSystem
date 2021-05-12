@@ -20,6 +20,7 @@ public:
 
 private:
     vector<Input *>inputs;
+    bool isOpen = false;
 
     void create() override;
 
