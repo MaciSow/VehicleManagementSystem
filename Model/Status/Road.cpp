@@ -16,7 +16,7 @@ Road::Road(int distance, Driver *driver, int pause)
           distance(distance),
           driver(driver),
           startDate(new Date()) {
-    int roadTime = floor(distance / 500);
+    int roadTime = ceil(distance / 500);
     endDate = new Date();
     endDate->addDays(roadTime + pause);
 }
@@ -39,11 +39,12 @@ vector<string> Road::getRoadData() {
 }
 
 void Road::setEndDate(Date *endDate) {
-    Road::endDate = endDate;
+    this->endDate = endDate;
 }
 
 void Road::setReturn() {
-// todo magic function to calculate days
+    int addDays = ceil(distance / 1000);
+    endDate->addDays(addDays);
 }
 
 vector<string> Road::getStatusPrintData(bool shortVersion) {

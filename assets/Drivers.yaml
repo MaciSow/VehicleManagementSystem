@@ -1,32 +1,32 @@
 - id: asda123
   name: John
   surname: Kowalsky
-  status: available
+  status: Available
 - id: asda123
   name: Niko
   surname: Kania
-  status: available
+  status: Available
 - id: willkowal1321
   name: Will
   surname: Kowalsky
-  status: road
+  status: Road
 - id: romkan5334
   name: Roman
   surname: Kania
-  status: available
+  status: Available
 - id: robram3420
   name: Roby
   surname: Rambo
-  status: available
+  status: Available
 - id: rob3am3420
   name: Michael
   surname: Rambo
-  status: available
+  status: Available
 - id: rob4am3420
   name: John
   surname: Rambo
-  status: available
+  status: Available
 - id: gumsol096
   name: Gummy
   surname: Solver
-  status: road
+  status: Road

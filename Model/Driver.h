@@ -4,6 +4,8 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -46,6 +48,8 @@ private:
     string name;
     string surname;
     bool isAvailable;
+
+    void generateId();
 };
 
 #endif //VEHICLEMENAGMENTSYSTEM_DRIVER_H

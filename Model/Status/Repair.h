@@ -12,8 +12,6 @@ public:
 
     void log();
 
-    vector<string> getRepairData(); //todo change to getData
-
     vector<string> getData();
 
     vector<string> getStatusPrintData(bool shortVersion = false);

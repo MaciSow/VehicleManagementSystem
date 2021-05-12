@@ -85,7 +85,7 @@ vector<vector<string>> Vehicle::getRepairsData() {
     vector<vector<string>> repairsData;
 
     for (Repair *repair: repairs) {
-        repairsData.push_back(repair->getRepairData());
+        repairsData.push_back(repair->getData());
     }
 
     return repairsData;

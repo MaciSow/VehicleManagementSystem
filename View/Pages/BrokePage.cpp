@@ -67,7 +67,6 @@ void BrokePage::create() {
 
     inputs.push_back(new Input({btnPosX - 200, btnPosY - 84}, font, "What broke", 400));
     inputs.push_back(new Input({btnPosX - 200, btnPosY}, font, "Description", 400, 80));
-    // todo make two levels input
 
     RectangleShape line({100, 2});
     line.setFillColor({136, 136, 136, 255});

@@ -11,8 +11,7 @@ Driver::~Driver() {
 
 Driver::Driver(const string &name, const string &surname, bool isAvailable)
         : name(name), surname(surname), isAvailable(isAvailable) {
-    id = 14;
-    // todo driverId generator
+    generateId();
 }
 
 Driver::Driver(const string &name, const string &surname) : id(""), name(name), surname(surname) {}
@@ -81,4 +80,18 @@ vector<string> Driver::getDriverPrintData() {
     driverData.push_back("surname: " + surname);
     driverData.push_back("status: " + getStatusTypeName());
     return driverData;
+}
+
+void Driver::generateId() {
+    srand(time(NULL));
+    string id = "";
+    int length = name.length() < 3 ? name.length() : 3;
+    id += name.substr(0, length);
+
+    id += to_string((rand() % 9000) + 7);
+
+    length = surname.length() < 3 ? surname.length() : 3;
+    id += surname.substr(0, length);
+
+    this->id = id;
 }

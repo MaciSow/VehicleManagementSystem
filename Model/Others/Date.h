@@ -3,6 +3,8 @@
 
 #include <string>
 #include <iostream>
+#include <ctime>
+#include <cmath>
 
 using namespace std;
 
@@ -13,11 +15,11 @@ private:
     int year;
 
 public:
-    Date();
-
     Date(int day, int month, int year);
 
     Date(string date);
+
+    Date();
 
     virtual ~Date();
 
@@ -33,7 +35,9 @@ public:
 
     int getDay() const;
 
+    void setCurrentDate();
 
+    bool checkDateOrder(string youngDate, string oldDate);
 };
 
 
