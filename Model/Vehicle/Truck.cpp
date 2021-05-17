@@ -39,24 +39,6 @@ Truck::Truck(const string &plate, Status *status, const string &brand, const str
     this->roadRegister = roadRegister;
 }
 
-void Truck::log() {
-    cout << "truck" << endl;
-    cout << plate << endl;
-    cout << brand << endl;
-    cout << model << endl;
-    cout << capacity << endl;
-    cout << axisAmount << endl;
-    cout << hasTrailer << endl;
-    status->log();
-    for (Repair *repair: repairs) {
-        repair->log();
-    }
-
-    for (Road *road: roadRegister) {
-        road->log();
-    }
-}
-
 VehicleType Truck::getVehicleType() {
     return TRUCK;
 }

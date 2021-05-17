@@ -10,11 +10,6 @@ Repair::~Repair() {
 
 }
 
-void Repair::log() {
-    cout << name << endl << description << endl;
-    fixDate->log();
-}
-
 vector<string> Repair::getData() {
     vector<string> repairData;
     repairData.push_back(name);

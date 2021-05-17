@@ -20,7 +20,6 @@ GraphicView::GraphicView(MainController *&ctr) {
     showDriversPage = new ShowDriversPage(controller, window, font);
     driverDataPage = new DriverDataPage(controller, window, font);
     addEditDriverPage = new AddEditDriverPage(controller, window, font);
-    basePage = new BasePage(controller, window, font);
     exitPage = new ExitPage(controller, window, font);
 }
 
@@ -194,12 +193,6 @@ void GraphicView::mouseMovedHandle() {
             }
             break;
 
-        case PageName::base:
-            if (basePage->isMouseOver()) {
-                isCursorChange = true;
-            }
-            break;
-
         case PageName::exit:
             if (exitPage->isMouseOver()) {
                 isCursorChange = true;
@@ -279,10 +272,6 @@ void GraphicView::mouseButtonPressedHandle(Event &event) {
 
             case PageName::addEditDriver:
                 pageName = addEditDriverPage->mouseClick();
-                break;
-
-            case PageName::base:
-                pageName = basePage->mouseClick();
                 break;
 
             case PageName::exit:
@@ -430,12 +419,6 @@ void GraphicView::drawPage() {
             }
             createFrame(width - 300, 250, framePosY + 60);
             addEditDriverPage->draw();
-            break;
-
-        case PageName::base:
-            createTitle("Base Page");
-            createFrame(width - 200, frameHeight, framePosY);
-            basePage->draw();
             break;
 
         case PageName::exit:

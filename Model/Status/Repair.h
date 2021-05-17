@@ -10,8 +10,6 @@ public:
 
     virtual ~Repair();
 
-    void log();
-
     vector<string> getData();
 
     vector<string> getStatusPrintData(bool shortVersion = false);

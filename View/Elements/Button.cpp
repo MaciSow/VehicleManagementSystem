@@ -14,10 +14,6 @@ string Button::getId() {
     return id;
 }
 
-void Button::setId(string id) {
-    this->id = id;
-}
-
 void Button::setColor(Color base, Color hover) {
     baseCol = base;
     hoverCol = hover;

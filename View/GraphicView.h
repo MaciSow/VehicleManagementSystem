@@ -12,7 +12,6 @@
 #include "Pages/HomePage.h"
 #include "Pages/FleetStatePage.h"
 #include "Pages/VehicleDataPage.h"
-#include "Pages/BasePage.h"
 #include "Pages/ExitPage.h"
 #include "Pages/ShowVehiclesPage.h"
 #include "Pages/ShowRegisterPage.h"
@@ -56,7 +55,6 @@ private:
     ShowDriversPage* showDriversPage;
     DriverDataPage* driverDataPage;
     AddEditDriverPage* addEditDriverPage;
-    BasePage* basePage;
     ExitPage* exitPage;
 
     void textEnteredHandle(Event& event);

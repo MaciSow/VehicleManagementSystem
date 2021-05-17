@@ -30,10 +30,6 @@ void Input::setWidth(float width) {
     frame.setSize({width, height});
 }
 
-void Input::setLimit(int limit) {
-    this->limit = limit - 1;
-}
-
 string Input::getId() {
     return id;
 }
@@ -111,7 +107,7 @@ void Input::typeOn(Event event) {
                 deleteLastChar();
             }
 
-            validateRegex();
+            validate();
 
             if (charTyped == ENTER_KEY) {
                 setSelected(false);
@@ -223,27 +219,7 @@ void Input::addSlash() {
     input.setString(text.str() + "_");
 }
 
-//bool Input::validate() {
-//    if (getText().size() < 1) {
-//
-//        return false;
-//    }
-//
-//
-//    if (isNumber) {
-//        try {
-//            stoi(getText());
-//        }
-//        catch (const std::exception &) {
-//
-//            return false;
-//        }
-//    }
-//    setInputState(valid);
-//    return true;
-//}
-
-void Input::validateRegex() {
+void Input::validate() {
     string value = getText();
 
     regex reg(pattern);

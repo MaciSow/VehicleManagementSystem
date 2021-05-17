@@ -44,11 +44,6 @@ void File::readVehiclesData(const string &fileName, Fleet *&fleet) {
         } else {
             validClass = false;
         }
-//        cout << nextLine << endl;
-//        auto *vehicle = new Vehicle("dfs", "dsada", "sad", "were");
-//        fleet->createVehicle(vehicle);
-
-//        fleet->log();
     }
 
     FileRead.close();
@@ -291,7 +286,6 @@ void File::readDriversData(const string &fileName, Fleet *&fleet) {
             validData = false;
         }
     }
-//    fleet->log();
     FileRead.close();
 }
 
@@ -314,7 +308,7 @@ void File::saveVehiclesData(string fileName, vector<Vehicle *> vehicles) {
 
     cout << "Fail save data";
 }
-// todo show Iteratory STL
+
 void File::saveDriversData(string fileName, vector<Driver *> drivers) {
     FilePrint = ofstream(fileName);
 

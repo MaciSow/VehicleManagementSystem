@@ -30,8 +30,6 @@ public:
 
     virtual ~Truck();
 
-    void log();
-
     VehicleType getVehicleType();
 
     vector<string> getVehicleAllData();

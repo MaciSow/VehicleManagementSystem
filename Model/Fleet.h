@@ -19,8 +19,6 @@ public:
 
     void addDriver(Driver *&driver);
 
-    void log();
-
     int getVehiclesAmount(VehicleType vehicleType = ANY);
 
     int getVehicleState(StatusType statusType = AVAILABLE);

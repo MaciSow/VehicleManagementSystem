@@ -19,7 +19,6 @@ public:
 
     void setId(const string &id);
 
-    void log();
 
     virtual ~Driver();
 

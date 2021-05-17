@@ -39,24 +39,6 @@ Bus::Bus(const string &plate, Status *status, const string &brand, const string 
     this->roadRegister = roadRegister;
 }
 
-void Bus::log() {
-    cout << "bus" << endl;
-    cout << plate << endl;
-    cout << brand << endl;
-    cout << model << endl;
-    cout << seatsAmount << endl;
-    cout << isCoach << endl;
-    cout << hasWC << endl;
-    status->log();
-    for (Repair *repair: repairs) {
-        repair->log();
-    }
-
-    for (Road *road: roadRegister) {
-        road->log();
-    }
-}
-
 VehicleType Bus::getVehicleType() {
     return BUS;
 }

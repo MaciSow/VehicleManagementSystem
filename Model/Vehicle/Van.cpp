@@ -39,24 +39,6 @@ Van::Van(const string &plate, Status *status, const string &brand, const string 
     this->roadRegister = roadRegister;
 }
 
-void Van::log() {
-    cout << "van" << endl;
-    cout << plate << endl;
-    cout << brand << endl;
-    cout << model << endl;
-    cout << capacity << endl;
-    cout << hasDoubleWheel << endl;
-    cout << hasSlideDoors << endl;
-    status->log();
-    for (Repair *repair: repairs) {
-        repair->log();
-    }
-
-    for (Road *road: roadRegister) {
-        road->log();
-    }
-}
-
 VehicleType Van::getVehicleType() {
     return VAN;
 }

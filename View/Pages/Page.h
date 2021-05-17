@@ -37,8 +37,6 @@ public:
 protected:
     virtual void create() = 0;
 
-//    virtual void prepare() = 0;
-
     virtual void clear();
 
     void checkForm(vector<Input*> inputs);

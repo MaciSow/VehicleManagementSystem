@@ -49,7 +49,7 @@ private:
 
     void addSlash();
 
-    void validateRegex();
+    void validate();
 
 public:
 
@@ -60,8 +60,6 @@ public:
     void setValue(string value);
 
     void setWidth(float width);
-
-    void setLimit(int limit);
 
     string getId();
 

@@ -126,7 +126,7 @@ void MainController::editVehicle(vector<string> vehicleData) {
     selectedVehicle->updateAllData(vehicleData);
 }
 
-// todo show RTTI
+
 void MainController::setAvailable(bool isNow) {
     Status *status = selectedVehicle->getStatus();
     Road *road = dynamic_cast<Road *>(status);

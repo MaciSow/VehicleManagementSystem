@@ -16,8 +16,6 @@ public:
 
     virtual ~Road();
 
-    void log();
-
     vector<string> getRoadData();
 
     void setEndDate(Date *endDate);

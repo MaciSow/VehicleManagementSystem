@@ -32,8 +32,6 @@ public:
 
     virtual ~Van();
 
-    void log();
-
     VehicleType getVehicleType();
 
     vector<string> getVehicleAllData();

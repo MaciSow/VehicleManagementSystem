@@ -28,8 +28,6 @@ public:
 
     virtual ~Bus();
 
-    void log();
-
     VehicleType getVehicleType();
 
     vector<string> getVehicleAllData();

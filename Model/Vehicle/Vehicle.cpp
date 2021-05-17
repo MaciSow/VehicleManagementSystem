@@ -16,11 +16,6 @@ Vehicle::Vehicle() {
 Vehicle::~Vehicle() {
 }
 
-void Vehicle::log() {
-    cout << "vehicle" << endl;
-    cout << brand;
-}
-
 void Vehicle::addRepair(Repair *&repair) {
     repairs.push_back(repair);
 }
@@ -44,7 +39,7 @@ Status *Vehicle::getStatus() const {
 const string &Vehicle::getPlate() const {
     return plate;
 }
-// todo show RTTI
+
 string Vehicle::getVehicleTypeName() {
     string vehicleType = "Unknown";
 

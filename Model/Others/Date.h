@@ -25,15 +25,11 @@ public:
 
     string getStringDate(string separator = ".");
 
-    void log();
-
     void addDays(int days);
 
     int getDay() const;
 
     void setCurrentDate();
-
-    bool checkDateOrder(string youngDate, string oldDate);
 };
 
 

@@ -20,22 +20,6 @@ void Driver::setId(const string &id) {
     Driver::id = id;
 }
 
-void Driver::log() {
-    if (id.length()) {
-        cout << id << endl;
-    }
-
-    cout << name << endl << surname << endl;
-
-    if (isAvailable) {
-        cout << "available" << endl;
-    } else {
-        cout << "road" << endl;
-    }
-
-    cout << "=========" << endl;
-}
-
 bool Driver::isAvailableStatus() const {
     return isAvailable;
 }

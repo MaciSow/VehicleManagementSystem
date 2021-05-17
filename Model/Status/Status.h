@@ -21,8 +21,6 @@ public:
 
     virtual vector<string> getData();
 
-    void log();
-
     string getStatusName();
 
     string getStatusTypeName();

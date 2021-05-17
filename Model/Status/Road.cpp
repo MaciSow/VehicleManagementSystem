@@ -21,14 +21,6 @@ Road::Road(int distance, Driver *driver, int pause)
     endDate->addDays(roadTime + pause);
 }
 
-
-void Road::log() {
-    cout << distance << endl;
-    driver->log();
-    startDate->log();
-    endDate->log();
-}
-
 vector<string> Road::getRoadData() {
     vector<string> roadData;
     roadData.push_back(driver->getFullName());

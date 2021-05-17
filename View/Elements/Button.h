@@ -13,7 +13,7 @@ private:
     Text text;
     Color baseCol = {0, 0, 0, 205};
     Color hoverCol = {78, 112, 30, 205};
-    Color blockCol = {204, 204, 204, 255};
+    Color blockCol = {130, 130, 130, 255};
     Color pressedCol = hoverCol;
 
     bool isActive = false;
@@ -40,8 +40,6 @@ public:
     ~Button();
 
     string getId();
-
-    void setId(string id);
 
     void setColor(Color base, Color hover);
 

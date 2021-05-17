@@ -10,15 +10,10 @@ Date::~Date() {
 
 }
 
-
 Date::Date(string date) {
     day = stoi(date.substr(0, 2));
     month = stoi(date.substr(3, 2));
     year = stoi(date.substr(6, 4));
-}
-
-void Date::log() {
-    cout << day << '.' << month << '.' << year << endl;
 }
 
 string Date::getStringDate(string separator) {
@@ -57,37 +52,4 @@ void Date::setCurrentDate() {
     year = newtime.tm_year + 1900;
     month = newtime.tm_mon + 1;
     day = newtime.tm_mday;
-}
-
-bool Date::checkDateOrder(string youngDate, string oldDate) {
-    unsigned youngYear = stoi(youngDate.substr(0, 4));
-    unsigned oldYear = stoi(oldDate.substr(0, 4));
-
-    if (youngYear > oldYear) {
-        return false;
-    }
-
-    if (youngYear < oldYear) {
-        return true;
-    }
-
-    unsigned youngMonth = stoi(youngDate.substr(5, 2));
-    unsigned oldMonth = stoi(oldDate.substr(5, 2));
-
-    if (youngMonth > oldMonth) {
-        return false;
-    }
-
-    if (youngMonth < oldMonth) {
-        return true;
-    }
-
-    unsigned youngDay = stoi(youngDate.substr(8, 2));
-    unsigned oldDay = stoi(oldDate.substr(8, 2));
-
-    if (youngDay > oldDay) {
-        return false;
-    }
-
-    return true;
 }
